@@ -19,27 +19,27 @@
     "remove:dist": "rm -rf _dist"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.5.1",
-    "@fontsource-variable/noto-sans-jp": "^5.2.6",
-    "astro": "5.13.4",
+    "@astrojs/sitemap": "3.6.0",
+    "@fontsource-variable/noto-sans-jp": "^5.2.9",
+    "astro": "5.14.1",
     "microcms-js-sdk": "^3.2.0",
-    "sharp": "^0.34.3",
+    "sharp": "^0.34.4",
     "valibot": "1.1.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "@playwright/test": "^1.55.0",
-    "@tailwindcss/vite": "^4.1.12",
-    "@types/node": "^24.3.0",
-    "dotenv": "^17.2.1",
+    "@playwright/test": "^1.55.1",
+    "@tailwindcss/vite": "^4.1.13",
+    "@types/node": "^24.5.2",
+    "dotenv": "^17.2.2",
     "markuplint": "^4.13.1",
-    "msw": "^2.10.5",
-    "oxlint": "^1.13.0",
+    "msw": "^2.11.3",
+    "oxlint": "^1.18.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "tailwindcss": "^4.1.12",
-    "tsx": "^4.20.5",
+    "tailwindcss": "^4.1.13",
+    "tsx": "^4.20.6",
     "typescript": "^5.9.2"
   }
 }
