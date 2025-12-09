@@ -47,7 +47,7 @@ jobs:
           REMOTE_USER: ${{ vars.SSH_USER }}
           REMOTE_HOST: ${{ vars.SSH_HOST }}
           REMOTE_PORT: ${{ vars.SSH_PORT }}
-          REMOTE_DIR: ${{ vars.SSH_REMOTE_DIR }}
+          REMOTE_DIR: ${{ vars.SSH_PROD_REMOTE_DIR }}
         run: |
           LOCAL_DIR=./_dist/
 
