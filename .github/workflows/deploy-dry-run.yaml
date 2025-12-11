@@ -40,17 +40,15 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-
-          # ホスト鍵登録（ホスト名とポートも Secrets から）
-          ssh-keyscan -p "${{ vars.SSH_PORT }}" "${{ vars.SSH_HOST }}" >> ~/.ssh/known_hosts
+          ssh-keyscan -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
       # rsync デプロイ
       - name: Deploy Dry Run to Xserver
         env:
-          REMOTE_USER: ${{ vars.SSH_USER }}
-          REMOTE_HOST: ${{ vars.SSH_HOST }}
-          REMOTE_PORT: ${{ vars.SSH_PORT }}
-          REMOTE_DIR: ${{ vars.SSH_PROD_REMOTE_DIR }}
+          REMOTE_USER: ${{ secrets.SSH_USER }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT }}
+          REMOTE_DIR: ${{ secrets.SSH_PROD_REMOTE_DIR }}
         run: |
           LOCAL_DIR=./_dist/
 
