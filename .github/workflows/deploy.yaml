@@ -1,4 +1,4 @@
-name: Deploy Dry Run to Xserver
+name: Deploy to Xserver
 
 on:
   push:
@@ -6,11 +6,11 @@ on:
   workflow_dispatch: # Web UI から手動実行用
 
 concurrency:
-  group: deploy-dry-run-xserver
+  group: deploy-to-xserver
   cancel-in-progress: false # キャンセルせず「待ち行列」にする
 
 jobs:
-  deploy-dry-run:
+  deploy-to-xserver:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -43,7 +43,7 @@ jobs:
           ssh-keyscan -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
       # rsync デプロイ
-      - name: Deploy Dry Run to Xserver
+      - name: Deploy to Xserver
         env:
           REMOTE_USER: ${{ secrets.SSH_USER }}
           REMOTE_HOST: ${{ secrets.SSH_HOST }}
@@ -52,7 +52,7 @@ jobs:
         run: |
           LOCAL_DIR=./_dist/
 
-          rsync -aznv --delete --itemize-changes \
+          rsync -azv --delete --itemize-changes \
             --exclude='/.user.ini' \
             --exclude='/.htaccess' \
             -e "ssh -p ${REMOTE_PORT} -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes" \
