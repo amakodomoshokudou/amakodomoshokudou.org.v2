@@ -53,6 +53,8 @@ jobs:
           LOCAL_DIR=./_dist/
 
           rsync -aznv --delete --itemize-changes \
+            --exclude='/.user.ini' \
+            --exclude='/.htaccess' \
             -e "ssh -p ${REMOTE_PORT} -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes" \
             "${LOCAL_DIR}" \
             "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_DIR}"
