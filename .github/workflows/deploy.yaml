@@ -50,7 +50,7 @@ jobs:
           REMOTE_PORT: ${{ secrets.SSH_PORT }}
           REMOTE_DIR: ${{ secrets.SSH_PROD_REMOTE_DIR }}
         run: |
-          LOCAL_DIR=./_dist/
+          LOCAL_DIR=./dist/
 
           rsync -azv --delete --itemize-changes \
             --exclude='/.user.ini' \

@@ -23,7 +23,7 @@ export default defineConfig({
   build: {
     assets: "assets",
   },
-  outDir: "_dist",
+  outDir: "dist",
   experimental: {
     preserveScriptOrder: true,
   },
