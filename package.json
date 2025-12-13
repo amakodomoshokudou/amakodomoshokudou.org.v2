@@ -10,13 +10,13 @@
     "start": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "lint:html": "markuplint --allow-warnings '_dist/**/*.html'",
+    "lint:html": "markuplint --allow-warnings 'dist/**/*.html'",
     "format": "pnpm prettier --write 'src/**/*.{astro,ts,tsx,css,html}'",
     "lint:es": "oxlint",
     "lint": "pnpm run check && pnpm run lint:es && pnpm run lint:html",
     "vrt": "pnpm exec playwright test",
     "vrt:upgrade": "pnpm vrt --update-snapshots",
-    "remove:dist": "rm -rf _dist"
+    "remove:dist": "rm -rf dist"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.6.0",
