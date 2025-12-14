@@ -42,7 +42,7 @@ MICROCMS_API_KEY=xxxx
 ### デプロイ
 
 - [x] 手動でデプロイ
-- [ ] GitHub Actionsで自動デプロイ
+- [x] GitHub Actionsで自動デプロイ
 
 #### 手動でデプロイ
 
