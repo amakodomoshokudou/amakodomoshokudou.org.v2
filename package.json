@@ -15,8 +15,7 @@
     "lint:es": "oxlint",
     "lint": "pnpm run check && pnpm run lint:es && pnpm run lint:html",
     "vrt": "pnpm exec playwright test",
-    "vrt:upgrade": "pnpm vrt --update-snapshots",
-    "remove:dist": "rm -rf dist"
+    "vrt:upgrade": "pnpm vrt --update-snapshots"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.6.0",
