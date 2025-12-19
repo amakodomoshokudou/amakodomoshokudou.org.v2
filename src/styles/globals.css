@@ -135,7 +135,7 @@
   }
 
   body {
-    @apply bg-primary-background text-md text-primary-text font-sans break-words break-all has-[dialog[open]]:overflow-hidden;
+    @apply bg-primary-background text-md text-primary-text font-sans wrap-break-word break-all has-[dialog[open]]:overflow-hidden;
   }
 
   :focus {
