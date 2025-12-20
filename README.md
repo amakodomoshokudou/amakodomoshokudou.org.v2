@@ -11,43 +11,20 @@ MICROCMS_SERVICE_DOMAIN=xxxx
 MICROCMS_API_KEY=xxxx
 ```
 
-### 依存関係のインストール
+### npm script一覧
 
-`pnpm i`
-
-### ローカルサーバー起動
-
-#### Mockなし
-
-`pnpm run dev`
-
-#### Mockあり
-
-`pnpm run dev:mock`
-
-### ビルド
-
-#### Mockなし
-
-`pnpm run build`
-
-#### Mockあり
-
-`pnpm run build:mock`
-
-### プレビュー
-
-`pnpm run start`
+| スクリプト名        | 説明                           |
+| ------------------- | ------------------------------ |
+| pnpm i              | 依存関係のインストール         |
+| pnpm run dev        | ローカルサーバー起動           |
+| pnpm run dev:mock   | Mockありでローカルサーバー起動 |
+| pnpm run build      | 本番用ビルド                   |
+| pnpm run build:mock | Mockありで本番用ビルド         |
+| pnpm run start      | ビルド後のプレビュー           |
 
 ### デプロイ
 
-- [x] 手動でデプロイ
-- [x] GitHub Actionsで自動デプロイ
-
-#### 手動でデプロイ
-
-1. `pnpm run build`
-2. /distディレクトリ以下のファイルを全てサーバーにアップロード
+Github Actionsを使用して、SSH経由でXServerに自動デプロイ
 
 ## 使用技術
 
@@ -55,3 +32,5 @@ MICROCMS_API_KEY=xxxx
 - 言語：TypeScript
 - CSS：TailwindCSS
 - HeadlessCMS：microCMS
+- サーバ: XServer
+- デプロイ：Github Actions経由のSSH & Rsync
