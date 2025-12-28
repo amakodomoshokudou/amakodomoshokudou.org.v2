@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "24"
+          node-version: lts/*
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -30,7 +30,7 @@ jobs:
           version: latest
 
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm i --frozen-lockfile
 
       - name: Set up environment variables
         run: |
