@@ -22,7 +22,7 @@ MICROCMS_API_KEY=xxxx
 | pnpm run build:mock | Mockありで本番用ビルド         |
 | pnpm run start      | ビルド後のプレビュー           |
 
-### デプロイ
+## デプロイ
 
 Github Actionsを使用して、SSH経由でXServerに自動デプロイ
 
