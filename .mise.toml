@@ -1,0 +1,4 @@
+[tools]
+"npm:pnpm" = "latest"
+node = "latest"
+pnpm = "latest"
