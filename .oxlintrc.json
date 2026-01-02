@@ -1,5 +1,12 @@
 {
   "plugins": [
-    "import","jsdoc", "jsx-a11y", "node", "typescript", "unicorn", "oxc", "promise"
+    "import",
+    "jsdoc",
+    "jsx-a11y",
+    "node",
+    "typescript",
+    "unicorn",
+    "oxc",
+    "promise"
   ]
 }
