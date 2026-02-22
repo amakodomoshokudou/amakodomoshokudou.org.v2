@@ -1,6 +1,6 @@
 import { microcmsClient } from "../../../../libs/microcms";
 import type { MicroCMSCafe } from "../../../../libs/microcms/types";
-import { parseCafe, type Cafe } from "../../../../models/cafe";
+import { type Cafe, parseCafe } from "../../../../models/cafe";
 
 function parseMicroCMSCafeToCafe(data: MicroCMSCafe): Cafe {
   return parseCafe({

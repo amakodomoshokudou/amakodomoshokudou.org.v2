@@ -5,8 +5,8 @@ import Layout from "../../components/layout/Layout/Layout.astro";
 import CafesPage from "../../components/page/Cafes/CafesPage.astro";
 import type { BreadcrumbItems } from "../../components/ui/Breadcrumb/type";
 import { site } from "../../consts/site";
-import { fetchCafes } from "./_fetchers/microcms/cafe";
 import { fetchAreas } from "./_fetchers/microcms/area";
+import { fetchCafes } from "./_fetchers/microcms/cafe";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const areas = await fetchAreas();
