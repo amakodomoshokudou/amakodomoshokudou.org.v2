@@ -24,9 +24,15 @@
     }
   },
   "html": {
-    "experimentalFullSupportEnabled": true
+    "experimentalFullSupportEnabled": true,
+    "linter": {
+      "enabled": true
+    }
   },
   "css": {
+    "linter": {
+      "enabled": true
+    },
     "parser": {
       "tailwindDirectives": true
     }
