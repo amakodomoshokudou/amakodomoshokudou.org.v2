@@ -13,7 +13,7 @@ const { title } = Astro.props;
   class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
 >
   <div
-    class="border-t-accent [grid-column:1/-1] grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:[grid-column:2] lg:gap-y-32 lg:py-52"
+    class="border-t-accent col-span-full grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:col-2 lg:gap-y-32 lg:py-52"
   >
     <h1 class="text-2xl/2xl lg:text-3xl/3xl font-bold">{title}</h1>
     <p class="text-md/loose max-w-640">
@@ -29,7 +29,7 @@ const { title } = Astro.props;
     </ol>
   </div>
   <div
-    class="bg-secondary-background [grid-column:1/-1] grid grid-cols-subgrid gap-y-52 py-32 *:[grid-column:2] lg:gap-y-84 lg:py-52"
+    class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-52 py-32 *:col-2 lg:gap-y-84 lg:py-52"
   >
     <section class="prose grid gap-y-20">
       <Heading id="personal">個人情報について</Heading>

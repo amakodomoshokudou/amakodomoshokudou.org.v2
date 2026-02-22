@@ -23,7 +23,7 @@ const { isFirstPage, currentPage, lastPage, cafes, area, allAreas } =
   class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
 >
   <div
-    class="border-t-accent [grid-column:1/-1] grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:[grid-column:2] lg:gap-y-32 lg:py-52"
+    class="border-t-accent col-span-full grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:col-2 lg:gap-y-32 lg:py-52"
   >
     <div class="grid gap-y-20">
       <h1 class="grid justify-items-start gap-y-12 font-bold">
@@ -54,7 +54,7 @@ const { isFirstPage, currentPage, lastPage, cafes, area, allAreas } =
     </div>
   </div>
   <div
-    class="bg-secondary-background [grid-column:1/-1] grid grid-cols-subgrid gap-y-32 py-32 *:[grid-column:2] lg:gap-y-52 lg:py-52"
+    class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-32 py-32 *:col-2 lg:gap-y-52 lg:py-52"
   >
     <AreaFilter areas={allAreas} />
     <CafeList cafes={cafes} />
