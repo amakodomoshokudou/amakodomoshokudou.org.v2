@@ -4,18 +4,19 @@ import img from "./assets/icon.svg";
 
 export type Props = {
   href: string;
+  text: string;
 };
 
-const props = Astro.props;
+const { href, text } = Astro.props;
 
 const icon = await getImage({ src: img });
 ---
 
 <a
-  href={props.href}
+  href={href}
   class="border-primary-border bg-primary-background inline-grid grid-cols-[1fr_auto] items-center gap-x-8 rounded-xl border px-12 py-8"
 >
-  <slot />
+  {text}
   <span
     aria-hidden="true"
     role="img"
