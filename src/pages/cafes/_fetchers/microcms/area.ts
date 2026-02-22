@@ -1,6 +1,6 @@
 import { microcmsClient } from "../../../../libs/microcms";
 import type { MicroCMSArea } from "../../../../libs/microcms/types";
-import { parseArea, type Area } from "../../../../models/area";
+import { type Area, parseArea } from "../../../../models/area";
 
 export async function fetchAreas(): Promise<Area[]> {
   const { contents } = await microcmsClient.getList<MicroCMSArea>({

@@ -5,19 +5,20 @@ import img from "./assets/icon.svg";
 export type Props = {
   href: string;
   filename: string;
+  text: string;
 };
 
-const props = Astro.props;
+const { href, filename, text } = Astro.props;
 
 const icon = await getImage({ src: img });
 ---
 
 <a
-  href={props.href}
-  download={props.filename}
+  href={href}
+  download={filename}
   class="border-primary-border text-md/md inline-grid grid-cols-[1fr_auto] items-center gap-x-8 rounded-xl border px-12 py-8"
 >
-  <slot />
+  {text}
   <span
     role="img"
     aria-label="をダウンロード"

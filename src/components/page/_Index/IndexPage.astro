@@ -46,14 +46,14 @@ const { title } = Astro.props;
       <p
         class="grid grid-cols-[1fr_minmax(0,var(--spacing-220))_1fr] *:[grid-column:2]"
       >
-        <ButtonLink href="/about/">私たちについて</ButtonLink>
+        <ButtonLink href="/about/" text="私たちについて" />
       </p>
     </section>
     <section class="prose grid gap-y-20">
       <Heading>尼崎のこども食堂</Heading>
       <p>尼崎市内のこども食堂は一覧ページから探すことができます。</p>
       <p class="grid max-w-220">
-        <ButtonLink href="/cafes/">尼崎のこども食堂</ButtonLink>
+        <ButtonLink href="/cafes/" text="尼崎のこども食堂" />
       </p>
     </section>
     <section class="prose grid gap-y-20">
@@ -66,12 +66,10 @@ const { title } = Astro.props;
         class="grid grid-cols-[repeat(auto-fill,min(var(--spacing-220),100%))] gap-20"
       >
         <li class="grid">
-          <ButtonLink href="/charity/#with-items">物品で支援</ButtonLink>
+          <ButtonLink href="/charity/#with-items" text="物品で支援" />
         </li>
         <li class="grid">
-          <ButtonLink href="/charity/#with-donations">
-            寄付金で支援
-          </ButtonLink>
+          <ButtonLink href="/charity/#with-donations" text="寄付金で支援" />
         </li>
       </ul>
     </section>
@@ -81,7 +79,7 @@ const { title } = Astro.props;
         尼崎市でこども食堂を始めたい場合は、立ち上げの流れを解説したページを参考にしてください。
       </p>
       <p class="grid max-w-220">
-        <ButtonLink href="/start-cafe/">こども食堂の立ち上げ</ButtonLink>
+        <ButtonLink href="/start-cafe/" text="こども食堂の立ち上げ" />
       </p>
     </section>
   </div>
