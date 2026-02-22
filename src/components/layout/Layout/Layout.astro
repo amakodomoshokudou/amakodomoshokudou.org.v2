@@ -51,10 +51,10 @@ const navItems = [
   class="relative grid min-h-svh grid-cols-1 grid-rows-[auto_1fr] lg:h-svh lg:grid-cols-[var(--spacing-220)_minmax(0,1fr)] lg:grid-rows-1"
 >
   <header
-    class="border-b-secondary-border bg-primary-background lg:border-r-secondary-border sticky inset-x-0 top-0 z-10 grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] border-b lg:[grid-column:1] lg:grid-cols-1 lg:overflow-y-auto lg:border-r lg:border-b-0"
+    class="border-b-secondary-border bg-primary-background lg:border-r-secondary-border sticky inset-x-0 top-0 z-10 grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] border-b lg:col-1 lg:grid-cols-1 lg:overflow-y-auto lg:border-r lg:border-b-0"
   >
     <div
-      class="[grid-column:2] flex flex-wrap items-center justify-between py-8 lg:[grid-column:1/-1] lg:grid lg:content-start lg:justify-start lg:px-12 lg:py-20"
+      class="col-2 flex flex-wrap items-center justify-between py-8 lg:col-span-full lg:grid lg:content-start lg:justify-start lg:px-12 lg:py-20"
     >
       <p>
         <a href="/" class="flex place-items-center gap-x-4 lg:flex-col">
@@ -165,24 +165,22 @@ const navItems = [
     </div>
   </header>
   <div
-    class="[grid-column:1/-1] grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] grid-rows-[1fr_auto] lg:[grid-column:2] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)] lg:overflow-y-auto"
+    class="col-span-full grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] grid-rows-[1fr_auto] lg:col-2 lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)] lg:overflow-y-auto"
   >
-    <main class="[grid-column:1/-1]">
+    <main class="col-span-full">
       <slot />
     </main>
     {
       props.breadcrumb && (
-        <div class="[grid-column:1/-1] grid grid-cols-subgrid py-20 *:[grid-column:2]">
+        <div class="col-span-full grid grid-cols-subgrid py-20 *:col-2">
           <Breadcrumb items={props.breadcrumb} />
         </div>
       )
     }
     <footer
-      class="border-t-secondary-border [grid-column:1/-1] grid grid-cols-subgrid border-t py-20"
+      class="border-t-secondary-border col-span-full grid grid-cols-subgrid border-t py-20"
     >
-      <div
-        class="[grid-column:2] flex flex-wrap justify-between gap-x-20 gap-y-12"
-      >
+      <div class="col-2 flex flex-wrap justify-between gap-x-20 gap-y-12">
         <p class="text-sm/sm">
           <a href="/privacy-policy/" class="underline">プライバシーポリシー</a>
         </p>
