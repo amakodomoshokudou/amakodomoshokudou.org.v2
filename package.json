@@ -12,8 +12,8 @@
     "check": "astro check",
     "lint:html": "markuplint --allow-warnings 'dist/**/*.html'",
     "format": "prettier --write .",
-    "lint:es": "oxlint",
-    "lint": "pnpm run check && pnpm run lint:es && pnpm run lint:html",
+    "lint:biome": "biome check",
+    "lint": "pnpm run check && pnpm run lint:biome && pnpm run lint:html",
     "vrt": "pnpm exec playwright test",
     "vrt:upgrade": "pnpm vrt --update-snapshots"
   },
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
+    "@biomejs/biome": "2.4.4",
     "@playwright/test": "^1.58.0",
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^25.0.10",
