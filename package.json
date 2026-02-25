@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.0",
-    "@fontsource-variable/noto-sans-jp": "^5.2.10",
     "astro": "5.16.15",
     "microcms-js-sdk": "^3.2.0",
     "sharp": "^0.34.5",
