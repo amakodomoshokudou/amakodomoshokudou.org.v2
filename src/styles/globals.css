@@ -36,12 +36,10 @@
   --leading-relaxed: 1.75;
   --leading-loose: 2;
 
-  --font-sans:
-    "Noto Sans JP Variable", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: sans-serif;
 
   --font-weight-normal: 400;
-  --font-weight-bold: 500;
+  --font-weight-bold: 700;
 
   --spacing-0: 0;
   --spacing-4: 0.25rem;
