@@ -1,16 +1,21 @@
 ---
+import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import Document from "../../components/layout/Document/Document.astro";
 import Layout from "../../components/layout/Layout/Layout.astro";
 import CafesPage from "../../components/page/Cafes/CafesPage.astro";
 import type { BreadcrumbItems } from "../../components/ui/Breadcrumb/type";
 import { site } from "../../consts/site";
-import { fetchAreas } from "./_fetchers/microcms/area";
-import { fetchCafes } from "./_fetchers/microcms/cafe";
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const areas = await fetchAreas();
-  const cafes = await fetchCafes();
+  const [areas, cafes] = await Promise.all([
+    getCollection("areas").then((collections) =>
+      collections.map(({ data }) => data),
+    ),
+    getCollection("cafes").then((collections) =>
+      collections.map(({ data }) => data),
+    ),
+  ]);
 
   return paginate(cafes, {
     pageSize: site.cafesPerPage,

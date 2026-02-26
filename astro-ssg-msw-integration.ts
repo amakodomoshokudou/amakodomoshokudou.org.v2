@@ -6,6 +6,12 @@ export default function astroSSGMSWIntegration(): AstroIntegration {
   return {
     name: "astro-ssg-msw-integration",
     hooks: {
+      "astro:config:setup": ({ logger }) => {
+        if (_use_mock) {
+          mockServer.listen();
+          logger.info("mock listen !!!");
+        }
+      },
       "astro:server:start": ({ logger }) => {
         if (_use_mock) {
           mockServer.listen();
