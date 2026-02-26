@@ -20,11 +20,3 @@ export const cafeSchema = v.object({
 });
 
 export type Cafe = v.InferOutput<typeof cafeSchema>;
-
-export function parseCafe(data: unknown) {
-  try {
-    return v.parse(cafeSchema, data);
-  } catch (error) {
-    throw new Error(`Invalid data: ${error}`);
-  }
-}

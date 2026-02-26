@@ -8,11 +8,3 @@ export const areaSchema = v.object({
 });
 
 export type Area = v.InferOutput<typeof areaSchema>;
-
-export function parseArea(data: unknown) {
-  try {
-    return v.parse(areaSchema, data);
-  } catch (error) {
-    throw new Error(`Invalid data: ${error}`);
-  }
-}
