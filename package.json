@@ -19,22 +19,22 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.0",
-    "astro": "5.16.15",
-    "microcms-js-sdk": "^3.2.0",
+    "astro": "5.18.0",
+    "microcms-js-sdk": "^3.3.0",
     "sharp": "^0.34.5",
     "valibot": "1.2.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
     "@biomejs/biome": "2.4.4",
-    "@playwright/test": "^1.58.0",
-    "@tailwindcss/vite": "^4.1.18",
-    "@types/node": "^25.0.10",
-    "markuplint": "^4.14.0",
+    "@playwright/test": "^1.58.2",
+    "@tailwindcss/vite": "^4.2.1",
+    "@types/node": "^25.3.1",
+    "markuplint": "^4.14.1",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3"
   }
 }
