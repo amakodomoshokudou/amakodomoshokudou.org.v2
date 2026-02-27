@@ -32,12 +32,10 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: Set up environment variables
-        run: |
-          echo "MICROCMS_SERVICE_DOMAIN=dummy" >> $GITHUB_ENV
-          echo "MICROCMS_API_KEY=dummy" >> $GITHUB_ENV
-
       - name: Build with mock
+        env:
+          MICROCMS_SERVICE_DOMAIN: dummy_domain
+          MICROCMS_API_KEY: dummy_key
         run: pnpm run build:mock
 
       - name: Run lint
