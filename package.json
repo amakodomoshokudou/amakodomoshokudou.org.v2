@@ -31,7 +31,6 @@
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^25.0.10",
     "markuplint": "^4.14.0",
-    "msw": "^2.12.7",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
