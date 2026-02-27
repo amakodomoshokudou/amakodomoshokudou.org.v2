@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "dev:mock": "astro dev --mode mock",
-    "build:mock": "astro check && astro build --mode mock",
+    "build:mock": "astro build --mode mock",
     "start": "astro preview",
     "astro": "astro",
     "check": "astro check",
