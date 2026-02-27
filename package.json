@@ -6,14 +6,14 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "dev:mock": "astro dev --mode mock",
-    "build:mock": "astro check && astro build --mode mock",
+    "build:mock": "astro build --mode mock",
     "start": "astro preview",
     "astro": "astro",
     "check": "astro check",
     "lint:html": "markuplint --allow-warnings 'dist/**/*.html'",
     "format": "prettier --write .",
     "lint:biome": "biome check",
-    "lint": "pnpm run check && pnpm run lint:biome && pnpm run lint:html",
+    "lint": "pnpm run lint:biome && pnpm run lint:html",
     "vrt": "pnpm exec playwright test",
     "vrt:upgrade": "pnpm vrt --update-snapshots"
   },
@@ -31,12 +31,10 @@
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^25.0.10",
     "markuplint": "^4.14.0",
-    "msw": "^2.12.7",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.1.18",
-    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }
