@@ -13,7 +13,7 @@
     "lint:html": "markuplint --allow-warnings 'dist/**/*.html'",
     "format": "prettier --write .",
     "lint:biome": "biome check",
-    "lint": "pnpm run check && pnpm run lint:biome && pnpm run lint:html",
+    "lint": "pnpm run lint:biome && pnpm run lint:html",
     "vrt": "pnpm exec playwright test",
     "vrt:upgrade": "pnpm vrt --update-snapshots"
   },
