@@ -5,9 +5,14 @@ on:
     branches: [main]
   workflow_dispatch: # Web UI から手動実行用
 
+defaults:
+  run:
+    shell: bash
+
 concurrency:
-  group: deploy-to-xserver
-  cancel-in-progress: false # キャンセルせず「待ち行列」にする
+  # デプロイは全体で1つだけ実行するようにする
+  group: ${{github.workflow}}
+  cancel-in-progress: false
 
 jobs:
   deploy-to-xserver:
