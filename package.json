@@ -18,14 +18,14 @@
     "vrt:upgrade": "pnpm vrt --update-snapshots"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.7.0",
-    "astro": "5.18.0",
+    "@astrojs/sitemap": "3.7.1",
+    "astro": "6.0.2",
     "microcms-js-sdk": "^3.3.0",
     "sharp": "^0.34.5",
     "valibot": "1.2.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.6",
+    "@astrojs/check": "^0.9.7",
     "@biomejs/biome": "2.4.4",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/vite": "^4.2.1",

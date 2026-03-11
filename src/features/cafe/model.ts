@@ -56,6 +56,7 @@ export const cafeSchema = z.object({
   schedule: z.string(),
   host: z.string(),
   contact: z.string(),
+  order: z.number(),
 });
 
 export type Cafe = z.infer<typeof cafeSchema>;

@@ -6,16 +6,18 @@ import Layout from "../../../../components/layout/Layout/Layout.astro";
 import CafesByAreaPage from "../../../../components/page/Cafes/CafesByAreaPage.astro";
 import type { BreadcrumbItems } from "../../../../components/ui/Breadcrumb/type";
 import { site } from "../../../../consts/site";
+import { sortAreas, sortCafes } from "../../../../features/cafe/util";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const [areas, cafes] = await Promise.all([
-    getCollection("areas").then((collections) =>
-      collections.map(({ data }) => data),
-    ),
-    getCollection("cafes").then((collections) =>
-      collections.map(({ data }) => data),
-    ),
+    getCollection("areas")
+      .then((collections) => collections.map(({ data }) => data))
+      .then(sortAreas),
+    getCollection("cafes")
+      .then((collections) => collections.map(({ data }) => data))
+      .then(sortCafes),
   ]);
+
   const cafesByArea = areas.map((area) => {
     return {
       area,
