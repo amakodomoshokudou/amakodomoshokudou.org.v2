@@ -61,7 +61,14 @@ function mockCafe(
 ): (
   cafe: Pick<
     Cafe,
-    "name" | "slug" | "image" | "address" | "schedule" | "host" | "contact"
+    | "name"
+    | "slug"
+    | "image"
+    | "address"
+    | "schedule"
+    | "host"
+    | "contact"
+    | "order"
   >,
 ) => Cafe {
   return (cafe) => ({
@@ -81,71 +88,78 @@ const odaCafe = mockCafe(mockAreas.oda);
 export function getMockCafes(): Cafe[] {
   const cafes: Cafe[] = [];
 
+  let order = 0;
   for (let i = 1; i <= 10; i++) {
     cafes.push(
       mukoCafe({
         name: `武庫の食堂${i}`,
-        slug: `muko-cafe${randomUUID()}`,
+        slug: `muko-cafe-${i}`,
         image: null,
         address: "尼崎市000-000-000",
         schedule: "毎週月曜日00~00",
         host: "田中太郎",
         contact: "000-0000-0000",
+        order: order++,
       }),
     );
     cafes.push(
       tachibanaCafe({
         name: `立花の食堂${i}`,
-        slug: `tachibana-cafe${randomUUID()}`,
+        slug: `tachibana-cafe-${i}`,
         image: null,
         address: "尼崎市000-000-000",
         schedule: "毎週月曜日00~00",
         host: "山田花子",
         contact: "000-0000-0000",
+        order: order++,
       }),
     );
     cafes.push(
       sonodaCafe({
         name: `園田の食堂${i}`,
-        slug: `sonoda-cafe${randomUUID()}`,
+        slug: `sonoda-cafe-${i}`,
         image: null,
         address: "尼崎市000-000-000",
         schedule: "毎週月曜日00~00",
         host: "佐藤次郎",
         contact: "000-0000-0000",
+        order: order++,
       }),
     );
     cafes.push(
       oshoCafe({
         name: `大庄の食堂${i}`,
-        slug: `osho-cafe${randomUUID()}`,
+        slug: `osho-cafe-${i}`,
         image: null,
         address: "尼崎市000-000-000",
         schedule: "毎週月曜日00~00",
         host: "中村三郎",
         contact: "000-0000-0000",
+        order: order++,
       }),
     );
     cafes.push(
       chuoCafe({
         name: `中央の食堂${i}`,
-        slug: `chuo-cafe${randomUUID()}`,
+        slug: `chuo-cafe-${i}`,
         image: null,
         address: "尼崎市000-000-000",
         schedule: "毎週月曜日00~00",
         host: "鈴木四郎",
         contact: "000-0000-0000",
+        order: order++,
       }),
     );
     cafes.push(
       odaCafe({
         name: `小田の食堂${i}`,
-        slug: `oda-cafe${randomUUID()}`,
+        slug: `oda-cafe-${i}`,
         image: null,
         address: "尼崎市000-000-000",
         schedule: "毎週月曜日00~00",
         host: "伊藤五郎",
         contact: "000-0000-0000",
+        order: order++,
       }),
     );
   }

@@ -19,10 +19,17 @@ export async function fetchAllCafes(): Promise<Cafe[]> {
     endpoint: "cafes",
     queries: {
       fields: "id,name,slug,image,area,address,schedule,host,contact",
+      orders: "system:default", // microCMSの管理画面の「並び順」をそのまま反映
       limit: 100, // 全部取得するために、最大値の100を指定
       offset: 0,
     },
   });
+
   // ここでmicroCMSからのレスポンスをCafe型に変換する
-  return microcmsCafeSchema.array().parse(contents);
+  const result = microcmsCafeSchema.array().parse(contents);
+
+  return result.map((cafe, index) => ({
+    ...cafe,
+    order: index + 1, // 取得した並び順をここで保持しておく（astroのgetCollectionで並び順がバラバラになってしまうから）
+  }));
 }
