@@ -20,7 +20,7 @@
   "dependencies": {
     "@astrojs/sitemap": "3.7.1",
     "astro": "6.1.7",
-    "microcms-js-sdk": "^3.3.0",
+    "microcms-js-sdk": "^3.4.0",
     "sharp": "^0.34.5"
   },
   "devDependencies": {
@@ -28,9 +28,9 @@
     "@biomejs/biome": "2.4.10",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/vite": "^4.2.2",
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.6.0",
     "markuplint": "^4.14.1",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.2.2",
