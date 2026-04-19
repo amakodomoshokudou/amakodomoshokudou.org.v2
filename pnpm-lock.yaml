@@ -20,9 +20,6 @@ importers:
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
-      sitemap@latest:
-        specifier: link:astrojs/sitemap@latest
-        version: link:astrojs/sitemap@latest
     devDependencies:
       '@astrojs/check':
         specifier: ^0.9.8
