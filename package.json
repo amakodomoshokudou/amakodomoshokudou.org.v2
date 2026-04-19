@@ -19,9 +19,10 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.1",
-    "astro": "6.0.8",
+    "astro": "6.1.7",
     "microcms-js-sdk": "^3.3.0",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "sitemap@latest": "link:astrojs/sitemap@latest"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
