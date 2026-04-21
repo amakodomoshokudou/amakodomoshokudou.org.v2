@@ -18,6 +18,7 @@
     "vrt:upgrade": "pnpm vrt --update-snapshots"
   },
   "dependencies": {
+    "@astrojs/compiler-rs": "^0.1.7",
     "@astrojs/sitemap": "3.7.1",
     "astro": "6.1.7",
     "microcms-js-sdk": "^3.4.0",
