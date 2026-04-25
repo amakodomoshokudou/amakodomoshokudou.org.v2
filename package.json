@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@astrojs/compiler-rs": "^0.1.7",
-    "@astrojs/sitemap": "3.7.1",
+    "@astrojs/sitemap": "3.7.2",
     "astro": "6.1.7",
     "microcms-js-sdk": "^3.4.0",
     "sharp": "^0.34.5"
@@ -35,6 +35,6 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.2.2",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   }
 }
