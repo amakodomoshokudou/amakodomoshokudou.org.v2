@@ -15,7 +15,7 @@
     "lint:biome": "biome check",
     "lint": "pnpm run lint:biome && pnpm run lint:html",
     "vrt": "pnpm exec playwright test",
-    "vrt:upgrade": "pnpm vrt --update-snapshots"
+    "vrt:update": "pnpm vrt --update-snapshots"
   },
   "dependencies": {
     "@astrojs/compiler-rs": "^0.1.7",
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
     "@biomejs/biome": "2.4.12",
-    "@playwright/test": "^1.58.2",
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/vite": "^4.2.2",
     "@types/node": "^25.6.0",
     "markuplint": "^4.14.1",
