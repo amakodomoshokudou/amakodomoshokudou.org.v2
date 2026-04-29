@@ -35,7 +35,7 @@ for (const path of paths) {
       fullPage: true,
       // 画像を読み込んでサイズを確定させた上で、微妙なブレを防ぐために、マスクをする
       // Todo: より細かい画像の指定をして、マスクするものとしないものを分ける
-      mask: [page.locator("img")],
+      mask: [page.locator("img"), page.locator("iframe")],
     });
   });
 }
