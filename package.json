@@ -18,9 +18,9 @@
     "vrt:update": "pnpm vrt --update-snapshots"
   },
   "dependencies": {
-    "@astrojs/compiler-rs": "^0.2.0",
+    "@astrojs/compiler-rs": "^0.2.1",
     "@astrojs/sitemap": "3.7.2",
-    "astro": "6.3.3",
+    "astro": "6.3.7",
     "microcms-js-sdk": "^3.4.0",
     "sharp": "^0.34.5"
   },
@@ -29,7 +29,7 @@
     "@biomejs/biome": "2.4.15",
     "@playwright/test": "^1.60.0",
     "@tailwindcss/vite": "^4.3.0",
-    "@types/node": "^25.8.0",
+    "@types/node": "^25.9.1",
     "markuplint": "^4.18.3",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
