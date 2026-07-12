@@ -6,6 +6,7 @@ export type Props = {
 const props = Astro.props;
 ---
 
+<!-- biome-ignore lint/a11y/useHeadingContent: <slot />にタイトルの文字列が入るのでここではエラーを無視する -->
 <h2
   id={props.id}
   class="decoration-accent text-xl/xl lg:text-2xl/2xl font-bold underline decoration-8 -underline-offset-2"
