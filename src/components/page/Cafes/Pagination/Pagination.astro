@@ -10,8 +10,7 @@ const props = Astro.props;
 
 <nav aria-label="ページ送り">
   <ol class="flex flex-wrap gap-12">
-    {
-      Array.from({ length: props.total }).map((_, i) => {
+    {Array.from({ length: props.total }).map((_, i) => {
         const page = i + 1;
         // propsとして渡されるbaseUrlは末尾にスラッシュがある
         const href = page === 1 ? props.baseUrl : `${props.baseUrl}${page}/`;
@@ -28,7 +27,6 @@ const props = Astro.props;
             </a>
           </li>
         );
-      })
-    }
+      })}
   </ol>
 </nav>

@@ -9,21 +9,11 @@ export type Props = {
   size?: "sm" | "md";
 };
 
-const {
-  copyText,
-  successText = "コピーしました",
-  size = "md",
-  label = false,
-} = Astro.props;
+const { copyText, successText = "コピーしました", size = "md", label = false } = Astro.props;
 const icon = await getImage({ src: img });
 ---
 
-<span
-  class="inline-grid w-fit"
-  data-id="copy-button"
-  data-copy-text={copyText}
-  data-success-text={successText}
->
+<span class="inline-grid w-fit" data-id="copy-button" data-copy-text={copyText} data-success-text={successText}>
   <button
     type="button"
     class={[
@@ -51,15 +41,11 @@ const icon = await getImage({ src: img });
 </span>
 
 <script>
-  const copyButtonList = document.querySelectorAll<HTMLSpanElement>(
-    "[data-id=copy-button]",
-  );
+  const copyButtonList = document.querySelectorAll<HTMLSpanElement>("[data-id=copy-button]");
 
   for (const copyButton of copyButtonList) {
     const button = copyButton.querySelector<HTMLButtonElement>("button");
-    const notify = copyButton.querySelector<HTMLSpanElement>(
-      "[aria-live=assertive]",
-    );
+    const notify = copyButton.querySelector<HTMLSpanElement>("[aria-live=assertive]");
 
     if (!button) {
       throw new Error("button is not found");

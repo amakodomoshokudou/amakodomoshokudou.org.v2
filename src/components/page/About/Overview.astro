@@ -4,9 +4,7 @@ import { summary } from "../../../consts/summary";
 ---
 
 <dl class="@container">
-  <div
-    class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12"
-  >
+  <div class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12">
     <dt class="@640:pr-0 px-20">
       {summary.name.title}
     </dt>
@@ -14,9 +12,7 @@ import { summary } from "../../../consts/summary";
       {summary.name.value}
     </dd>
   </div>
-  <div
-    class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12"
-  >
+  <div class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12">
     <dt class="@640:pr-0 px-20">
       {summary.constituent.title}
     </dt>
@@ -26,21 +22,15 @@ import { summary } from "../../../consts/summary";
       </ul>
     </dd>
   </div>
-  <div
-    class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12"
-  >
+  <div class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12">
     <dt class="@640:pr-0 px-20">
       {summary.establish.title}
     </dt>
     <dd class="px-20">
-      <time datetime={summary.establish.value.datetime}
-        >{summary.establish.value.display}</time
-      >
+      <time datetime={summary.establish.value.datetime}>{summary.establish.value.display}</time>
     </dd>
   </div>
-  <div
-    class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12"
-  >
+  <div class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12">
     <dt class="@640:pr-0 px-20">
       {summary.representative.title}
     </dt>
@@ -48,21 +38,17 @@ import { summary } from "../../../consts/summary";
       {summary.representative.value}
     </dd>
   </div>
-  <div
-    class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12"
-  >
+  <div class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12">
     <dt class="@640:pr-0 px-20">
       {summary.location.title}
     </dt>
     <dd class="px-20">
-      {`〒${summary.location.value.postalCode}`}<br />{
-        summary.location.value.address
-      }
+      {`〒${summary.location.value.postalCode}`}
+      <br />
+      {summary.location.value.address}
     </dd>
   </div>
-  <div
-    class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12"
-  >
+  <div class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12">
     <dt class="@640:pr-0 px-20">
       {summary.facebook.title}
     </dt>

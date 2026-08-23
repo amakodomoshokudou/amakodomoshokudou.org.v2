@@ -7,7 +7,4 @@ type BreadcrumbCurrentItem = {
   title: string;
 };
 
-export type BreadcrumbItems = [
-  ...BreadcrumbParentItem[],
-  BreadcrumbCurrentItem,
-];
+export type BreadcrumbItems = [...BreadcrumbParentItem[], BreadcrumbCurrentItem];

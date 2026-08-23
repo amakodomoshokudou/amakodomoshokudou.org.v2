@@ -8,9 +8,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [sitemap()],
-  site: import.meta.env.PROD
-    ? "https://amakodomoshokudou.org"
-    : "http://localhost:4321",
+  site: import.meta.env.PROD ? "https://amakodomoshokudou.org" : "http://localhost:4321",
   image: {
     remotePatterns: [
       {

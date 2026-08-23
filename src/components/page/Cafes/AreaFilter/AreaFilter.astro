@@ -11,9 +11,7 @@ const { areas } = Astro.props;
 const pathname = Astro.url.pathname;
 ---
 
-<details
-  class="group border-primary-border bg-tertiary-background rounded-xl border"
->
+<details class="group border-primary-border bg-tertiary-background rounded-xl border">
   <summary
     class="bg-primary-background grid cursor-pointer grid-cols-[1fr_1.5em] items-center rounded-xl px-12 py-8 group-open:rounded-b-none [&::-webkit-details-marker]:hidden"
   >
@@ -29,9 +27,7 @@ const pathname = Astro.url.pathname;
     ></span>
   </summary>
   <nav class="border-t-secondary-border border-t p-12" aria-label="地区別">
-    <ol
-      class="grid grid-cols-[repeat(auto-fill,min(var(--spacing-84),100%))] gap-12"
-    >
+    <ol class="grid grid-cols-[repeat(auto-fill,min(var(--spacing-84),100%))] gap-12">
       <li>
         <a
           href="/cafes/"
@@ -47,8 +43,7 @@ const pathname = Astro.url.pathname;
           すべて
         </a>
       </li>
-      {
-        areas.map((area) => (
+      {areas.map((area) => (
           <li>
             <a
               href={`/cafes/areas/${area.slug}/`}
@@ -65,8 +60,7 @@ const pathname = Astro.url.pathname;
               {area.name}
             </a>
           </li>
-        ))
-      }
+        ))}
     </ol>
   </nav>
 </details>

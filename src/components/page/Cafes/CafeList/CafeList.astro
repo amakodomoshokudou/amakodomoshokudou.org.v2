@@ -11,8 +11,7 @@ const { cafes } = Astro.props;
 ---
 
 <div class="grid grid-cols-1 gap-32 sm:grid-cols-2">
-  {
-    cafes.map(({ name, image, address, schedule, host, contact }) => (
+  {cafes.map(({ name, image, address, schedule, host, contact }) => (
       <article class="border-secondary-border bg-primary-background grid grid-rows-[auto_auto_1fr] gap-y-12 rounded-xl border p-20">
         <h2 class="text-lg/lg lg:text-xl/xl font-bold">{name}</h2>
         {image ? (
@@ -67,6 +66,5 @@ const { cafes } = Astro.props;
           )}
         </dl>
       </article>
-    ))
-  }
+    ))}
 </div>

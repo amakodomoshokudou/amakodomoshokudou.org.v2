@@ -12,8 +12,7 @@ const {
   desc = "尼崎こども食堂ネットワークは尼崎市内のこども食堂が、これからもアマのこどもたちにとっての「身近な地域の居場所」であり続けられるように活動している団体です。",
 } = Astro.props;
 
-const title =
-  baseTitle === site.title ? baseTitle : `${baseTitle} - ${site.title}`;
+const title = baseTitle === site.title ? baseTitle : `${baseTitle} - ${site.title}`;
 ---
 
 <!doctype html>
@@ -40,37 +39,22 @@ const title =
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
-    <meta
-      property="og:image"
-      content={new URL("/media/images/thumbnail.png", Astro.site).toString()}
-    />
+    <meta property="og:image" content={new URL("/media/images/thumbnail.png", Astro.site).toString()} />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="太陽と新芽を意識した尼崎こども食堂ネットワークのロゴ"
-    />
+    <meta property="og:image:alt" content="太陽と新芽を意識した尼崎こども食堂ネットワークのロゴ" />
     <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:site_name" content={site.title} />
 
     <meta name="twitter:card" content="summary" />
-    <meta
-      name="twitter:url"
-      content={new URL(Astro.url.pathname, Astro.site)}
-    />
+    <meta name="twitter:url" content={new URL(Astro.url.pathname, Astro.site)} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={desc} />
-    <meta
-      name="twitter:image"
-      content={new URL("/media/images/thumbnail.png", Astro.site).toString()}
-    />
-    <meta
-      name="twitter:image:alt"
-      content="太陽と新芽を意識した尼崎こども食堂ネットワークのロゴ"
-    />
+    <meta name="twitter:image" content={new URL("/media/images/thumbnail.png", Astro.site).toString()} />
+    <meta name="twitter:image:alt" content="太陽と新芽を意識した尼崎こども食堂ネットワークのロゴ" />
   </head>
 
   <body>
