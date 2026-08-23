@@ -11,7 +11,7 @@
     "astro": "astro",
     "check": "astro check",
     "lint:html": "markuplint --allow-warnings 'dist/**/*.html'",
-    "format": "prettier --write .",
+    "format": "biome format --fix && prettier --write .",
     "lint:biome": "biome check",
     "lint": "pnpm run lint:biome && pnpm run lint:html",
     "vrt": "pnpm exec playwright test",
@@ -25,14 +25,12 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "@biomejs/biome": "2.5.7",
+    "@biomejs/biome": "2.5.8",
     "@playwright/test": "^1.62.1",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.1.2",
     "markuplint": "^4.18.3",
     "prettier": "^3.9.6",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
   }
