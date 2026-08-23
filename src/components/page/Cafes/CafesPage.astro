@@ -25,19 +25,15 @@ const { isFirstPage, currentPage, lastPage, cafes, allAreas } = Astro.props;
     <div class="grid gap-y-20">
       <h1 class="grid justify-items-start gap-y-12 font-bold">
         <span class="text-2xl/2xl lg:text-3xl/3xl">尼崎のこども食堂</span>
-        {
-          !isFirstPage && (
+        {!isFirstPage && (
             <span class="bg-secondary-background text-xs/xs rounded-xs px-8 py-4">
               {currentPage}ページ目
             </span>
-          )
-        }
+          )}
       </h1>
       <p class="text-sm/sm">掲載許可の取れたこども食堂のみ掲載しています。</p>
     </div>
-    <div
-      class="border-secondary-border grid gap-y-12 rounded-xl border p-12 lg:p-20"
-    >
+    <div class="border-secondary-border grid gap-y-12 rounded-xl border p-12 lg:p-20">
       <p class="font-bold">PDF版の資料</p>
       <p>
         <DownloadLink
@@ -48,15 +44,11 @@ const { isFirstPage, currentPage, lastPage, cafes, allAreas } = Astro.props;
       </p>
     </div>
   </div>
-  <div
-    class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-32 py-32 *:col-2 lg:gap-y-52 lg:py-52"
-  >
+  <div class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-32 py-32 *:col-2 lg:gap-y-52 lg:py-52">
     <AreaFilter areas={allAreas} />
     <CafeList cafes={cafes} />
-    {
-      lastPage > 1 && (
+    {lastPage > 1 && (
         <Pagination current={currentPage} total={lastPage} baseUrl="/cafes/" />
-      )
-    }
+      )}
   </div>
 </div>

@@ -58,19 +58,7 @@ export function getMockAreas(): Area[] {
 
 function mockCafe(
   area: Area,
-): (
-  cafe: Pick<
-    Cafe,
-    | "name"
-    | "slug"
-    | "image"
-    | "address"
-    | "schedule"
-    | "host"
-    | "contact"
-    | "order"
-  >,
-) => Cafe {
+): (cafe: Pick<Cafe, "name" | "slug" | "image" | "address" | "schedule" | "host" | "contact" | "order">) => Cafe {
   return (cafe) => ({
     id: randomUUID(),
     area,

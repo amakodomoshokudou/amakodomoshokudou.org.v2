@@ -60,19 +60,14 @@ const navItems = [
         <a href="/" class="flex place-items-center gap-x-4 lg:flex-col">
           <span class="sr-only">{site.title}</span>
           <Image src={icon} alt="" class="w-full max-w-52 lg:max-w-84" />
-          <Image
-            src={name}
-            alt=""
-            class="w-full max-w-84 lg:max-w-136 dark:invert"
-          />
+          <Image src={name} alt="" class="w-full max-w-84 lg:max-w-136 dark:invert" />
         </a>
       </p>
       <Menu>
         <div class="grid gap-y-20">
           <nav aria-label="グローバルナビゲーション">
             <ul class="grid gap-y-8">
-              {
-                navItems.map((item) => (
+              {navItems.map((item) => (
                   <li>
                     <a
                       href={item.href}
@@ -98,30 +93,21 @@ const navItems = [
                       )}
                     </a>
                   </li>
-                ))
-              }
+                ))}
             </ul>
           </nav>
-          <div
-            class="border-secondary-border grid gap-y-12 rounded-xl border p-12"
-          >
+          <div class="border-secondary-border grid gap-y-12 rounded-xl border p-12">
             <p class="font-bold">お問い合わせはこちら</p>
             <p class="">
               {summary.mail.value}
             </p>
-            <CopyButton copyText={summary.mail.value}>
-              メールアドレスをコピー
-            </CopyButton>
+            <CopyButton copyText={summary.mail.value}>メールアドレスをコピー</CopyButton>
           </div>
         </div>
       </Menu>
-      <nav
-        class="hidden lg:mt-20 lg:block"
-        aria-label="グローバルナビゲーション"
-      >
+      <nav class="hidden lg:mt-20 lg:block" aria-label="グローバルナビゲーション">
         <ul class="grid gap-y-4">
-          {
-            navItems.map((item) => (
+          {navItems.map((item) => (
               <li>
                 <a
                   href={item.href}
@@ -147,20 +133,15 @@ const navItems = [
                   )}
                 </a>
               </li>
-            ))
-          }
+            ))}
         </ul>
       </nav>
-      <div
-        class="border-secondary-border hidden gap-y-12 rounded-xl border p-12 lg:mt-20 lg:grid"
-      >
+      <div class="border-secondary-border hidden gap-y-12 rounded-xl border p-12 lg:mt-20 lg:grid">
         <p class="text-sm/sm font-bold">お問い合わせはこちら</p>
         <p class="text-xs/xs">
           {summary.mail.value}
         </p>
-        <CopyButton size="sm" copyText={summary.mail.value} label>
-          メールアドレス
-        </CopyButton>
+        <CopyButton size="sm" copyText={summary.mail.value} label>メールアドレス</CopyButton>
       </div>
     </div>
   </header>
@@ -170,16 +151,12 @@ const navItems = [
     <main class="col-span-full">
       <slot />
     </main>
-    {
-      props.breadcrumb && (
+    {props.breadcrumb && (
         <div class="col-span-full grid grid-cols-subgrid py-20 *:col-2">
           <Breadcrumb items={props.breadcrumb} />
         </div>
-      )
-    }
-    <footer
-      class="border-t-secondary-border col-span-full grid grid-cols-subgrid border-t py-20"
-    >
+      )}
+    <footer class="border-t-secondary-border col-span-full grid grid-cols-subgrid border-t py-20">
       <div class="col-2 flex flex-wrap justify-between gap-x-20 gap-y-12">
         <p class="text-sm/sm">
           <a href="/privacy-policy/" class="underline">プライバシーポリシー</a>

@@ -16,15 +16,11 @@ const { title } = Astro.props;
 <div
   class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
 >
-  <section
-    class="border-t-accent col-span-full grid grid-cols-subgrid border-t-8 py-32 lg:py-52"
-  >
+  <section class="border-t-accent col-span-full grid grid-cols-subgrid border-t-8 py-32 lg:py-52">
     <div
       class="col-2 grid items-center gap-20 [grid-template-areas:'title'_'desc'_'img'] sm:grid-cols-2 sm:grid-rows-[1fr_auto_var(--spacing-20)_auto_1fr] sm:gap-y-0 sm:[grid-template-areas:'._img'_'title_img'_'._img'_'desc_img'_'._img'] lg:gap-x-32"
     >
-      <h1
-        class="text-3xl/3xl lg:text-4xl/4xl font-bold text-balance [grid-area:title]"
-      >
+      <h1 class="text-3xl/3xl lg:text-4xl/4xl font-bold text-balance [grid-area:title]">
         {title}
       </h1>
       <p class="text-md/loose [grid-area:desc]">
@@ -38,9 +34,7 @@ const { title } = Astro.props;
     </div>
   </section>
 
-  <div
-    class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-52 py-32 *:col-2 lg:gap-y-84 lg:py-52"
-  >
+  <div class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-52 py-32 *:col-2 lg:gap-y-84 lg:py-52">
     <section class="grid gap-y-20">
       <Heading>活動内容</Heading>
       <Activities />
@@ -68,9 +62,7 @@ const { title } = Astro.props;
       <p>
         多くの食堂が地域のこどもたちにとっての「身近な地域の居場所」であり続けられるために、応援よろしくお願いします。
       </p>
-      <ul
-        class="grid grid-cols-[repeat(auto-fill,min(var(--spacing-220),100%))] gap-20"
-      >
+      <ul class="grid grid-cols-[repeat(auto-fill,min(var(--spacing-220),100%))] gap-20">
         <li class="grid">
           <ButtonLink href="/charity/#with-items" text="物品で支援" />
         </li>
@@ -81,9 +73,7 @@ const { title } = Astro.props;
     </section>
     <section class="prose grid gap-y-20">
       <Heading>こども食堂を立ち上げる</Heading>
-      <p>
-        尼崎市でこども食堂を始めたい場合は、立ち上げの流れを解説したページを参考にしてください。
-      </p>
+      <p>尼崎市でこども食堂を始めたい場合は、立ち上げの流れを解説したページを参考にしてください。</p>
       <p class="grid max-w-220">
         <ButtonLink href="/start-cafe/" text="こども食堂の立ち上げ" />
       </p>

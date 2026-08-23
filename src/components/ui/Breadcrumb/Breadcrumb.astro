@@ -14,8 +14,7 @@ const icon = await getImage({ src: img });
 
 <nav aria-label="現在位置">
   <ol>
-    {
-      props.items.map((item) => {
+    {props.items.map((item) => {
         if ("href" in item) {
           return (
             <li class="text-sm/sm inline">
@@ -40,7 +39,6 @@ const icon = await getImage({ src: img });
             {item.title}
           </li>
         );
-      })
-    }
+      })}
   </ol>
 </nav>

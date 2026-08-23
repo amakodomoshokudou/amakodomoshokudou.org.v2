@@ -22,9 +22,7 @@ const { title } = Astro.props;
     class="border-t-accent col-span-full grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:col-2 lg:gap-y-32 lg:py-52"
   >
     <h1 class="text-2xl/2xl lg:text-3xl/3xl font-bold">{title}</h1>
-    <div
-      class="border-secondary-border grid gap-y-12 rounded-xl border p-12 lg:p-20"
-    >
+    <div class="border-secondary-border grid gap-y-12 rounded-xl border p-12 lg:p-20">
       <p class="font-bold">PDF版の資料</p>
       <p>
         <DownloadLink
@@ -43,15 +41,11 @@ const { title } = Astro.props;
       </li>
     </ol>
   </div>
-  <div
-    class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-52 py-32 *:col-2 lg:gap-y-84 lg:py-52"
-  >
+  <div class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-52 py-32 *:col-2 lg:gap-y-84 lg:py-52">
     <section class="grid gap-y-20">
       <Heading id="flow">立ち上げの流れ</Heading>
       <FlowItem step={1} title="まずは気持ちを整理!">
-        <p>
-          なぜ活動しようと思ったのか、どんな食堂にしたいのか、気持ちを整理してみましょう。
-        </p>
+        <p>なぜ活動しようと思ったのか、どんな食堂にしたいのか、気持ちを整理してみましょう。</p>
         <p>
           活動を続けていくためにも、仲間は大事です。<br />
           目的や方向性を共有しながら進めていきましょう。
@@ -61,10 +55,7 @@ const { title } = Astro.props;
       <FlowItem step={2} title="社協むすぶグループへ相談">
         <p>
           活動地区の「
-          <TextLink
-            href="http://amasyakyo.jp/syakyo_index/access/"
-            target="_blank"
-          >
+          <TextLink href="http://amasyakyo.jp/syakyo_index/access/" target="_blank">
             むすぶグループ(尼崎市社会福祉協議会の支部)
           </TextLink>
           」に相談しましょう。
@@ -75,9 +66,7 @@ const { title } = Astro.props;
       </FlowItem>
       <NextStep />
       <FlowItem step={3} title="他のこども食堂を見学してみよう!">
-        <p>
-          実際に活動している現場を見学することで、より具体的な計画が立てやすくなります。
-        </p>
+        <p>実際に活動している現場を見学することで、より具体的な計画が立てやすくなります。</p>
         <p>
           会食やお弁当配布、フードパントリーなど、実施形態はさまざまです。
           <br />
@@ -90,10 +79,7 @@ const { title } = Astro.props;
           食品衛生法上の手続きについて、保健所に相談しましょう。
           <br />
           詳細は
-          <TextLink
-            href="https://www.city.amagasaki.hyogo.jp/sangyo/zigyousya/insyokuten/1025137.html"
-            target="_blank"
-          >
+          <TextLink href="https://www.city.amagasaki.hyogo.jp/sangyo/zigyousya/insyokuten/1025137.html" target="_blank">
             尼崎市のホームページ
           </TextLink>
           をご覧ください。
@@ -107,24 +93,14 @@ const { title } = Astro.props;
       </FlowItem>
     </section>
     <section class="prose grid gap-y-20">
-      <Heading id="mailing-list">
-        メーリングリストに登録することができます
-      </Heading>
-      <p>
-        寄付食材や研修会の情報等、活動を続けていくために役立つ情報をお届けします。
-      </p>
-      <p>
-        尼崎こども食堂ネットワーク事務局まで、登録希望のご連絡をお願いします。
-      </p>
-      <div
-        class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20"
-      >
+      <Heading id="mailing-list">メーリングリストに登録することができます</Heading>
+      <p>寄付食材や研修会の情報等、活動を続けていくために役立つ情報をお届けします。</p>
+      <p>尼崎こども食堂ネットワーク事務局まで、登録希望のご連絡をお願いします。</p>
+      <div class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20">
         <p class="font-bold">連絡先のメールアドレス</p>
         <p class="text-sm/sm">{summary.mail.value}</p>
         <p>
-          <CopyButton copyText={summary.mail.value}>
-            メールアドレスをコピー
-          </CopyButton>
+          <CopyButton copyText={summary.mail.value}>メールアドレスをコピー</CopyButton>
         </p>
       </div>
     </section>

@@ -44,8 +44,7 @@ const histories = [
 ---
 
 <div>
-  {
-    histories.map((history) => (
+  {histories.map((history) => (
       <section class="border-primary-border ml-12 grid gap-y-8 border-l border-dashed pb-20 pl-12 last:pb-0">
         <h3 class="font-bold [grid-area:1/1]">
           <time datetime={history.data.datatime}>{history.data.title}</time>
@@ -53,6 +52,5 @@ const histories = [
         <span class="border-primary-border bg-secondary-background mt-8 ml-[calc(-1*(var(--spacing-12))-1*(var(--spacing-12))/2-1px)] inline-block size-12 rounded-full border [grid-area:1/1]" />
         <p class="text-md/loose max-w-640">{history.content}</p>
       </section>
-    ))
-  }
+    ))}
 </div>

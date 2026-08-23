@@ -1,12 +1,7 @@
 import { defineCollection } from "astro:content";
 import { fetchAllAreas, fetchAllCafes } from "./features/cafe/fetcher";
 import { getMockAreas, getMockCafes } from "./features/cafe/mock";
-import {
-  type Area,
-  areaSchema,
-  type Cafe,
-  cafeSchema,
-} from "./features/cafe/model";
+import { type Area, areaSchema, type Cafe, cafeSchema } from "./features/cafe/model";
 
 const isMockMode = import.meta.env.MODE === "mock";
 

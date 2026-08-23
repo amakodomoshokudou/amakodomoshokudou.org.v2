@@ -3,10 +3,7 @@ import { getImage } from "astro:assets";
 import closeImg from "./assets/close.svg";
 import menuImg from "./assets/menu.svg";
 
-const [closeIcon, menuIcon] = await Promise.all([
-  getImage({ src: closeImg }),
-  getImage({ src: menuImg }),
-]);
+const [closeIcon, menuIcon] = await Promise.all([getImage({ src: closeImg }), getImage({ src: menuImg })]);
 ---
 
 <div data-id="menu">
@@ -23,13 +20,10 @@ const [closeIcon, menuIcon] = await Promise.all([
         WebkitMaskImage: `url(${menuIcon.src})`,
       }}
       class="size-[1.25em] bg-[currentColor] mask-cover mask-center mask-no-repeat"
-    ></span>メニュー
+    ></span>
+    メニュー
   </button>
-  <dialog
-    data-id="menu-dialog"
-    aria-label="メニュー"
-    class="size-full max-h-full max-w-full bg-[rgb(0_0_0/0.8)]"
-  >
+  <dialog data-id="menu-dialog" aria-label="メニュー" class="size-full max-h-full max-w-full bg-[rgb(0_0_0/0.8)]">
     <div class="border-b-secondary-border bg-primary-background border-b p-20">
       <div class="mx-auto grid max-w-576 gap-y-20">
         <button
@@ -44,7 +38,8 @@ const [closeIcon, menuIcon] = await Promise.all([
               WebkitMaskImage: `url(${closeIcon.src})`,
             }}
             class="size-[1.25em] bg-[currentColor] mask-cover mask-center mask-no-repeat"
-          ></span>閉じる
+          ></span>
+          閉じる
         </button>
         <slot />
       </div>
@@ -56,15 +51,9 @@ const [closeIcon, menuIcon] = await Promise.all([
   const menuList = document.querySelectorAll<HTMLDivElement>("[data-id=menu]");
 
   for (const menu of menuList) {
-    const menuOpenButton = menu.querySelector<HTMLButtonElement>(
-      "[data-id=menu-open-button]",
-    );
-    const menuCloseButton = menu.querySelector<HTMLButtonElement>(
-      "[data-id=menu-close-button]",
-    );
-    const menuDialog = menu.querySelector<HTMLDialogElement>(
-      "[data-id=menu-dialog]",
-    );
+    const menuOpenButton = menu.querySelector<HTMLButtonElement>("[data-id=menu-open-button]");
+    const menuCloseButton = menu.querySelector<HTMLButtonElement>("[data-id=menu-close-button]");
+    const menuDialog = menu.querySelector<HTMLDialogElement>("[data-id=menu-dialog]");
 
     if (
       menuDialog instanceof HTMLDialogElement === false ||
