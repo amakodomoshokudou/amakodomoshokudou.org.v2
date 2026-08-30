@@ -1,0 +1,38 @@
+# Dependencies
+node_modules
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Git
+.git
+.gitignore
+
+# Build outputs
+dist
+
+# Astro
+.astro
+
+# Test outputs
+coverage
+playwright-report
+test-results
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor / IDE
+.vscode
+.idea
+
+# Agents
+.agents
+
+# OS
+.DS_Store
+Thumbs.db

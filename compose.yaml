@@ -1,0 +1,47 @@
+services:
+  vrt:
+    build:
+      context: .
+      dockerfile: Dockerfile.vrt
+
+    init: true
+    ipc: host
+
+    working_dir: /app
+
+    env_file:
+      - .env
+
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+
+    tmpfs:
+      - /app/.astro
+
+    command: ["pnpm", "exec", "playwright", "test"]
+
+  vrt-update:
+    build:
+      context: .
+      dockerfile: Dockerfile.vrt
+
+    init: true
+    ipc: host
+
+    working_dir: /app
+
+    env_file:
+      - .env
+
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+
+    tmpfs:
+      - /app/.astro
+
+    command: ["pnpm", "exec", "playwright", "test", "--update-snapshots"]
+
+volumes:
+  node_modules:

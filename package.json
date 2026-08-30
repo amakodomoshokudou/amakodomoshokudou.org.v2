@@ -14,8 +14,8 @@
     "format": "biome format --fix && prettier --write .",
     "lint:biome": "biome check",
     "lint": "pnpm run lint:biome && pnpm run lint:html",
-    "vrt": "pnpm exec playwright test",
-    "vrt:update": "pnpm vrt --update-snapshots"
+    "vrt": "docker compose run --build --rm vrt",
+    "vrt:update": "docker compose run --build --rm vrt-update"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.3",
