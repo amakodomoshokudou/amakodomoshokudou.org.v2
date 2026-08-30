@@ -9,8 +9,9 @@ services:
 
     working_dir: /app
 
-    env_file:
-      - .env
+    environment:
+      MICROCMS_SERVICE_DOMAIN: ${MICROCMS_SERVICE_DOMAIN}
+      MICROCMS_API_KEY: ${MICROCMS_API_KEY}
 
     volumes:
       - .:/app
@@ -31,8 +32,9 @@ services:
 
     working_dir: /app
 
-    env_file:
-      - .env
+    environment:
+      MICROCMS_SERVICE_DOMAIN: ${MICROCMS_SERVICE_DOMAIN}
+      MICROCMS_API_KEY: ${MICROCMS_API_KEY}
 
     volumes:
       - .:/app
