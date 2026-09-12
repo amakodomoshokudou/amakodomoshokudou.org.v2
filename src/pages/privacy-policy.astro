@@ -1,0 +1,24 @@
+---
+import Document from "../components/layout/Document/Document.astro";
+import Layout from "../components/layout/Layout/Layout.astro";
+import PrivacyPolicyPage from "../components/page/PrivacyPolicy/PrivacyPolicyPage.astro";
+import type { BreadcrumbItems } from "../components/ui/Breadcrumb/type";
+
+const title = "プライバシーポリシー";
+
+const breadcrumb: BreadcrumbItems = [
+  {
+    title: "トップページ",
+    href: "/",
+  },
+  {
+    title,
+  },
+];
+---
+
+<Document title={title}>
+  <Layout breadcrumb={breadcrumb}>
+    <PrivacyPolicyPage title={title} />
+  </Layout>
+</Document>
