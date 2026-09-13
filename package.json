@@ -18,9 +18,9 @@
     "vrt:update": "docker compose run --build --rm vrt-update"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.7.3",
-    "astro": "7.2.9",
-    "microcms-js-sdk": "^3.4.0",
+    "@astrojs/sitemap": "3.7.4",
+    "astro": "7.3.1",
+    "microcms-js-sdk": "^3.5.0",
     "sharp": "^0.35.4"
   },
   "devDependencies": {
