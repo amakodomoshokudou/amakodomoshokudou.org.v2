@@ -4,20 +4,15 @@
   ],
   "nodeRules": [
     {
-      "selector": "link",
+      "selector": "link[rel=\"sitemap\"]",
       "rules": {
-        "invalid-attr": {
+        "no-invalid-attr-value": {
           "options": {
             "allowAttrs": [
               {
                 "name": "rel",
                 "value": {
                   "enum": [
-                    "stylesheet",
-                    "preload",
-                    "icon",
-                    "apple-touch-icon",
-                    "canonical",
                     "sitemap"
                   ]
                 }

@@ -10,7 +10,7 @@
     "start": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "lint:html": "markuplint --allow-warnings 'dist/**/*.html'",
+    "lint:html": "markuplint 'dist/**/*.html'",
     "format": "biome format --fix && prettier --write .",
     "lint:biome": "biome check",
     "lint": "pnpm run lint:biome && pnpm run lint:html",
