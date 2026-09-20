@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
-    "astro": "7.3.1",
+    "astro": "7.3.2",
     "microcms-js-sdk": "^3.5.0",
     "sharp": "^0.35.4"
   },
