@@ -28,10 +28,10 @@
     "@biomejs/biome": "2.5.14",
     "@playwright/test": "1.63.0",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.6.3",
     "markuplint": "^5.0.0",
     "prettier": "^3.9.8",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   }
 }
