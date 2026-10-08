@@ -34,8 +34,7 @@ const pathname = Astro.url.pathname;
           aria-current={pathname === "/cafes" ? "page" : undefined}
           class={[
             "grid justify-center rounded-xl border border-primary-border px-12 py-8",
-            pathname.startsWith("/cafes") &&
-            !pathname.startsWith("/cafes/areas")
+            pathname.startsWith("/cafes") && !pathname.startsWith("/cafes/areas")
               ? "bg-secondary-background"
               : "bg-primary-background",
           ].join(" ")}
@@ -44,23 +43,19 @@ const pathname = Astro.url.pathname;
         </a>
       </li>
       {areas.map((area) => (
-          <li>
-            <a
-              href={`/cafes/areas/${area.slug}/`}
-              aria-current={
-                pathname === `/cafes/areas/${area.slug}` ? "page" : undefined
-              }
-              class={[
-                "border-primary-border grid justify-center rounded-xl border px-12 py-8",
-                pathname.startsWith(`/cafes/areas/${area.slug}`)
-                  ? "bg-secondary-background"
-                  : "bg-primary-background",
-              ].join(" ")}
-            >
-              {area.name}
-            </a>
-          </li>
-        ))}
+        <li>
+          <a
+            href={`/cafes/areas/${area.slug}/`}
+            aria-current={pathname === `/cafes/areas/${area.slug}` ? "page" : undefined}
+            class={[
+              "border-primary-border grid justify-center rounded-xl border px-12 py-8",
+              pathname.startsWith(`/cafes/areas/${area.slug}`) ? "bg-secondary-background" : "bg-primary-background",
+            ].join(" ")}
+          >
+            {area.name}
+          </a>
+        </li>
+      ))}
     </ol>
   </nav>
 </details>

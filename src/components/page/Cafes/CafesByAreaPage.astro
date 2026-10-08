@@ -27,10 +27,8 @@ const { isFirstPage, currentPage, lastPage, cafes, area, allAreas } = Astro.prop
       <h1 class="grid justify-items-start gap-y-12 font-bold">
         <span class="text-2xl/2xl lg:text-3xl/3xl">{`${area.name}地区のこども食堂`}</span>
         {!isFirstPage && (
-            <span class="bg-secondary-background text-xs/xs rounded-xs px-8 py-4">
-              {currentPage}ページ目
-            </span>
-          )}
+          <span class="bg-secondary-background text-xs/xs rounded-xs px-8 py-4">{currentPage}ページ目</span>
+        )}
       </h1>
       <p class="text-sm/sm">掲載許可の取れたこども食堂のみ掲載しています。</p>
     </div>
@@ -48,12 +46,6 @@ const { isFirstPage, currentPage, lastPage, cafes, area, allAreas } = Astro.prop
   <div class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-32 py-32 *:col-2 lg:gap-y-52 lg:py-52">
     <AreaFilter areas={allAreas} />
     <CafeList cafes={cafes} />
-    {lastPage > 1 && (
-        <Pagination
-          current={currentPage}
-          total={lastPage}
-          baseUrl={`/cafes/areas/${area.slug}/`}
-        />
-      )}
+    {lastPage > 1 && <Pagination current={currentPage} total={lastPage} baseUrl={`/cafes/areas/${area.slug}/`} />}
   </div>
 </div>
