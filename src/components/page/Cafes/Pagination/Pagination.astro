@@ -11,22 +11,22 @@ const props = Astro.props;
 <nav aria-label="ページ送り">
   <ol class="flex flex-wrap gap-12">
     {Array.from({ length: props.total }).map((_, i) => {
-        const page = i + 1;
-        // propsとして渡されるbaseUrlは末尾にスラッシュがある
-        const href = page === 1 ? props.baseUrl : `${props.baseUrl}${page}/`;
-        const isCurrent = page === props.current;
+      const page = i + 1;
+      // propsとして渡されるbaseUrlは末尾にスラッシュがある
+      const href = page === 1 ? props.baseUrl : `${props.baseUrl}${page}/`;
+      const isCurrent = page === props.current;
 
-        return (
-          <li>
-            <a
-              href={href}
-              aria-current={isCurrent ? "page" : undefined}
-              class="border-primary-border bg-primary-background aria-[current]:bg-secondary-background inline-grid size-52 place-content-center rounded-full border font-bold"
-            >
-              {page}
-            </a>
-          </li>
-        );
-      })}
+      return (
+        <li>
+          <a
+            href={href}
+            aria-current={isCurrent ? "page" : undefined}
+            class="border-primary-border bg-primary-background aria-[current]:bg-secondary-background inline-grid size-52 place-content-center rounded-full border font-bold"
+          >
+            {page}
+          </a>
+        </li>
+      );
+    })}
   </ol>
 </nav>

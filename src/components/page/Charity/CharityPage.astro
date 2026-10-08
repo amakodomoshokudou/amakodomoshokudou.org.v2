@@ -85,15 +85,11 @@ const { title } = Astro.props;
             <p class="font-bold">口座情報</p>
             <dl>
               {Object.values(bankAccount).map(({ title, value }) => (
-                  <div class="odd:bg-tertiary-background flex flex-wrap gap-y-8 rounded-md py-8">
-                    <dt class="text-sm/sm flex-[1_0_var(--spacing-136)] px-12">
-                      {title}
-                    </dt>
-                    <dd class="text-sm/sm min-w-[60%] flex-[9999_0_0] px-12">
-                      {value}
-                    </dd>
-                  </div>
-                ))}
+                <div class="odd:bg-tertiary-background flex flex-wrap gap-y-8 rounded-md py-8">
+                  <dt class="text-sm/sm flex-[1_0_var(--spacing-136)] px-12">{title}</dt>
+                  <dd class="text-sm/sm min-w-[60%] flex-[9999_0_0] px-12">{value}</dd>
+                </div>
+              ))}
             </dl>
           </div>
         </FlowItem>

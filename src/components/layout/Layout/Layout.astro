@@ -68,32 +68,32 @@ const navItems = [
           <nav aria-label="グローバルナビゲーション">
             <ul class="grid gap-y-8">
               {navItems.map((item) => (
-                  <li>
-                    <a
-                      href={item.href}
-                      target={item.isExternal ? "_blank" : undefined}
-                      aria-current={item.isCurrent ? "page" : undefined}
-                      class={[
-                        "aria-[current=page]:bg-secondary-background grid rounded-xl px-12 py-8 font-bold",
-                        item.isExternal && "grid-cols-[auto_1fr] items-center",
-                      ].join(" ")}
-                    >
-                      {item.text}
-                      {item.isExternal && (
-                        <svg
-                          role="img"
-                          aria-label="外部リンク"
-                          height="1em"
-                          viewBox="0 -960 960 960"
-                          width="1em"
-                          class="fill-[currentColor]"
-                        >
-                          <path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h279v60H180v600h600v-279h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60v-218L382-339Z" />
-                        </svg>
-                      )}
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <a
+                    href={item.href}
+                    target={item.isExternal ? "_blank" : undefined}
+                    aria-current={item.isCurrent ? "page" : undefined}
+                    class={[
+                      "aria-[current=page]:bg-secondary-background grid rounded-xl px-12 py-8 font-bold",
+                      item.isExternal && "grid-cols-[auto_1fr] items-center",
+                    ].join(" ")}
+                  >
+                    {item.text}
+                    {item.isExternal && (
+                      <svg
+                        role="img"
+                        aria-label="外部リンク"
+                        height="1em"
+                        viewBox="0 -960 960 960"
+                        width="1em"
+                        class="fill-[currentColor]"
+                      >
+                        <path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h279v60H180v600h600v-279h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60v-218L382-339Z" />
+                      </svg>
+                    )}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
           <div class="border-secondary-border grid gap-y-12 rounded-xl border p-12">
@@ -108,32 +108,32 @@ const navItems = [
       <nav class="hidden lg:mt-20 lg:block" aria-label="グローバルナビゲーション">
         <ul class="grid gap-y-4">
           {navItems.map((item) => (
-              <li>
-                <a
-                  href={item.href}
-                  target={item.isExternal ? "_blank" : undefined}
-                  aria-current={item.isCurrent ? "page" : undefined}
-                  class={[
-                    "text-sm/sm aria-[current=page]:bg-secondary-background grid rounded-xl px-12 py-8 font-bold",
-                    item.isExternal && "grid-cols-[auto_1fr] items-center",
-                  ].join(" ")}
-                >
-                  {item.text}
-                  {item.isExternal && (
-                    <svg
-                      role="img"
-                      aria-label="外部リンク"
-                      height="1em"
-                      viewBox="0 -960 960 960"
-                      width="1em"
-                      class="fill-[currentColor]"
-                    >
-                      <path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h279v60H180v600h600v-279h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60v-218L382-339Z" />
-                    </svg>
-                  )}
-                </a>
-              </li>
-            ))}
+            <li>
+              <a
+                href={item.href}
+                target={item.isExternal ? "_blank" : undefined}
+                aria-current={item.isCurrent ? "page" : undefined}
+                class={[
+                  "text-sm/sm aria-[current=page]:bg-secondary-background grid rounded-xl px-12 py-8 font-bold",
+                  item.isExternal && "grid-cols-[auto_1fr] items-center",
+                ].join(" ")}
+              >
+                {item.text}
+                {item.isExternal && (
+                  <svg
+                    role="img"
+                    aria-label="外部リンク"
+                    height="1em"
+                    viewBox="0 -960 960 960"
+                    width="1em"
+                    class="fill-[currentColor]"
+                  >
+                    <path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h279v60H180v600h600v-279h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60v-218L382-339Z" />
+                  </svg>
+                )}
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
       <div class="border-secondary-border hidden gap-y-12 rounded-xl border p-12 lg:mt-20 lg:grid">
@@ -152,10 +152,10 @@ const navItems = [
       <slot />
     </main>
     {props.breadcrumb && (
-        <div class="col-span-full grid grid-cols-subgrid py-20 *:col-2">
-          <Breadcrumb items={props.breadcrumb} />
-        </div>
-      )}
+      <div class="col-span-full grid grid-cols-subgrid py-20 *:col-2">
+        <Breadcrumb items={props.breadcrumb} />
+      </div>
+    )}
     <footer class="border-t-secondary-border col-span-full grid grid-cols-subgrid border-t py-20">
       <div class="col-2 flex flex-wrap justify-between gap-x-20 gap-y-12">
         <p class="text-sm/sm">

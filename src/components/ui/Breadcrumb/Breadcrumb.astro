@@ -15,30 +15,30 @@ const icon = await getImage({ src: img });
 <nav aria-label="現在位置">
   <ol>
     {props.items.map((item) => {
-        if ("href" in item) {
-          return (
-            <li class="text-sm/sm inline">
-              <a href={item.href} class="underline underline-offset-2">
-                {item.title}
-              </a>
-              <span
-                role="img"
-                aria-label="の中の"
-                style={{
-                  maskImage: `url(${icon.src})`,
-                  WebkitMaskImage: `url(${icon.src})`,
-                }}
-                class="mr-4 ml-8 inline-block size-[1em] bg-[currentColor] mask-cover mask-center mask-no-repeat align-[-2px]"
-              />
-            </li>
-          );
-        }
-
+      if ("href" in item) {
         return (
-          <li class="text-sm/sm inline" aria-current="page">
-            {item.title}
+          <li class="text-sm/sm inline">
+            <a href={item.href} class="underline underline-offset-2">
+              {item.title}
+            </a>
+            <span
+              role="img"
+              aria-label="の中の"
+              style={{
+                maskImage: `url(${icon.src})`,
+                WebkitMaskImage: `url(${icon.src})`,
+              }}
+              class="mr-4 ml-8 inline-block size-[1em] bg-[currentColor] mask-cover mask-center mask-no-repeat align-[-2px]"
+            />
           </li>
         );
-      })}
+      }
+
+      return (
+        <li class="text-sm/sm inline" aria-current="page">
+          {item.title}
+        </li>
+      );
+    })}
   </ol>
 </nav>
