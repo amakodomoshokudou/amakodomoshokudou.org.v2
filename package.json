@@ -29,8 +29,8 @@
     "@playwright/test": "1.63.0",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.1.2",
-    "markuplint": "^5.0.1",
-    "prettier": "^3.9.9",
+    "markuplint": "^5.1.1",
+    "prettier": "^3.9.10",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
   }
