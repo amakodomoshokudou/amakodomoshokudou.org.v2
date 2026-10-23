@@ -24,3 +24,6 @@ pnpm-debug.log*
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# pnpm
+.pnpm-store/
