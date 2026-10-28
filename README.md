@@ -29,6 +29,15 @@ MICROCMS_API_KEY=xxxx
 
 依存関係のインストール後、`pnpm run setup` を明示的に実行して Git hooks をセットアップしてください。
 
+### VRT
+
+Docker Compose 2.17.0 以降で実行できます。microCMS の環境変数の設定は不要です。
+- `pnpm run vrt`：モックデータで画像比較
+- `pnpm run vrt:update`：`vrt/screenshot.spec.ts-snapshots/` のスナップショットを更新
+- `pnpm exec playwright show-report playwright-outputs/report`：レポートを表示
+
+出力は `playwright-outputs/` に保存され、CI では失敗時の成果物として取得できます。
+
 ## デプロイ
 
 Github Actionsを使用して、SSH経由でXServerに自動デプロイ
