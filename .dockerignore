@@ -17,6 +17,7 @@ dist
 .astro
 
 # Test outputs
+playwright-outputs
 coverage
 playwright-report
 test-results
