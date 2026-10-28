@@ -14,8 +14,7 @@ Docker は VRT のみに使用しているため、VRT 専用として構成を�
 - [ ] CI 失敗時のレポート・テスト結果を取得できることを確認する
 - [x] ローカルで VRT の実行を確認する
 - [ ] CI で VRT の実行を確認する
-- [ ] スナップショットを更新し、ホスト側に保存できることを確認する
 
 ## 検証状況
 
-`docker compose config --quiet` と `pnpm run check` は通過。ローカルでの VRT 実行と `playwright-outputs/` へのレポート・テスト結果の保存は確認済み。スナップショット更新、および GitHub Actions 上での実行・成果物取得は未確認。
+`docker compose config --quiet` と `pnpm run check` は通過。ローカルでの VRT 実行と `playwright-outputs/` へのレポート・テスト結果の保存は確認済み。GitHub Actions 上での実行・成果物取得は未確認。
