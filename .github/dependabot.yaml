@@ -26,7 +26,6 @@ updates:
         patterns:
           - "@biomejs/biome"
           - "markuplint"
-          - "prettier"
       e2e:
         patterns:
           - "@playwright/test"

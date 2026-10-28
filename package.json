@@ -12,8 +12,8 @@
     "astro": "astro",
     "typecheck": "MODE=mock astro check",
     "lint:html": "markuplint 'dist/**/*.html'",
-    "check:fix": "biome check --write && prettier --write .",
-    "check": "biome check && prettier --check .",
+    "check:fix": "biome check --write",
+    "check": "biome check",
     "vrt": "docker compose run --build --rm vrt",
     "vrt:update": "docker compose run --build --rm vrt-update"
   },
@@ -25,12 +25,11 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "@biomejs/biome": "2.5.15",
+    "@biomejs/biome": "2.6.2",
     "@playwright/test": "1.63.0",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.1.2",
     "markuplint": "^5.2.0",
-    "prettier": "^3.9.10",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
   }
