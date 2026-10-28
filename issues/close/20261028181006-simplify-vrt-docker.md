@@ -1,0 +1,15 @@
+# VRT 用の Docker 構成を整理する
+
+## 目的
+
+Docker は VRT のみに使用しているため、VRT 専用として構成を簡潔にする。
+
+## TODO
+
+- [x] `Dockerfile.vrt` を Compose の `dockerfile_inline` に統合する
+- [x] Playwright のレポート・テスト結果の出力先を `playwright-outputs/` 配下にまとめる
+- [x] レポート・テスト結果がホスト側に保存されることを確認する
+- [x] リポジトリ全体の bind mount をやめ、出力フォルダと実行に必要な最小限のファイル・フォルダだけを mount または COPY する
+- [x] CI の成果物アップロード先を `playwright-outputs/` に更新する
+- [x] ローカルで VRT の実行を確認する
+- [x] CI で VRT の実行を確認する
