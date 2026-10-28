@@ -25,6 +25,10 @@ MICROCMS_API_KEY=xxxx
 | pnpm run check      | Biome・Prettier で検証         |
 | pnpm run check:fix  | Biome・Prettier で自動修正     |
 
+### Git hooks
+
+依存関係のインストール後、`pnpm run setup` を明示的に実行して Git hooks をセットアップしてください。
+
 ## デプロイ
 
 Github Actionsを使用して、SSH経由でXServerに自動デプロイ
