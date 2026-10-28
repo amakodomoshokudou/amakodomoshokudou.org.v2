@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch: # Web UI から手動実行用
 
+permissions:
+  contents: read
+
 defaults:
   run:
     shell: bash
@@ -16,23 +19,24 @@ concurrency:
 
 jobs:
   deploy-to-xserver:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         with:
-          version: latest
+          version: 12
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
