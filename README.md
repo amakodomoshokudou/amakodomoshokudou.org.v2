@@ -21,6 +21,9 @@ MICROCMS_API_KEY=xxxx
 | pnpm run build      | 本番用ビルド                   |
 | pnpm run build:mock | Mockありで本番用ビルド         |
 | pnpm run start      | ビルド後のプレビュー           |
+| pnpm run typecheck  | モックデータで型チェック       |
+| pnpm run check      | Biome・Prettier で検証         |
+| pnpm run check:fix  | Biome・Prettier で自動修正     |
 
 ## デプロイ
 

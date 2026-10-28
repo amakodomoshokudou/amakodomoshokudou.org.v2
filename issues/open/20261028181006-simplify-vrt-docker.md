@@ -1,6 +1,7 @@
 # VRT 用の Docker 構成を整理する
 
 ## 目的
+
 Docker は VRT のみに使用しているため、VRT 専用として構成を簡潔にする。
 
 ## TODO

@@ -14,4 +14,4 @@
 - [ ] レスポンシブ・コンテナクエリ・ダークモード・状態依存のスタイルを CSS セレクタや `data-*` 属性で再現する
 - [ ] Tailwind 固有のクラス・ディレクティブが残っていないことを確認する
 - [ ] `tailwindcss`・`@tailwindcss/vite`・`prettier-plugin-tailwindcss` と関連設定を削除し、lockfile を更新する
-- [ ] `pnpm run check`・`pnpm run build`・`pnpm run lint:biome`・`pnpm run vrt` で検証し、表示や操作の意図しない差分を解消する
+- [ ] `pnpm run vrt` で検証し、表示や操作の意図しない差分を解消する
