@@ -19,12 +19,12 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
-    "astro": "7.4.0",
+    "astro": "7.4.1",
     "microcms-js-sdk": "^3.6.0",
     "sharp": "^0.35.5"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
+    "@astrojs/check": "^0.9.11",
     "@biomejs/biome": "2.6.2",
     "@playwright/test": "1.63.0",
     "@tailwindcss/vite": "^4.3.3",
