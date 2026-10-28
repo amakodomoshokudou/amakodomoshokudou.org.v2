@@ -4,6 +4,12 @@ on:
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - "issues/**"
+      - ".agents/**"
+      - ".vscode/**"
+      - "README.md"
+      - "AGENTS.md"
     types:
       - opened
       - synchronize
