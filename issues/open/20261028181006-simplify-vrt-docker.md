@@ -12,9 +12,10 @@ Docker は VRT のみに使用しているため、VRT 専用として構成を�
 - [x] リポジトリ全体の bind mount をやめ、出力フォルダと実行に必要な最小限のファイル・フォルダだけを mount または COPY する
 - [x] CI の成果物アップロード先を `playwright-outputs/` に更新する
 - [ ] CI 失敗時のレポート・テスト結果を取得できることを確認する
-- [ ] ローカル・CI で VRT の実行を確認する
+- [x] ローカルで VRT の実行を確認する
+- [ ] CI で VRT の実行を確認する
 - [ ] スナップショットを更新し、ホスト側に保存できることを確認する
 
 ## 検証状況
 
-`docker compose config --quiet` と `pnpm run check` は通過。Docker のビルド・VRT 実行・スナップショット更新、および GitHub Actions 上での実行・成果物取得は未確認。
+`docker compose config --quiet` と `pnpm run check` は通過。ローカルでの VRT 実行は確認済み。レポート・テスト結果のホスト側への保存、スナップショット更新、および GitHub Actions 上での実行・成果物取得は未確認。
