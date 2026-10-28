@@ -6,9 +6,15 @@ Docker は VRT のみに使用しているため、VRT 専用として構成を�
 
 ## TODO
 
-- [ ] `Dockerfile.vrt` を Compose の `dockerfile_inline` に統合する
-- [ ] Playwright のレポート・テスト結果を1つの親フォルダ配下にまとめ、保存を確認する
-- [ ] リポジトリ全体の bind mount をやめ、出力フォルダと実行に必要な最小限のファイル・フォルダだけを mount または COPY する
-- [ ] CI の成果物アップロード先を更新し、失敗時のレポート・テスト結果を取得できることを確認する
+- [x] `Dockerfile.vrt` を Compose の `dockerfile_inline` に統合する
+- [x] Playwright のレポート・テスト結果の出力先を `playwright-outputs/` 配下にまとめる
+- [ ] レポート・テスト結果がホスト側に保存されることを確認する
+- [x] リポジトリ全体の bind mount をやめ、出力フォルダと実行に必要な最小限のファイル・フォルダだけを mount または COPY する
+- [x] CI の成果物アップロード先を `playwright-outputs/` に更新する
+- [ ] CI 失敗時のレポート・テスト結果を取得できることを確認する
 - [ ] ローカル・CI で VRT の実行を確認する
 - [ ] スナップショットを更新し、ホスト側に保存できることを確認する
+
+## 検証状況
+
+`docker compose config --quiet` と `pnpm run check` は通過。Docker のビルド・VRT 実行・スナップショット更新、および GitHub Actions 上での実行・成果物取得は未確認。
