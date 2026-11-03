@@ -11,6 +11,8 @@ workflows:
         - 'actions/checkout@v7.0.1'
         - 'actions/setup-node@v7.1.0'
         - 'pnpm/action-setup@v6.0.10'
+    '.github/workflows/verify-lockfile.yaml':
+        - 'actions/checkout@v7.0.1'
     '.github/workflows/vrt.yaml':
         - 'actions/checkout@v7.0.1'
         - 'actions/upload-artifact@v7.0.2'
