@@ -28,9 +28,9 @@
     "@biomejs/biome": "2.6.4",
     "@playwright/test": "1.64.1",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.6.6",
     "markuplint": "^5.3.0",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   }
 }
