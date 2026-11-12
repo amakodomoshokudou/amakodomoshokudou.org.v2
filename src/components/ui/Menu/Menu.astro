@@ -1,9 +1,4 @@
 ---
-import { getImage } from "astro:assets";
-import closeImg from "./assets/close.svg";
-import menuImg from "./assets/menu.svg";
-
-const [closeIcon, menuIcon] = await Promise.all([getImage({ src: closeImg }), getImage({ src: menuImg })]);
 ---
 
 <div data-id="menu">
@@ -15,11 +10,7 @@ const [closeIcon, menuIcon] = await Promise.all([getImage({ src: closeImg }), ge
   >
     <span
       role="img"
-      style={{
-        maskImage: `url(${menuIcon.src})`,
-        WebkitMaskImage: `url(${menuIcon.src})`,
-      }}
-      class="size-[1.25em] bg-[currentColor] mask-cover mask-center mask-no-repeat"
+      class="size-[1.25em] bg-[currentColor] mask-[url(/icons/menu.svg)] mask-cover mask-center mask-no-repeat"
     ></span>
     メニュー
   </button>
@@ -33,11 +24,8 @@ const [closeIcon, menuIcon] = await Promise.all([getImage({ src: closeImg }), ge
         >
           <span
             role="img"
-            style={{
-              maskImage: `url(${closeIcon.src})`,
-              WebkitMaskImage: `url(${closeIcon.src})`,
-            }}
-            class="size-[1.25em] bg-[currentColor] mask-cover mask-center mask-no-repeat"
+            aria-hidden="true"
+            class="size-[1.25em] bg-[currentColor] mask-[url(/icons/close.svg)] mask-cover mask-center mask-no-repeat"
           ></span>
           閉じる
         </button>

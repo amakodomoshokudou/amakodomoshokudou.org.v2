@@ -1,15 +1,10 @@
 ---
-import { getImage } from "astro:assets";
-import img from "./assets/icon.svg";
-
 export type Props = {
   href: string;
   text: string;
 };
 
 const { href, text } = Astro.props;
-
-const icon = await getImage({ src: img });
 ---
 
 <a
@@ -20,10 +15,6 @@ const icon = await getImage({ src: img });
   <span
     aria-hidden="true"
     role="img"
-    style={{
-      maskImage: `url(${icon.src})`,
-      WebkitMaskImage: `url(${icon.src})`,
-    }}
-    class="size-[1em] bg-[currentColor] mask-cover mask-center mask-no-repeat"
+    class="size-[1em] bg-[currentColor] mask-[url(/icons/arrow_forward.svg)] mask-cover mask-center mask-no-repeat"
   ></span>
 </a>

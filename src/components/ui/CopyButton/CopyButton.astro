@@ -1,7 +1,4 @@
 ---
-import { getImage } from "astro:assets";
-import img from "./assets/icon.svg";
-
 export type Props = {
   copyText: string;
   successText?: string;
@@ -10,7 +7,6 @@ export type Props = {
 };
 
 const { copyText, successText = "コピーしました", size = "md", label = false } = Astro.props;
-const icon = await getImage({ src: img });
 ---
 
 <span class="inline-grid w-fit" data-id="copy-button" data-copy-text={copyText} data-success-text={successText}>
@@ -26,11 +22,7 @@ const icon = await getImage({ src: img });
     <span
       role="img"
       aria-label={label ? "をコピー" : undefined}
-      style={{
-        maskImage: `url(${icon.src})`,
-        WebkitMaskImage: `url(${icon.src})`,
-      }}
-      class="size-[1em] bg-[currentColor] mask-cover mask-center mask-no-repeat"
+      class="size-[1em] bg-[currentColor] mask-[url(/icons/content_copy.svg)] mask-cover mask-center mask-no-repeat"
     ></span>
   </button>
   <span

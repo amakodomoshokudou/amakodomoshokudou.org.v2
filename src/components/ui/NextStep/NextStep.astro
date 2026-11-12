@@ -1,16 +1,8 @@
 ---
-import { getImage } from "astro:assets";
-import img from "./assets/icon.svg";
-
-const icon = await getImage({ src: img });
 ---
 
 <span
   role="img"
   aria-label="次"
-  style={{
-    maskImage: `url(${icon.src})`,
-    WebkitMaskImage: `url(${icon.src})`,
-  }}
-  class="mx-auto size-20 bg-[currentColor] mask-cover mask-center mask-no-repeat"
+  class="mx-auto size-20 bg-[currentColor] mask-[url(/icons/next_step.svg)] mask-cover mask-center mask-no-repeat"
 ></span>

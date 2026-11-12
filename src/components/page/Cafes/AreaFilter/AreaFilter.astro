@@ -1,6 +1,5 @@
 ---
 import type { Area } from "../../../../features/cafe/model";
-import icon from "./assets/icon.svg";
 
 export type Props = {
   areas: Area[];
@@ -19,11 +18,7 @@ const pathname = Astro.url.pathname;
     <span
       role="img"
       aria-hidden="true"
-      style={{
-        maskImage: `url(${icon.src})`,
-        WebkitMaskImage: `url(${icon.src})`,
-      }}
-      class="size-6 bg-[currentColor] mask-cover mask-center mask-no-repeat group-open:rotate-180"
+      class="size-6 bg-[currentColor] mask-[url(/icons/drop_down.svg)] mask-cover mask-center mask-no-repeat group-open:rotate-180"
     ></span>
   </summary>
   <nav class="border-t-secondary-border border-t p-12" aria-label="地区別">
