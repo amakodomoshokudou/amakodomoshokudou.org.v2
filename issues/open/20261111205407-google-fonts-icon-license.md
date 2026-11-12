@@ -8,6 +8,8 @@
 
 ### HTML に直接記述されている SVG(いずれも同一パスの「外部リンク」アイコン)
 
+`open_in_new` を `public/icons/open_in_new.svg` に配置し、`mask-[url(...)]` クラスでの参照に置き換え済み。
+
 - `src/components/layout/Layout/Layout.astro` (83 行目付近、モバイルメニューのナビゲーション)
 - `src/components/layout/Layout/Layout.astro` (123 行目付近、デスクトップのグローバルナビゲーション)
 - `src/components/ui/TextLink/TextLink.astro` (13 行目付近)
@@ -35,8 +37,8 @@
 ## TODO
 
 - [x] HTML に SVG が直接記述されている箇所の有無を確認してリスト化する
-- [ ] Google Fonts アイコン由来のものを SVG ファイルとして `public/icons/` に置き、参照する実装に変更する
-- [ ] `src/` 以下の SVG ファイルから Google Fonts アイコン由来のものをリスト化する
+- [x] Google Fonts アイコン由来のものを SVG ファイルとして `public/icons/` に置き、参照する実装に変更する
+- [x] `src/` 以下の SVG ファイルから Google Fonts アイコン由来のものをリスト化する
 - [ ] `public/icons/` に移動し、参照パスを更新する
 - [x] Material Icons の公式ライセンスを確認し、必要なライセンス本文・著作権表示・帰属表示を `public/LICENSES/material-design-icons-LICENSE.txt` に記載する
 - [ ] 掲載内容とリンクが正しいことを確認し、サイトのビルドと VRT を実行して意図しない表示差分がないことを確認する
