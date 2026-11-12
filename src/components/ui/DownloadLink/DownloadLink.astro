@@ -1,7 +1,4 @@
 ---
-import { getImage } from "astro:assets";
-import img from "./assets/icon.svg";
-
 export type Props = {
   href: string;
   filename: string;
@@ -9,8 +6,6 @@ export type Props = {
 };
 
 const { href, filename, text } = Astro.props;
-
-const icon = await getImage({ src: img });
 ---
 
 <a
@@ -22,10 +17,6 @@ const icon = await getImage({ src: img });
   <span
     role="img"
     aria-label="をダウンロード"
-    style={{
-      maskImage: `url(${icon.src})`,
-      WebkitMaskImage: `url(${icon.src})`,
-    }}
-    class="size-[1em] bg-[currentColor] mask-cover mask-center mask-no-repeat"
+    class="size-[1em] bg-[currentColor] mask-[url(/icons/download.svg)] mask-cover mask-center mask-no-repeat"
   ></span>
 </a>
