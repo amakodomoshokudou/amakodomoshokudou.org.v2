@@ -1,0 +1,82 @@
+---
+import { Image } from "astro:assets";
+import Activities from "../../../components/ui/activities/activities.astro";
+import ButtonLink from "../../../components/ui/button-link/button-link.astro";
+import Heading from "../../../components/ui/heading/heading.astro";
+import key from "./assets/key.jpg";
+import Video from "./video.astro";
+
+export type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<div
+  class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
+>
+  <section class="border-t-accent col-span-full grid grid-cols-subgrid border-t-8 py-32 lg:py-52">
+    <div
+      class="col-2 grid items-center gap-20 [grid-template-areas:'title'_'desc'_'img'] sm:grid-cols-2 sm:grid-rows-[1fr_auto_var(--spacing-20)_auto_1fr] sm:gap-y-0 sm:[grid-template-areas:'._img'_'title_img'_'._img'_'desc_img'_'._img'] lg:gap-x-32"
+    >
+      <h1 class="text-3xl/3xl lg:text-4xl/4xl font-bold text-balance [grid-area:title]">
+        {title}
+      </h1>
+      <p class="text-md/loose [grid-area:desc]">
+        私たちは尼崎市内のこども食堂が、これからもアマのこどもたちにとっての「身近な地域の居場所」であり続けられるように活動しています。
+      </p>
+      <Image
+        src={key}
+        alt="写真：スクリーンに写したスライドを見ながら、マイクを持った方の声に耳を傾ける椅子に座った方達"
+        class="aspect-video rounded-xl object-cover shadow-[var(--spacing-4)_var(--spacing-4)_0_0_var(--color-accent)] [grid-area:img]"
+      />
+    </div>
+  </section>
+
+  <div class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-52 py-32 *:col-2 lg:gap-y-84 lg:py-52">
+    <section class="grid gap-y-20">
+      <Heading>活動内容</Heading>
+      <Activities />
+      <p class="grid grid-cols-[1fr_minmax(0,var(--spacing-220))_1fr] *:col-2">
+        <ButtonLink href="/about/" text="私たちについて" />
+      </p>
+    </section>
+    <section class="prose grid gap-y-20">
+      <Heading>尼崎のこども食堂の様子</Heading>
+      <p>
+        （公財）尼崎市文化振興財団が、尼崎市内のこども食堂を取材し、動画にまとめておられます。実際の雰囲気を、ぜひ感じてください。
+      </p>
+      <Video />
+    </section>
+    <section class="prose grid gap-y-20">
+      <Heading>尼崎のこども食堂</Heading>
+      <p>尼崎市内のこども食堂は一覧ページから探すことができます。</p>
+      <p class="grid max-w-220">
+        <ButtonLink href="/cafes/" text="尼崎のこども食堂" />
+      </p>
+    </section>
+    <section class="prose grid gap-y-20">
+      <Heading>尼崎のこども食堂を支援する</Heading>
+      <p>尼崎市内のこども食堂を支援するには２つの方法があります。</p>
+      <p>
+        多くの食堂が地域のこどもたちにとっての「身近な地域の居場所」であり続けられるために、応援よろしくお願いします。
+      </p>
+      <ul class="grid grid-cols-[repeat(auto-fill,min(var(--spacing-220),100%))] gap-20">
+        <li class="grid">
+          <ButtonLink href="/charity/#with-items" text="物品で支援" />
+        </li>
+        <li class="grid">
+          <ButtonLink href="/charity/#with-donations" text="寄付金で支援" />
+        </li>
+      </ul>
+    </section>
+    <section class="prose grid gap-y-20">
+      <Heading>こども食堂を立ち上げる</Heading>
+      <p>尼崎市でこども食堂を始めたい場合は、立ち上げの流れを解説したページを参考にしてください。</p>
+      <p class="grid max-w-220">
+        <ButtonLink href="/start-cafe/" text="こども食堂の立ち上げ" />
+      </p>
+    </section>
+  </div>
+</div>
