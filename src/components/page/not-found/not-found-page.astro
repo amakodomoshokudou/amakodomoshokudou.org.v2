@@ -1,0 +1,29 @@
+---
+import TextLink from "../../../components/ui/text-link/text-link.astro";
+
+export type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<div
+  class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
+>
+  <div
+    class="border-t-accent col-span-full grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:col-2 lg:gap-y-32 lg:py-52"
+  >
+    <h1 class="text-2xl/2xl lg:text-3xl/3xl font-bold">
+      {title}
+    </h1>
+    <div class="prose grid gap-y-20">
+      <p>指定されたページはすでに削除もしくはURLが変更された可能性があります。</p>
+      <p>
+        大変お手数ですが、URLをご確認の上、再度お試しいただくか、
+        <TextLink href="/">トップページ</TextLink>
+        からお探しください。
+      </p>
+    </div>
+  </div>
+</div>
