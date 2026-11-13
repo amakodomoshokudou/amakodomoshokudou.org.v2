@@ -6,13 +6,25 @@
 
 ## TODO
 
-- [ ] `dev` / `build` をデフォルトで mock モードに変更
-- [ ] 本番用スクリプトを追加(`dev:production` / `build:production` など、`--mode mock` を付けない形)
-- [ ] `dev:mock` / `build:mock` の扱いを決定(デフォルトが mock になるため削除 or エイリアスとして残す)
-- [ ] `typecheck` などの関連スクリプトのモード指定を見直し
-- [ ] README の npm script 一覧と環境変数の説明を更新(本番ビルドには microCMS の実値が必要な旨を明記)
-- [ ] Docker / GitHub Actions など script を直接参照している箇所を合わせて整える
-  - [ ] `.github/workflows/deploy.yaml`: `pnpm build`(MICROCMS_* secrets 付き)を本番用スクリプト(`build:production` など)に変更
-  - [ ] `.github/workflows/lint.yaml`: `pnpm run build:mock` をデフォルト `pnpm build` に変更、`MICROCMS_*` の dummy 値が不要になるか確認して調整
-  - [ ] `compose.yaml` の vrt サービスと `vrt` / `vrt:update` script: mock モード前提のまま妥当か確認
-- [ ] 変更後の全スクリプトの動作確認(`astro sync --mode mock` が動かない別 issue の解消が必要かどうか含めて確認)
+- [x] `dev` / `build` をデフォルトで mock モードに変更(判定は `process.env.MODE !== "production"` に反転。未指定 = mock)
+- [x] 本番用スクリプトを追加(`dev:production` / `build:production`。実装は `--mode` を使わず環境変数 `MODE=production` を付与する方式に統一)
+- [x] `dev:mock` / `build:mock` の扱いを決定(エイリアスとして残す。`MODE=mock` を付与)
+- [x] `typecheck` などの関連スクリプトのモード指定を見直し(`MODE=mock astro check` → `astro check`。未指定 = mock のため不要に)
+- [x] README の npm script 一覧と環境変数の説明を更新(本番ビルドには microCMS の実値が必要な旨を明記)
+- [x] Docker / GitHub Actions など script を直接参照している箇所を合わせて整える
+  - [ ] `.github/workflows/deploy.yaml`: `pnpm build`(MICROCMS_* secrets 付き)を `pnpm run build:production` に変更
+  - [ ] `.github/workflows/lint.yaml`: typecheck / Build with mock ステップの dummy `MICROCMS_*` env を削除
+  - [x] `compose.yaml` の vrt サービスと `vrt` / `vrt:update` script: mock モード前提のまま妥当か確認(dummy `MICROCMS_*` を削除済み)
+- [x] 変更後の全スクリプトの動作確認(`astro sync --mode mock` が動かない別 issue の解消が必要かどうか含めて確認)
+
+## 再適用が必要な workflow の変更
+
+一度対応したが、PAT に workflow スコープがなく push できないため `7b2ad3b`(chore: GitHub Actionsのworkflow変更を取り消す)で取り消した。スコープ取得後または GitHub Web UI から再適用する。
+
+**注意**: deploy.yaml を変更しないままマージすると、`pnpm build` が mock ビルド(未指定 = mock)のため、本番デプロイがモックデータで行われる。
+
+- `.github/workflows/deploy.yaml` の Build project ステップ:
+  - `run: pnpm build` → `run: pnpm run build:production`
+- `.github/workflows/lint.yaml`:
+  - `Run typecheck` ステップの `env: MICROCMS_SERVICE_DOMAIN: dummy_domain` / `MICROCMS_API_KEY: dummy_key` を削除
+  - `Build with mock` ステップの `env: MICROCMS_SERVICE_DOMAIN: dummy_domain` / `MICROCMS_API_KEY: dummy_key` を削除
