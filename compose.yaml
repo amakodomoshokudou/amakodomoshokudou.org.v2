@@ -21,8 +21,6 @@ services:
 
     environment:
       CI:
-      MICROCMS_SERVICE_DOMAIN: dummy_domain
-      MICROCMS_API_KEY: dummy_key
 
     volumes:
       - ./playwright-outputs:/app/playwright-outputs
