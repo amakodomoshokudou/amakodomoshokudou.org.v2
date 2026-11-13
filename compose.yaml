@@ -5,13 +5,22 @@ services:
       dockerfile_inline: |
         FROM mcr.microsoft.com/playwright:v1.64.1-noble
         WORKDIR /app
+
         RUN apt-get update \
           && apt-get install -y --only-upgrade nodejs \
-          && apt-get remove -y fonts-wqy-zenhei \
+          && apt-get install -y --no-install-recommends \
+            fonts-noto-cjk \
+            fonts-noto-color-emoji \
+            fonts-noto-core \
+            fonts-noto-mono \
           && rm -rf /var/lib/apt/lists/*
+        COPY vrt/fonts.conf /etc/fonts/conf.d/99-noto-vrt.conf
+
         RUN npm install --global pnpm@12
+
         COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
         RUN pnpm install --frozen-lockfile
+
         COPY astro.config.ts tsconfig.json playwright.config.ts ./
         COPY src/ ./src/
         COPY public/ ./public/
