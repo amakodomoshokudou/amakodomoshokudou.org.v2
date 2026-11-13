@@ -17,19 +17,20 @@ MICROCMS_API_KEY=xxxx
 
 ### npm script一覧
 
-| スクリプト名              | 説明                                      |
-| ------------------------- | ----------------------------------------- |
-| pnpm i                    | 依存関係のインストール                    |
-| pnpm run dev              | Mockありでローカルサーバー起動            |
-| pnpm run dev:mock         | Mockありでローカルサーバー起動(devの別名) |
-| pnpm run dev:production   | microCMSの実値でローカルサーバー起動      |
-| pnpm run build            | Mockありで本番用ビルド                    |
-| pnpm run build:mock       | Mockありで本番用ビルド(buildの別名)       |
-| pnpm run build:production | microCMSの実値で本番用ビルド              |
-| pnpm run start            | ビルド後のプレビュー                      |
-| pnpm run typecheck        | モックデータで型チェック                  |
-| pnpm run check            | Biome・Prettier で検証                    |
-| pnpm run check:fix        | Biome・Prettier で自動修正                |
+| スクリプト名              | 説明                                          |
+| ------------------------- | --------------------------------------------- |
+| pnpm i                    | 依存関係のインストール                        |
+| pnpm run setup            | Git hooks のセットアップ                      |
+| pnpm run dev              | ローカルサーバー起動(モックデータ)            |
+| pnpm run dev:mock         | ローカルサーバー起動(モックデータ)(devの別名) |
+| pnpm run dev:production   | ローカルサーバー起動(microCMSの実データ)      |
+| pnpm run build            | サイトのビルド(モックデータ)                  |
+| pnpm run build:mock       | サイトのビルド(モックデータ)(buildの別名)     |
+| pnpm run build:production | サイトのビルド(microCMSの実データ)            |
+| pnpm run start            | ビルド後のプレビュー                          |
+| pnpm run typecheck        | 型チェック                                    |
+| pnpm run check            | Biome で検証                                  |
+| pnpm run check:fix        | Biome で自動修正                              |
 
 ### Git hooks
 
