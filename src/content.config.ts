@@ -1,7 +1,7 @@
 import { defineCollection } from "astro:content";
-import { fetchAllAreas, fetchAllCafes } from "./features/cafe/fetcher";
-import { getMockAreas, getMockCafes } from "./features/cafe/mock";
-import { type Area, areaSchema, type Cafe, cafeSchema } from "./features/cafe/model";
+import { fetchAllAreas, fetchAllCafes } from "./modules/cafe/fetcher";
+import { getMockAreas, getMockCafes } from "./modules/cafe/mock";
+import { type Area, areaSchema, type Cafe, cafeSchema } from "./modules/cafe/model";
 
 // モードの切り替えは環境変数 MODE で行う(astro sync / astro check は --mode を受け付けないため)。
 // production 以外は mock データを使う。

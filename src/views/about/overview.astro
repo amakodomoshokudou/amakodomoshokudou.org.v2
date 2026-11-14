@@ -1,0 +1,61 @@
+---
+import { summary } from "../../shared/const";
+import TextLink from "../../shared/text-link.astro";
+---
+
+<dl class="@container">
+  <div class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12">
+    <dt class="@640:pr-0 px-20">
+      {summary.name.title}
+    </dt>
+    <dd class="px-20">
+      {summary.name.value}
+    </dd>
+  </div>
+  <div class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12">
+    <dt class="@640:pr-0 px-20">
+      {summary.constituent.title}
+    </dt>
+    <dd class="px-20">
+      <ul class="grid list-disc gap-y-8 pl-20">
+        {summary.constituent.value.map((item) => <li>{item}</li>)}
+      </ul>
+    </dd>
+  </div>
+  <div class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12">
+    <dt class="@640:pr-0 px-20">
+      {summary.establish.title}
+    </dt>
+    <dd class="px-20">
+      <time datetime={summary.establish.value.datetime}>{summary.establish.value.display}</time>
+    </dd>
+  </div>
+  <div class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12">
+    <dt class="@640:pr-0 px-20">
+      {summary.representative.title}
+    </dt>
+    <dd class="px-20">
+      {summary.representative.value}
+    </dd>
+  </div>
+  <div class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12">
+    <dt class="@640:pr-0 px-20">
+      {summary.location.title}
+    </dt>
+    <dd class="px-20">
+      {`〒${summary.location.value.postalCode}`}
+      <br />
+      {summary.location.value.address}
+    </dd>
+  </div>
+  <div class="odd:bg-primary-background @640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12">
+    <dt class="@640:pr-0 px-20">
+      {summary.facebook.title}
+    </dt>
+    <dd class="px-20">
+      <TextLink href={summary.facebook.value} target="_blank">
+        {summary.facebook.value}
+      </TextLink>
+    </dd>
+  </div>
+</dl>

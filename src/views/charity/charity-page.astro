@@ -1,0 +1,109 @@
+---
+import { bankAccount, summary } from "../../shared/const";
+import CopyButton from "../../shared/copy-button.astro";
+import FlowItem from "../../shared/flow-item.astro";
+import Heading from "../../shared/heading.astro";
+import NextStep from "../../shared/next-step.astro";
+import TextLink from "../../shared/text-link.astro";
+import ToSectionLink from "../../shared/to-section-link.astro";
+
+export type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<div
+  class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
+>
+  <div
+    class="border-t-accent col-span-full grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:col-2 lg:gap-y-32 lg:py-52"
+  >
+    <h1 class="text-2xl/2xl lg:text-3xl/3xl font-bold">
+      {title}
+    </h1>
+    <ol class="flex flex-wrap gap-x-20 gap-y-12">
+      <li>
+        <ToSectionLink target="with-items" text="物品で支援する" />
+      </li>
+      <li>
+        <ToSectionLink target="with-donations" text="寄付金で支援する" />
+      </li>
+    </ol>
+  </div>
+  <div class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-52 py-32 *:col-2 lg:gap-y-84 lg:py-52">
+    <section class="grid gap-y-32">
+      <div class="prose grid gap-y-20">
+        <Heading id="with-items">物品で支援する</Heading>
+        <p>
+          フードパントリーで使うレトルト食品や日持ちのする食料品、会食や弁当づくりに使う缶詰やお米等を寄付頂ける方は、こちらの手順にそって、ご支援をよろしくお願いします。
+        </p>
+        <div class="border-danger bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20">
+          <p class="text-danger font-bold">重要なお知らせ</p>
+          <p class="text-md/loose">
+            現在、生鮮食品は保管場所の関係から、原則受付していません。<br />
+            ご理解のほど、よろしくお願いします。
+          </p>
+        </div>
+      </div>
+      <div class="grid gap-y-20">
+        <FlowItem step={1} title="寄付頂けるものをお選びください">
+          <p>
+            <TextLink href="https://www.amazon.co.jp/hz/wishlist/ls/2H3AWSTZSQY2L?ref_=wl_share" target="_blank">
+              Amazon「ほしいものリスト」
+            </TextLink> を公開しています。<br />
+            掲載している物品でなくても、類似のものでも有難いです。
+          </p>
+        </FlowItem>
+        <NextStep />
+        <FlowItem step={2} title="事務局まで事前のご連絡をお願いします">
+          <p>
+            寄付頂けるものがご準備できましたら、下記メールアドレスまで寄付頂ける物品等の情報を、事務局までご連絡ください。
+          </p>
+          <p>送付先の情報等、折り返しご連絡させていただきます。</p>
+          <div class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20">
+            <p class="font-bold">連絡先のメールアドレス</p>
+            <p class="text-sm/sm">{summary.mail.value}</p>
+            <p>
+              <CopyButton copyText={summary.mail.value}>メールアドレスをコピー</CopyButton>
+            </p>
+          </div>
+        </FlowItem>
+      </div>
+    </section>
+    <section class="grid gap-y-32">
+      <div class="prose grid gap-y-20">
+        <Heading id="with-donations">寄付金で支援する</Heading>
+        <p>「アマのこども食堂を応援したい！」という思いで寄付金をお寄せ頂ける方は、以下の口座よりお願いいたします。</p>
+        <p>お寄せ頂いた寄付金はこども食堂の運営にかかる経費助成等に使わせて頂きます。</p>
+      </div>
+      <div class="grid gap-y-20">
+        <FlowItem step={1} title="指定の口座までご振込ください">
+          <div class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20">
+            <p class="font-bold">口座情報</p>
+            <dl>
+              {Object.values(bankAccount).map(({ title, value }) => (
+                <div class="odd:bg-tertiary-background flex flex-wrap gap-y-8 rounded-md py-8">
+                  <dt class="text-sm/sm flex-[1_0_var(--spacing-136)] px-12">{title}</dt>
+                  <dd class="text-sm/sm min-w-[60%] flex-[9999_0_0] px-12">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </FlowItem>
+        <NextStep />
+        <FlowItem step={2} title="事務局までご連絡をお願いします">
+          <p>ご寄付をお寄せ頂いた場合は、お手数ですが下記のメールアドレスまでご連絡ください。</p>
+          <div class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20">
+            <p class="font-bold">連絡先のメールアドレス</p>
+            <p class="text-sm/sm">{summary.mail.value}</p>
+            <p>
+              <CopyButton copyText={summary.mail.value}>メールアドレスをコピー</CopyButton>
+            </p>
+          </div>
+        </FlowItem>
+      </div>
+    </section>
+  </div>
+</div>
