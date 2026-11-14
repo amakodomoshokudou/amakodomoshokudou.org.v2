@@ -1,4 +1,4 @@
-import { microcmsClient } from "../../shared/libs/microcms";
+import { microcmsClient } from "../../shared/microcms";
 import { type Area, areaSchema, type Cafe, microcmsCafeSchema } from "./model";
 
 export async function fetchAllAreas(): Promise<Area[]> {

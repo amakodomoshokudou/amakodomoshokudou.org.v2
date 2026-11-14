@@ -1,13 +1,13 @@
 ---
 import { Image } from "astro:assets";
-import { site } from "../consts/site";
-import { summary } from "../consts/summary";
-import Breadcrumb from "../ui/breadcrumb.astro";
-import type { BreadcrumbItems } from "../ui/breadcrumb-type";
-import CopyButton from "../ui/copy-button.astro";
-import Menu from "../ui/menu.astro";
 import icon from "./assets/icon.svg";
 import name from "./assets/name.svg";
+import Breadcrumb from "./breadcrumb.astro";
+import type { BreadcrumbItems } from "./breadcrumb-type";
+import CopyButton from "./copy-button.astro";
+import Menu from "./menu.astro";
+import { site } from "./site";
+import { summary } from "./summary";
 
 export type Props = {
   breadcrumb?: BreadcrumbItems;

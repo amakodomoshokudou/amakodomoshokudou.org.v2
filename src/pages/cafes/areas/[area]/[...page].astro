@@ -2,10 +2,10 @@
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import { sortAreas, sortCafes } from "../../../../modules/cafe/util";
-import { site } from "../../../../shared/consts/site";
-import Document from "../../../../shared/layout/document.astro";
-import Layout from "../../../../shared/layout/layout.astro";
-import type { BreadcrumbItems } from "../../../../shared/ui/breadcrumb-type";
+import type { BreadcrumbItems } from "../../../../shared/breadcrumb-type";
+import Document from "../../../../shared/document.astro";
+import Layout from "../../../../shared/layout.astro";
+import { site } from "../../../../shared/site";
 import CafesByAreaPage from "../../../../views/cafes/cafes-by-area-page.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
