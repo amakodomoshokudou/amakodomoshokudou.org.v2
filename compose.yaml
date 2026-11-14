@@ -3,11 +3,10 @@ services:
     build:
       context: .
       dockerfile_inline: |
-        FROM mcr.microsoft.com/playwright:v1.64.1-noble
+        FROM mcr.microsoft.com/playwright:v1.65.0-noble
         WORKDIR /app
 
         RUN apt-get update \
-          && apt-get install -y --only-upgrade nodejs \
           && apt-get install -y --no-install-recommends \
             fonts-noto-cjk \
             fonts-noto-color-emoji \
