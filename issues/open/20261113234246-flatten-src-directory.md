@@ -10,8 +10,8 @@
 
 ## TODO
 
-- [ ] `src/components/page/` のページ固有ファイルと専用の定数・アセットを、対応する `src/views/` のページ別ディレクトリへ移す
-- [ ] `src/components/ui/`、`src/components/layout/`、`src/styles/`、共通の定数・ユーティリティ、`src/libs/microcms/` を `src/shared/` へ移す
-- [ ] `src/features/cafe/` を `src/modules/cafe/` へ移す
-- [ ] `src/pages/` と `src/content.config.ts` の配置を維持し、移動に伴う import パスを更新する
-- [ ] 不要になったディレクトリを整理し、型チェックとビルドが通ることを確認する
+- [x] `src/components/page/` のページ固有ファイルと専用の定数・アセットを、対応する `src/views/` のページ別ディレクトリへ移す
+- [x] `src/components/ui/`、`src/components/layout/`、`src/styles/`、共通の定数・ユーティリティ、`src/libs/microcms/` を `src/shared/` へ移す
+- [x] `src/features/cafe/` を `src/modules/cafe/` へ移す
+- [x] `src/pages/` と `src/content.config.ts` の配置を維持し、移動に伴う import パスを更新する
+- [x] 不要になったディレクトリを整理し、型チェックとビルドが通ることを確認する
