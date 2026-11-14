@@ -37,3 +37,9 @@
 - [x] `src/shared/` の `bank-account.ts`・`site.ts`・`summary.ts` を `src/shared/const.ts` に統合する
 - [x] 統合に伴う import パスを更新する
 - [x] 型チェックとビルドが通ることを確認する
+
+## TODO(breadcrumb-type.tsの改名)
+
+- [x] `src/shared/breadcrumb-type.ts` を `src/shared/breadcrumb.ts` に改名する
+- [x] 改名に伴う import パスを更新する
+- [x] 型チェックとビルドが通ることを確認する
