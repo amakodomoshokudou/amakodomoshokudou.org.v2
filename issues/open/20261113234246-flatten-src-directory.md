@@ -18,8 +18,8 @@
 
 ## TODO(同一名称単一ファイルのディレクトリをflat化)
 
-- [ ] `src/views/cafes/` 配下の `area-filter/`・`cafe-list/`・`pagination/` をflatにする(`views/cafes/area-filter.astro` など)。`cafe-list/assets` は `src/views/cafes/assets` にまとめる
-- [ ] `src/shared/ui/` 配下の各コンポーネントディレクトリをflatにする。`activities/assets` は `src/shared/ui/assets` にまとめる。`breadcrumb/type.ts` は `breadcrumb-type.ts` に改名して同階層へ置く
-- [ ] `src/shared/layout/` 配下の `layout/`・`document/` をflatにする。`layout/assets` は `src/shared/layout/assets` にまとめる
-- [ ] 移動に伴う import パスを更新する
-- [ ] 型チェックとビルドが通ることを確認する
+- [x] `src/views/cafes/` 配下の `area-filter/`・`cafe-list/`・`pagination/` をflatにする(`views/cafes/area-filter.astro` など)。`cafe-list/assets` は `src/views/cafes/assets` にまとめる
+- [x] `src/shared/ui/` 配下の各コンポーネントディレクトリをflatにする。`activities/assets` は `src/shared/ui/assets` にまとめる。`breadcrumb/type.ts` は `breadcrumb-type.ts` に改名して同階層へ置く
+- [x] `src/shared/layout/` 配下の `layout/`・`document/` をflatにする。`layout/assets` は `src/shared/layout/assets` にまとめる
+- [x] 移動に伴う import パスを更新する
+- [x] 型チェックとビルドが通ることを確認する
