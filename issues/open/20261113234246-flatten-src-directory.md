@@ -23,3 +23,11 @@
 - [x] `src/shared/layout/` 配下の `layout/`・`document/` をflatにする。`layout/assets` は `src/shared/layout/assets` にまとめる
 - [x] 移動に伴う import パスを更新する
 - [x] 型チェックとビルドが通ることを確認する
+
+## TODO(shared直下へのflat化)
+
+- [x] `src/shared/` 配下の `consts/`・`layout/`・`libs/`・`styles/`・`ui/` をなくし、全ファイルを `src/shared/` 直下に並べる
+- [x] `libs/microcms/index.ts` は `src/shared/microcms.ts` とする
+- [x] `layout/assets` と `ui/assets` は `src/shared/assets/` に統合する
+- [x] 移動に伴う import パスを更新する
+- [x] 型チェックとビルドが通ることを確認する
