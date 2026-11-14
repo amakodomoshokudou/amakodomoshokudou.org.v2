@@ -6,4 +6,4 @@
 - [x] VRT 用 Compose のベースイメージを `v1.65.0-noble` に更新する
 - [x] 1.65 イメージの同梱 Node が 26 になったため `--only-upgrade nodejs` を削除する
 - [x] Docker 内で VRT を実行してスクリーンショット差分がないことを確認する
-- [ ] CI で VRT が通ることを確認する
+- [x] CI で VRT が通ることを確認する
