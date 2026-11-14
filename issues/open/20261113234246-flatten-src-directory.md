@@ -31,3 +31,9 @@
 - [x] `layout/assets` と `ui/assets` は `src/shared/assets/` に統合する
 - [x] 移動に伴う import パスを更新する
 - [x] 型チェックとビルドが通ることを確認する
+
+## TODO(定数定義ファイルの統合)
+
+- [x] `src/shared/` の `bank-account.ts`・`site.ts`・`summary.ts` を `src/shared/const.ts` に統合する
+- [x] 統合に伴う import パスを更新する
+- [x] 型チェックとビルドが通ることを確認する
