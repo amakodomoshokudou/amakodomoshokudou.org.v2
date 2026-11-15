@@ -39,3 +39,21 @@ for (const path of paths) {
     });
   });
 }
+
+test("screenshot-menu-open[/]", async ({ page }) => {
+  // メニューの開閉ボタンは lg (64rem) 未満でしか表示されないので、狭いビューポートにして開く
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page.getByRole("button", { name: "メニュー" }).click();
+
+  // dialog の背面のページが半透明で透過するため、背面の img と iframe を隠して安定させる
+  // （layout は保持される。Playwright の mask オプションは dialog の背面の要素にも矩形が
+  // 描画されトップレイヤーの dialog の上に被るので使わない）
+  await page.locator("img, iframe").evaluateAll((elements) => {
+    for (const element of elements) {
+      element.style.visibility = "hidden";
+    }
+  });
+
+  await expect(page).toHaveScreenshot();
+});
