@@ -30,9 +30,9 @@
     "@biomejs/biome": "2.6.4",
     "@playwright/test": "1.65.0",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.6.6",
     "markuplint": "^5.4.0",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   }
 }
