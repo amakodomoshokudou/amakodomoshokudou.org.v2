@@ -24,6 +24,11 @@ Tailwind CSS のクラスを `.astro` ファイルの scoped `<style>` へ書き
 - 祖先の状態に連動するもの（`group-open:`）は祖先要素（`details`）のクラス内で `&[open] .icon { … }` とする
 - `dark:invert` は `@media (prefers-color-scheme: dark)` 内にネストする
 
+## ネスティングでの `&` の要否
+
+- メディアクエリ・コンテナクエリなど at-rule 内に**宣言を直接書くときは `&` 不要**。`@media (…) { font-size: …; }` のように書く
+- at-rule 内に**セレクタを書くときは `&` が必要**（`@media (any-hover: hover) { &:hover { … } }` など）
+
 ## hover・focus
 
 - hover は `@media (any-hover: hover)` で囲んで `&:hover` とする
@@ -119,9 +124,7 @@ Tailwind CSS のクラスを `.astro` ファイルの scoped `<style>` へ書き
 .logo_name {
   /* Tailwind: dark:invert */
   @media (prefers-color-scheme: dark) {
-    & {
-      filter: invert(1);
-    }
+    filter: invert(1);
   }
 }
 ```
@@ -149,18 +152,14 @@ hover と focus（新規に書く場合の例）:
 .cafe_list {
   /* Tailwind: sm:grid-cols-2 */
   @media (width >= 40rem) {
-    & {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 .cafe_list_row {
   /* Tailwind: @640:grid-cols-[var(--spacing-136)_1fr] */
   @container (width >= 40rem) {
-    & {
-      grid-template-columns: var(--spacing-136) 1fr;
-    }
+    grid-template-columns: var(--spacing-136) 1fr;
   }
 }
 ```
