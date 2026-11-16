@@ -51,7 +51,7 @@ const navItems = [
     <div class="layout_header_body">
       <p>
         <a href="/" class="layout_logo">
-          <span class="layout_title">{site.title}</span>
+          <span class="sr-only">{site.title}</span>
           <Image src={icon} alt="" class="layout_logo_icon" />
           <Image src={name} alt="" class="layout_logo_name" />
         </a>
@@ -192,18 +192,6 @@ const navItems = [
     @media (width >= 64rem) {
       flex-direction: column;
     }
-  }
-
-  .layout_title {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border-width: 0;
   }
 
   .layout_logo_icon {

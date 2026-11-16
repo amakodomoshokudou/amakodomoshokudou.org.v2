@@ -89,6 +89,19 @@
   }
 }
 
+/* Tailwind のビルトイン sr-only を上書きする（clip の代わりに clip-path を使用）。Tailwind 廃止後も同名で使う */
+@utility sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
