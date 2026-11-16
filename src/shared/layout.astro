@@ -49,7 +49,7 @@ const navItems = [
 <div class="layout">
   <header class="layout_header">
     <div class="layout_header_body">
-      <p>
+      <p class="layout_logo_body">
         <a href="/" class="layout_logo">
           <span class="sr-only">{site.title}</span>
           <Image src={icon} alt="" class="layout_logo_icon" />
@@ -171,6 +171,7 @@ const navItems = [
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    gap: var(--spacing-8);
     justify-content: space-between;
     padding-block: var(--spacing-8);
 
@@ -178,10 +179,15 @@ const navItems = [
       grid-column: 1 / -1;
       display: grid;
       align-content: start;
+      gap: 0;
       justify-content: start;
       padding-inline: var(--spacing-12);
       padding-block: var(--spacing-20);
     }
+  }
+
+  .layout_logo_body {
+    min-inline-size: 0;
   }
 
   .layout_logo {
@@ -195,20 +201,20 @@ const navItems = [
   }
 
   .layout_logo_icon {
-    width: 100%;
-    max-width: var(--spacing-52);
+    min-inline-size: 0;
+    inline-size: var(--spacing-52);
 
     @media (width >= 64rem) {
-      max-width: var(--spacing-84);
+      inline-size: var(--spacing-84);
     }
   }
 
   .layout_logo_name {
-    width: 100%;
-    max-width: var(--spacing-84);
+    min-inline-size: 0;
+    inline-size: var(--spacing-84);
 
     @media (width >= 64rem) {
-      max-width: var(--spacing-136);
+      inline-size: var(--spacing-136);
     }
 
     @media (prefers-color-scheme: dark) {
