@@ -7,14 +7,29 @@ export type Props = {
 const { target, text } = Astro.props;
 ---
 
-<a
-  href={`#${target}`}
-  class="border-b-primary-border text-sm/sm inline-grid grid-cols-[auto_auto] items-center gap-x-8 border-b pb-4 font-bold"
->
+<a href={`#${target}`} class="to_section_link">
   {text}
-  <span
-    role="img"
-    aria-label="hidden"
-    class="size-[1em] bg-[currentColor] mask-[url(/assets/icons/arrow_down.svg)] mask-cover mask-center mask-no-repeat"
-  ></span>
+  <span role="img" aria-label="hidden" class="to_section_link_icon"></span>
 </a>
+
+<style>
+  .to_section_link {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    column-gap: var(--spacing-8);
+    border-block-end: 1px solid var(--color-primary-border);
+    padding-block-end: var(--spacing-4);
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .to_section_link_icon {
+    inline-size: 1em;
+    block-size: 1em;
+    background-color: currentColor;
+    -webkit-mask: url("/assets/icons/arrow_down.svg") center / cover no-repeat;
+    mask: url("/assets/icons/arrow_down.svg") center / cover no-repeat;
+  }
+</style>

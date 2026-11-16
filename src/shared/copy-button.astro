@@ -9,27 +9,12 @@ export type Props = {
 const { copyText, successText = "コピーしました", size = "md", label = false } = Astro.props;
 ---
 
-<span class="inline-grid w-fit" data-id="copy-button" data-copy-text={copyText} data-success-text={successText}>
-  <button
-    type="button"
-    class={[
-      "inline-grid grid-cols-[1fr_auto] items-center rounded-xl border border-primary-border [grid-area:1/1]",
-      size === "sm" && " gap-x-4 px-8 py-4 text-sm/sm",
-      size === "md" && " gap-x-8 px-12 py-8 text-md/md",
-    ].join(" ")}
-  >
+<span class="copy_button" data-id="copy-button" data-copy-text={copyText} data-success-text={successText}>
+  <button type="button" class="copy_button_button" data-size={size}>
     <slot />
-    <span
-      role="img"
-      aria-label={label ? "をコピー" : undefined}
-      class="size-[1em] bg-[currentColor] mask-[url(/assets/icons/content_copy.svg)] mask-cover mask-center mask-no-repeat"
-    ></span>
+    <span role="img" aria-label={label ? "をコピー" : undefined} class="copy_button_icon"></span>
   </button>
-  <span
-    aria-live="assertive"
-    data-open="false"
-    class="border-secondary-border bg-tertiary-background text-xs/xs isolate self-start justify-self-end rounded-xs [grid-area:1/1] data-[open=true]:border data-[open=true]:p-4"
-  ></span>
+  <span aria-live="assertive" data-open="false" class="copy_notify"></span>
 </span>
 
 <script>
@@ -74,3 +59,59 @@ const { copyText, successText = "コピーしました", size = "md", label = fa
     });
   }
 </script>
+
+<style>
+  .copy_button {
+    display: inline-grid;
+    width: fit-content;
+  }
+
+  .copy_button_button {
+    display: inline-grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    border: 1px solid var(--color-primary-border);
+    border-radius: var(--radius-xl);
+    grid-area: 1 / 1;
+
+    &[data-size="sm"] {
+      column-gap: var(--spacing-4);
+      padding-inline: var(--spacing-8);
+      padding-block: var(--spacing-4);
+      font-size: var(--text-sm);
+      line-height: var(--leading-sm);
+    }
+
+    &[data-size="md"] {
+      column-gap: var(--spacing-8);
+      padding-inline: var(--spacing-12);
+      padding-block: var(--spacing-8);
+      font-size: var(--text-md);
+      line-height: var(--leading-md);
+    }
+  }
+
+  .copy_button_icon {
+    inline-size: 1em;
+    block-size: 1em;
+    background-color: currentColor;
+    -webkit-mask: url("/assets/icons/content_copy.svg") center / cover no-repeat;
+    mask: url("/assets/icons/content_copy.svg") center / cover no-repeat;
+  }
+
+  .copy_notify {
+    font-size: var(--text-xs);
+    line-height: var(--leading-xs);
+    background-color: var(--color-tertiary-background);
+    isolation: isolate;
+    align-self: flex-start;
+    justify-self: end;
+    border-radius: var(--radius-xs);
+    grid-area: 1 / 1;
+
+    &[data-open="true"] {
+      border: 1px solid var(--color-secondary-border);
+      padding: var(--spacing-4);
+    }
+  }
+</style>

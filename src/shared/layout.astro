@@ -46,114 +46,330 @@ const navItems = [
 ];
 ---
 
-<div
-  class="relative grid min-h-svh grid-cols-1 grid-rows-[auto_1fr] lg:h-svh lg:grid-cols-[var(--spacing-220)_minmax(0,1fr)] lg:grid-rows-1"
->
-  <header
-    class="border-b-secondary-border bg-primary-background lg:border-r-secondary-border sticky inset-x-0 top-0 z-10 grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] border-b lg:col-1 lg:grid-cols-1 lg:overflow-y-auto lg:border-r lg:border-b-0"
-  >
-    <div
-      class="col-2 flex flex-wrap items-center justify-between py-8 lg:col-span-full lg:grid lg:content-start lg:justify-start lg:px-12 lg:py-20"
-    >
+<div class="layout">
+  <header class="layout_header">
+    <div class="layout_header_body">
       <p>
-        <a href="/" class="flex place-items-center gap-x-4 lg:flex-col">
-          <span class="sr-only">{site.title}</span>
-          <Image src={icon} alt="" class="w-full max-w-52 lg:max-w-84" />
-          <Image src={name} alt="" class="w-full max-w-84 lg:max-w-136 dark:invert" />
+        <a href="/" class="layout_logo">
+          <span class="layout_title">{site.title}</span>
+          <Image src={icon} alt="" class="layout_logo_icon" />
+          <Image src={name} alt="" class="layout_logo_name" />
         </a>
       </p>
       <Menu>
-        <div class="grid gap-y-20">
+        <div class="layout_menu">
           <nav aria-label="グローバルナビゲーション">
-            <ul class="grid gap-y-8">
+            <ul class="nav_list">
               {navItems.map((item) => (
                 <li>
                   <a
                     href={item.href}
                     target={item.isExternal ? "_blank" : undefined}
                     aria-current={item.isCurrent ? "page" : undefined}
-                    class={[
-                      "aria-[current=page]:bg-secondary-background grid rounded-xl px-12 py-8 font-bold",
-                      item.isExternal && "grid-cols-[auto_1fr] items-center",
-                    ].join(" ")}
+                    class="nav_link"
                   >
                     {item.text}
-                    {item.isExternal && (
-                      <span
-                        role="img"
-                        aria-label="外部リンク"
-                        class="size-[1em] mask-[url(/assets/icons/open_in_new.svg)] bg-[currentColor] mask-cover mask-center mask-no-repeat"
-                      ></span>
-                    )}
+                    {item.isExternal && <span role="img" aria-label="外部リンク" class="external_icon"></span>}
                   </a>
                 </li>
               ))}
             </ul>
           </nav>
-          <div class="border-secondary-border grid gap-y-12 rounded-xl border p-12">
-            <p class="font-bold">お問い合わせはこちら</p>
-            <p class="">
+          <div class="contact_box">
+            <p class="contact_heading">お問い合わせはこちら</p>
+            <p>
               {summary.mail.value}
             </p>
             <CopyButton copyText={summary.mail.value}>メールアドレスをコピー</CopyButton>
           </div>
         </div>
       </Menu>
-      <nav class="hidden lg:mt-20 lg:block" aria-label="グローバルナビゲーション">
-        <ul class="grid gap-y-4">
+      <nav class="desktop_nav" aria-label="グローバルナビゲーション">
+        <ul class="desktop_nav_list">
           {navItems.map((item) => (
             <li>
               <a
                 href={item.href}
                 target={item.isExternal ? "_blank" : undefined}
                 aria-current={item.isCurrent ? "page" : undefined}
-                class={[
-                  "text-sm/sm aria-[current=page]:bg-secondary-background grid rounded-xl px-12 py-8 font-bold",
-                  item.isExternal && "grid-cols-[auto_1fr] items-center",
-                ].join(" ")}
+                class="nav_link"
               >
                 {item.text}
-                {item.isExternal && (
-                  <span
-                    role="img"
-                    aria-label="外部リンク"
-                    class="size-[1em] mask-[url(/assets/icons/open_in_new.svg)] bg-[currentColor] mask-cover mask-center mask-no-repeat"
-                  ></span>
-                )}
+                {item.isExternal && <span role="img" aria-label="外部リンク" class="external_icon"></span>}
               </a>
             </li>
           ))}
         </ul>
       </nav>
-      <div class="border-secondary-border hidden gap-y-12 rounded-xl border p-12 lg:mt-20 lg:grid">
-        <p class="text-sm/sm font-bold">お問い合わせはこちら</p>
-        <p class="text-xs/xs">
+      <div class="desktop_contact_box">
+        <p class="desktop_contact_heading">お問い合わせはこちら</p>
+        <p class="desktop_contact_mail">
           {summary.mail.value}
         </p>
         <CopyButton size="sm" copyText={summary.mail.value} label>メールアドレス</CopyButton>
       </div>
     </div>
   </header>
-  <div
-    class="col-span-full grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] grid-rows-[1fr_auto] lg:col-2 lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)] lg:overflow-y-auto"
-  >
-    <main class="col-span-full">
+  <div class="layout_body">
+    <main class="layout_main">
       <slot />
     </main>
     {props.breadcrumb && (
-      <div class="col-span-full grid grid-cols-subgrid py-20 *:col-2">
+      <div class="layout_breadcrumb">
         <Breadcrumb items={props.breadcrumb} />
       </div>
     )}
-    <footer class="border-t-secondary-border col-span-full grid grid-cols-subgrid border-t py-20">
-      <div class="col-2 flex flex-wrap justify-between gap-x-20 gap-y-12">
-        <p class="text-sm/sm">
-          <a href="/privacy-policy/" class="underline">プライバシーポリシー</a>
+    <footer class="layout_footer">
+      <div class="layout_footer_body">
+        <p class="footer_text">
+          <a href="/privacy-policy/" class="footer_link">プライバシーポリシー</a>
         </p>
-        <p class="text-sm/sm">
+        <p class="footer_text">
           <small>© 2024 尼崎こども食堂ネットワーク</small>
         </p>
       </div>
     </footer>
   </div>
 </div>
+
+<style>
+  .layout {
+    position: relative;
+    display: grid;
+    min-height: 100svh;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-rows: auto 1fr;
+
+    @media (width >= 64rem) {
+      height: 100svh;
+      grid-template-columns: var(--spacing-220) minmax(0, 1fr);
+      grid-template-rows: repeat(1, minmax(0, 1fr));
+    }
+  }
+
+  .layout_header {
+    position: sticky;
+    inset-inline: 0;
+    top: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: minmax(var(--spacing-20), 1fr) minmax(0, var(--spacing-932)) minmax(var(--spacing-20), 1fr);
+    background-color: var(--color-primary-background);
+    border-block-end: 1px solid var(--color-secondary-border);
+
+    @media (width >= 64rem) {
+      grid-column: 1;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      overflow-y: auto;
+      border-inline-end: 1px solid var(--color-secondary-border);
+      border-block-end-width: 0;
+    }
+  }
+
+  .layout_header_body {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--spacing-8);
+
+    @media (width >= 64rem) {
+      grid-column: 1 / -1;
+      display: grid;
+      align-content: start;
+      justify-content: start;
+      padding-inline: var(--spacing-12);
+      padding-block: var(--spacing-20);
+    }
+  }
+
+  .layout_logo {
+    display: flex;
+    place-items: center;
+    column-gap: var(--spacing-4);
+
+    @media (width >= 64rem) {
+      flex-direction: column;
+    }
+  }
+
+  .layout_title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .layout_logo_icon {
+    width: 100%;
+    max-width: var(--spacing-52);
+
+    @media (width >= 64rem) {
+      max-width: var(--spacing-84);
+    }
+  }
+
+  .layout_logo_name {
+    width: 100%;
+    max-width: var(--spacing-84);
+
+    @media (width >= 64rem) {
+      max-width: var(--spacing-136);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      filter: invert(1);
+    }
+  }
+
+  .layout_menu {
+    display: grid;
+    row-gap: var(--spacing-20);
+  }
+
+  .nav_list {
+    display: grid;
+    row-gap: var(--spacing-8);
+  }
+
+  .nav_link {
+    display: grid;
+    border-radius: var(--radius-xl);
+    padding-inline: var(--spacing-12);
+    padding-block: var(--spacing-8);
+    font-weight: var(--font-weight-bold);
+
+    &[aria-current="page"] {
+      background-color: var(--color-secondary-background);
+    }
+
+    &[target="_blank"] {
+      grid-template-columns: auto 1fr;
+      align-items: center;
+    }
+  }
+
+  .external_icon {
+    inline-size: 1em;
+    block-size: 1em;
+    background-color: currentColor;
+    -webkit-mask: url("/assets/icons/open_in_new.svg") center / cover no-repeat;
+    mask: url("/assets/icons/open_in_new.svg") center / cover no-repeat;
+  }
+
+  .contact_box {
+    display: grid;
+    row-gap: var(--spacing-12);
+    border: 1px solid var(--color-secondary-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-12);
+  }
+
+  .contact_heading {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .desktop_contact_box {
+    display: none;
+    row-gap: var(--spacing-12);
+    border: 1px solid var(--color-secondary-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-12);
+
+    @media (width >= 64rem) {
+      display: grid;
+      margin-block-start: var(--spacing-20);
+    }
+  }
+
+  .desktop_contact_heading {
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .desktop_contact_mail {
+    font-size: var(--text-xs);
+    line-height: var(--leading-xs);
+  }
+
+  .desktop_nav {
+    display: none;
+
+    @media (width >= 64rem) {
+      display: block;
+      margin-block-start: var(--spacing-20);
+    }
+
+    & .nav_link {
+      font-size: var(--text-sm);
+      line-height: var(--leading-sm);
+    }
+  }
+
+  .desktop_nav_list {
+    display: grid;
+    row-gap: var(--spacing-4);
+  }
+
+  .layout_body {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(var(--spacing-20), 1fr) minmax(0, var(--spacing-932)) minmax(var(--spacing-20), 1fr);
+    grid-template-rows: 1fr auto;
+
+    @media (width >= 64rem) {
+      grid-column: 2;
+      grid-template-columns: minmax(var(--spacing-32), 1fr) minmax(0, var(--spacing-932)) minmax(var(--spacing-32), 1fr);
+      overflow-y: auto;
+    }
+  }
+
+  .layout_main {
+    grid-column: 1 / -1;
+  }
+
+  .layout_breadcrumb {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    padding-block: var(--spacing-20);
+
+    /* Breadcrumb コンポーネントの要素にはスコープが付かないため :global() を使う */
+    & > :global(*) {
+      grid-column: 2;
+    }
+  }
+
+  .layout_footer {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    padding-block: var(--spacing-20);
+    border-block-start: 1px solid var(--color-secondary-border);
+  }
+
+  .layout_footer_body {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: var(--spacing-20);
+    row-gap: var(--spacing-12);
+  }
+
+  .footer_text {
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+  }
+
+  .footer_link {
+    text-decoration-line: underline;
+  }
+</style>

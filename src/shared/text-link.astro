@@ -7,13 +7,26 @@ export type Props = {
 const props = Astro.props;
 ---
 
-<a href={props.href} target={props.target} class="text-link underline decoration-1 underline-offset-2">
+<a href={props.href} target={props.target} class="text_link">
   <slot />
-  {props.target === "_blank" && (
-    <span
-      role="img"
-      aria-label="外部リンク"
-      class="inline-block size-[1em] mask-[url(/assets/icons/open_in_new.svg)] bg-link mask-cover mask-center mask-no-repeat align-[-2px]"
-    ></span>
-  )}
+  {props.target === "_blank" && <span role="img" aria-label="外部リンク" class="text_link_icon"></span>}
 </a>
+
+<style>
+  .text_link {
+    color: var(--color-link);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  .text_link_icon {
+    display: inline-block;
+    inline-size: 1em;
+    block-size: 1em;
+    vertical-align: -2px;
+    background-color: var(--color-link);
+    -webkit-mask: url("/assets/icons/open_in_new.svg") center / cover no-repeat;
+    mask: url("/assets/icons/open_in_new.svg") center / cover no-repeat;
+  }
+</style>
