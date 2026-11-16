@@ -53,13 +53,13 @@ const navItems = [
     class="border-b-secondary-border bg-primary-background lg:border-r-secondary-border sticky inset-x-0 top-0 z-10 grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] border-b lg:col-1 lg:grid-cols-1 lg:overflow-y-auto lg:border-r lg:border-b-0"
   >
     <div
-      class="col-2 flex flex-wrap items-center justify-between py-8 lg:col-span-full lg:grid lg:content-start lg:justify-start lg:px-12 lg:py-20"
+      class="col-2 flex flex-wrap items-center gap-8 justify-between py-8 lg:col-span-full lg:grid lg:content-start lg:justify-start lg:gap-0 lg:px-12 lg:py-20"
     >
-      <p>
+      <p class="min-w-0">
         <a href="/" class="flex place-items-center gap-x-4 lg:flex-col">
           <span class="sr-only">{site.title}</span>
-          <Image src={icon} alt="" class="w-full max-w-52 lg:max-w-84" />
-          <Image src={name} alt="" class="w-full max-w-84 lg:max-w-136 dark:invert" />
+          <Image src={icon} alt="" class="min-w-0 w-52 lg:w-84" />
+          <Image src={name} alt="" class="min-w-0 w-84 dark:invert lg:w-136" />
         </a>
       </p>
       <Menu>
