@@ -56,6 +56,10 @@
   --spacing-932: 58.25rem;
   --spacing-640: 40rem;
 
+  --radius-xs: 0.125rem;
+  --radius-md: 0.375rem;
+  --radius-xl: 0.75rem;
+
   --breakpoint-sm: 40rem;
   --breakpoint-md: 48rem;
   --breakpoint-lg: 64rem;
