@@ -3,7 +3,7 @@
 ## 方針
 
 - 移行時の具体的な書き方（クラス名の形式、1 要素 1 クラス名、状態・疑似要素のネスト表現、hover・focus の扱い、参考例など）は `tailwind-to-css-migration` skill（`.agents/skills/tailwind-to-css-migration/SKILL.md`）を参照する
-- `prose` のみ `globals.css` の共通クラスとして定義する。それ以外はコンポーネントごとの scoped `<style>` に書き、重複を許容する（新規コンポーネントの切り出しはしない）
+- `prose` と `sr-only` を `globals.css` の共通クラス（`@utility`）として定義する。`sr-only` は Tailwind のビルトインを上書きし、廃止後も同名で使い続ける。それ以外はコンポーネントごとの scoped `<style>` に書き、重複を許容する（新規コンポーネントの切り出しはしない）
 - Tailwind の `@theme` が出力する CSS 変数の名前（`--spacing-84`、`--text-sm` など）は最終段の `:root` 定義でも維持する
 - `globals.css` への追加は限定的とする。hover・focus などのインタラクションスタイルは global に置かず、各コンポーネントの scoped `<style>` でその class に明示する
 
