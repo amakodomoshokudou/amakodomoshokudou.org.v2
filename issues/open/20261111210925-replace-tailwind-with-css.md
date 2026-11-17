@@ -20,7 +20,7 @@
 - [x] トップページ（views/index）を移行する（VRT 全実行 OK）
 - [x] 私たちについて（views/about）を移行する（VRT 全実行 OK）
 - [ ] 尼崎のこども食堂（views/cafes）を移行する
-- [ ] こども食堂への支援（views/charity）を移行する
+- [x] こども食堂への支援（views/charity）を移行する（VRT 全実行 OK）
 - [ ] こども食堂の立ち上げ（views/start-cafe）を移行する
 - [ ] プライバシーポリシー（views/privacy-policy）と 404（views/not-found）を移行する
 - [ ] `globals.css` を純粋な CSS に置き換える: `@import "tailwindcss"` と `@theme` を廃止し、トークンを `:root` の CSS 変数として直接定義する
