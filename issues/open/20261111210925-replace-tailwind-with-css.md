@@ -24,6 +24,7 @@
 - [x] こども食堂の立ち上げ（views/start-cafe）を移行する（VRT 全実行 OK）
 - [ ] プライバシーポリシー（views/privacy-policy）と 404（views/not-found）を移行する
 - [ ] `globals.css` を純粋な CSS に置き換える: `@import "tailwindcss"` と `@theme` を廃止し、トークンを `:root` の CSS 変数として直接定義する
+- [ ] `--spacing-*` と `--container-*` のトークンの区別を明確にする。`max-w-640` など Tailwind では `--container-*` に解決される参照が移行後 `--spacing-*` で代用されており、値が同一のため現状は等価だが、最終段の `:root` 定義時に用途ごとの参照先を整理する（移行済みページでは `--spacing-*` 参照に統一されている）
 - [ ] 自作のリセット CSS を作り preflight と置き換える
 - [ ] `@layer` を CSS 標準のカスケードレイヤーに整理し、`@apply` を純粋な CSS に書き換える（`:focus` / `:focus-visible` のスタイルは方針に従い、対象要素を持つコンポーネントの scoped style へ移す）
 - [ ] `tailwindcss` と `@tailwindcss/vite` を依存関係から削除し、`astro.config.ts`・`biome.json` の `tailwindDirectives`・dependabot の設定・lockfile を整理する
