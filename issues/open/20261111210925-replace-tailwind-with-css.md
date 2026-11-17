@@ -17,7 +17,7 @@
 - [ ] `.astro` ファイルの Tailwind クラスを、同じファイルの `<style>` ブロックへ純粋な CSS として移行する。トークンは Tailwind の `@theme` が出力する CSS 変数を `var()` で参照する（この間 Tailwind 依存は残す）
 - [ ] 移行単位ごとに VRT を実行し、表示差分を確認・修正しながら移行する
 - [x] src/shared のコンポーネントを移行する（全ページ共通のため、完了後に全ページの VRT を確認する。VRT 全実行 OK）
-- [ ] トップページ（views/index）を移行する
+- [x] トップページ（views/index）を移行する（VRT 全実行 OK）
 - [ ] 私たちについて（views/about）を移行する
 - [ ] 尼崎のこども食堂（views/cafes）を移行する
 - [ ] こども食堂への支援（views/charity）を移行する
