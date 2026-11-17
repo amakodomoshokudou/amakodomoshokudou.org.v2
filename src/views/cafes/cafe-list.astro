@@ -10,51 +10,102 @@ export type Props = {
 const { cafes } = Astro.props;
 ---
 
-<div class="grid grid-cols-1 gap-32 sm:grid-cols-2">
+<div class="cafe_list">
   {cafes.map(({ name, image, address, schedule, host, contact }) => (
-    <article class="border-secondary-border bg-primary-background grid grid-rows-[auto_auto_1fr] gap-y-12 rounded-xl border p-20">
-      <h2 class="text-lg/lg lg:text-xl/xl font-bold">{name}</h2>
+    <article class="cafe_card">
+      <h2 class="cafe_card_name">{name}</h2>
       {image ? (
-        <Image
-          src={image.src}
-          width={1200}
-          height={675}
-          alt=""
-          fit="contain"
-          format="webp"
-          class="bg-tertiary-background aspect-video rounded-md object-contain"
-        />
+        <Image src={image.src} width={1200} height={675} alt="" fit="contain" format="webp" class="cafe_card_image" />
       ) : (
-        <Image
-          src={defaultImg}
-          alt=""
-          width={675}
-          height={675}
-          format="webp"
-          fit="contain"
-          class="bg-tertiary-background aspect-video rounded-md object-contain"
-        />
+        <Image src={defaultImg} alt="" width={675} height={675} format="webp" fit="contain" class="cafe_card_image" />
       )}
       <dl>
-        <div class="odd:bg-tertiary-background flex flex-wrap gap-y-8 rounded-md py-8">
-          <dt class="text-sm/sm flex-[1_0_var(--spacing-84)] px-12">住所</dt>
-          <dd class="text-sm/sm min-w-[70%] flex-[9999_0_0] px-12">{address}</dd>
+        <div class="cafe_card_row">
+          <dt class="cafe_card_term">住所</dt>
+          <dd class="cafe_card_description">{address}</dd>
         </div>
-        <div class="odd:bg-tertiary-background flex flex-wrap gap-y-8 rounded-md py-8">
-          <dt class="text-sm/sm flex-[1_0_var(--spacing-84)] px-12">日時</dt>
-          <dd class="text-sm/sm min-w-[70%] flex-[9999_0_0] px-12">{schedule}</dd>
+        <div class="cafe_card_row">
+          <dt class="cafe_card_term">日時</dt>
+          <dd class="cafe_card_description">{schedule}</dd>
         </div>
-        <div class="odd:bg-tertiary-background flex flex-wrap gap-y-8 rounded-md py-8">
-          <dt class="text-sm/sm flex-[1_0_var(--spacing-84)] px-12">主催者</dt>
-          <dd class="text-sm/sm min-w-[70%] flex-[9999_0_0] px-12">{host}</dd>
+        <div class="cafe_card_row">
+          <dt class="cafe_card_term">主催者</dt>
+          <dd class="cafe_card_description">{host}</dd>
         </div>
         {contact !== "" && (
-          <div class="odd:bg-tertiary-background flex flex-wrap gap-y-8 rounded-md py-8">
-            <dt class="text-sm/sm flex-[1_0_var(--spacing-84)] px-12">連絡先</dt>
-            <dd class="text-sm/sm min-w-[70%] flex-[9999_0_0] px-12">{contact}</dd>
+          <div class="cafe_card_row">
+            <dt class="cafe_card_term">連絡先</dt>
+            <dd class="cafe_card_description">{contact}</dd>
           </div>
         )}
       </dl>
     </article>
   ))}
 </div>
+
+<style>
+  .cafe_list {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: var(--spacing-32);
+
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .cafe_card {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    row-gap: var(--spacing-12);
+    background-color: var(--color-primary-background);
+    border: 1px solid var(--color-secondary-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-20);
+  }
+
+  .cafe_card_name {
+    font-size: var(--text-lg);
+    line-height: var(--leading-lg);
+    font-weight: var(--font-weight-bold);
+
+    @media (width >= 64rem) {
+      font-size: var(--text-xl);
+      line-height: var(--leading-xl);
+    }
+  }
+
+  .cafe_card_image {
+    background-color: var(--color-tertiary-background);
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-md);
+    object-fit: contain;
+  }
+
+  .cafe_card_row {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: var(--spacing-8);
+    border-radius: var(--radius-md);
+    padding-block: var(--spacing-8);
+
+    &:nth-child(odd) {
+      background-color: var(--color-tertiary-background);
+    }
+  }
+
+  .cafe_card_term {
+    flex: 1 0 var(--spacing-84);
+    padding-inline: var(--spacing-12);
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+  }
+
+  .cafe_card_description {
+    flex: 9999 0 0;
+    min-inline-size: 70%;
+    padding-inline: var(--spacing-12);
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+  }
+</style>
