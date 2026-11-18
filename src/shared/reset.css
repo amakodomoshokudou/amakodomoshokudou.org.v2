@@ -1,0 +1,167 @@
+/*!
+  Tailwind CSS の preflight（https://github.com/tailwindlabs/tailwindcss）を基に、
+  node_modules/tailwindcss/preflight.css を元に、このサイトで使う要素に絞って改変した
+  リセット CSS。
+
+  Tailwind CSS is Copyright (c) Tailwind Labs, Inc.
+  Released under the MIT License. Full license text follows.
+
+MIT License
+
+Copyright (c) Tailwind Labs, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+/*
+  1. padding と border が要素の幅に影響しないようにする
+  2. デフォルトの margin と padding を消す
+  3. border をすべてリセットする
+*/
+
+*,
+::after,
+::before,
+::backdrop {
+  box-sizing: border-box; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 2 */
+  border: 0 solid; /* 3 */
+}
+
+/*
+  1. すべてのブラウザーで一貫した line-height にする
+  2. iOS で画面の向きを変えたときに文字サイズが自動調整されないようにする
+  3. 読みやすい tab-size にする
+  4. iOS のタップハイライトを無効にする
+*/
+
+html,
+:host {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  tab-size: 4; /* 3 */
+  -webkit-tap-highlight-color: transparent; /* 4 */
+}
+
+/*
+  見出しのフォントサイズと太字をリセットする
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+  リンクの色と下線をリセットする
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+  b 要素と strong 要素を太字にする
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+  リストのマーカーを消す
+*/
+
+ol,
+ul {
+  list-style: none;
+}
+
+/*
+  画像や埋め込み要素をブロック表示にする
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+}
+
+/*
+  画像と動画がコンテナーからはみ出さないようにする
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/*
+  summary の表示をブラウザー間で揃える
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+  button をリセットする（このサイトで使うフォーム部品は button のみ）
+*/
+
+button {
+  font: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  border-radius: 0;
+  background-color: transparent;
+  opacity: 1;
+  appearance: button;
+}
+
+/*
+  Firefox のフォーカスリングをフォーカス可能な要素に適用する
+*/
+
+:-moz-focusring:where(:not(iframe)) {
+  outline: auto;
+}
+
+/*
+  hidden 属性を持つ要素がデフォルトで非表示になるようにする
+*/
+
+[hidden] {
+  display: none;
+}

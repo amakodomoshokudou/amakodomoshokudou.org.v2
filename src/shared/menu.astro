@@ -2,31 +2,15 @@
 ---
 
 <div data-id="menu">
-  <button
-    type="button"
-    data-id="menu-open-button"
-    aria-expanded="false"
-    class="border-primary-border text-sm/sm inline-grid grid-cols-[auto_1fr] items-center gap-x-8 rounded-xl border px-12 py-8 font-bold lg:hidden"
-  >
-    <span
-      role="img"
-      class="size-[1.25em] bg-[currentColor] mask-[url(/assets/icons/menu.svg)] mask-cover mask-center mask-no-repeat"
-    ></span>
+  <button type="button" data-id="menu-open-button" aria-expanded="false" class="menu_open_button">
+    <span role="img" class="menu_open_icon"></span>
     メニュー
   </button>
-  <dialog data-id="menu-dialog" aria-label="メニュー" class="size-full max-h-full max-w-full bg-[rgb(0_0_0/0.8)]">
-    <div class="border-b-secondary-border bg-primary-background border-b p-20">
-      <div class="mx-auto grid max-w-576 gap-y-20">
-        <button
-          type="button"
-          data-id="menu-close-button"
-          class="border-primary-border bg-primary-background flex items-center justify-center gap-x-8 rounded-xl border px-12 py-8 font-bold"
-        >
-          <span
-            role="img"
-            aria-hidden="true"
-            class="size-[1.25em] bg-[currentColor] mask-[url(/assets/icons/close.svg)] mask-cover mask-center mask-no-repeat"
-          ></span>
+  <dialog data-id="menu-dialog" aria-label="メニュー" class="menu_dialog">
+    <div class="menu_body">
+      <div class="menu_content">
+        <button type="button" data-id="menu-close-button" class="menu_close_button">
+          <span role="img" aria-hidden="true" class="menu_close_icon"></span>
           閉じる
         </button>
         <slot />
@@ -66,3 +50,73 @@
     });
   }
 </script>
+
+<style>
+  .menu_open_button {
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: var(--spacing-8);
+    border: 1px solid var(--color-primary-border);
+    border-radius: var(--radius-xl);
+    padding-inline: var(--spacing-12);
+    padding-block: var(--spacing-8);
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+    font-weight: var(--font-weight-bold);
+
+    @media (width >= 64rem) {
+      display: none;
+    }
+  }
+
+  .menu_open_icon {
+    inline-size: 1.25em;
+    block-size: 1.25em;
+    background-color: currentColor;
+    -webkit-mask: url("/assets/icons/menu.svg") center / cover no-repeat;
+    mask: url("/assets/icons/menu.svg") center / cover no-repeat;
+  }
+
+  .menu_dialog {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: rgb(0 0 0 / 0.8);
+  }
+
+  .menu_body {
+    padding: var(--spacing-20);
+    background-color: var(--color-primary-background);
+    border-block-end: 1px solid var(--color-secondary-border);
+  }
+
+  .menu_content {
+    display: grid;
+    row-gap: var(--spacing-20);
+    max-width: var(--spacing-576);
+    margin-inline: auto;
+  }
+
+  .menu_close_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: var(--spacing-8);
+    border: 1px solid var(--color-primary-border);
+    background-color: var(--color-primary-background);
+    border-radius: var(--radius-xl);
+    padding-inline: var(--spacing-12);
+    padding-block: var(--spacing-8);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .menu_close_icon {
+    inline-size: 1.25em;
+    block-size: 1.25em;
+    background-color: currentColor;
+    -webkit-mask: url("/assets/icons/close.svg") center / cover no-repeat;
+    mask: url("/assets/icons/close.svg") center / cover no-repeat;
+  }
+</style>

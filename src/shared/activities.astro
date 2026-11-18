@@ -32,19 +32,73 @@ const activities = [
 ] as const;
 ---
 
-<div class="grid gap-20 md:grid-cols-3">
+<div class="activities">
   {activities.map(({ title, content, image }) => (
-    <section class="bg-primary-background @container rounded-xl">
-      <div class="@356:grid-cols-2 @356:grid-rows-[auto_1fr] @356:[grid-template-areas:'img_title'_'img_desc'] grid gap-x-20 gap-y-12 p-20 [grid-template-areas:'title'_'img'_'desc']">
-        <h3 class="text-lg/lg lg:text-xl/xl font-bold [grid-area:title]">{title}</h3>
-        <Image
-          src={image.metadata}
-          alt={image.alt}
-          format="webp"
-          class="aspect-video w-full rounded-md [grid-area:img]"
-        />
-        <p class="[grid-area:desc]">{content}</p>
+    <section class="activity">
+      <div class="activity_body">
+        <h3 class="activity_title">{title}</h3>
+        <Image src={image.metadata} alt={image.alt} format="webp" class="activity_image" />
+        <p class="activity_description">{content}</p>
       </div>
     </section>
   ))}
 </div>
+
+<style>
+  .activities {
+    display: grid;
+    gap: var(--spacing-20);
+
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .activity {
+    background-color: var(--color-primary-background);
+    border-radius: var(--radius-xl);
+    container-type: inline-size;
+  }
+
+  .activity_body {
+    display: grid;
+    column-gap: var(--spacing-20);
+    row-gap: var(--spacing-12);
+    padding: var(--spacing-20);
+    grid-template-areas:
+      "title"
+      "img"
+      "desc";
+
+    @container (width >= 22.25rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        "img title"
+        "img desc";
+    }
+  }
+
+  .activity_title {
+    grid-area: title;
+    font-size: var(--text-lg);
+    line-height: var(--leading-lg);
+    font-weight: var(--font-weight-bold);
+
+    @media (width >= 64rem) {
+      font-size: var(--text-xl);
+      line-height: var(--leading-xl);
+    }
+  }
+
+  .activity_image {
+    grid-area: img;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-md);
+  }
+
+  .activity_description {
+    grid-area: desc;
+  }
+</style>

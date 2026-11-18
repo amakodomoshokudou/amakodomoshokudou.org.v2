@@ -7,9 +7,23 @@ const props = Astro.props;
 ---
 
 <!-- biome-ignore lint/a11y/useHeadingContent: <slot />にタイトルの文字列が入るのでここではエラーを無視する -->
-<h2
-  id={props.id}
-  class="decoration-accent text-xl/xl lg:text-2xl/2xl font-bold underline decoration-8 -underline-offset-2"
->
+<h2 id={props.id} class="heading">
   <slot />
 </h2>
+
+<style>
+  .heading {
+    font-size: var(--text-xl);
+    line-height: var(--leading-xl);
+    font-weight: var(--font-weight-bold);
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 8px;
+    text-underline-offset: -2px;
+
+    @media (width >= 64rem) {
+      font-size: var(--text-2xl);
+      line-height: var(--leading-2xl);
+    }
+  }
+</style>

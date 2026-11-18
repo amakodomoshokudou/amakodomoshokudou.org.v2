@@ -44,9 +44,6 @@
   "css": {
     "linter": {
       "enabled": true
-    },
-    "parser": {
-      "tailwindDirectives": true
     }
   },
   "overrides": [
