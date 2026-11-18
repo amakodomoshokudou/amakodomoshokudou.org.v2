@@ -20,7 +20,7 @@ const pathname = Astro.url.pathname;
       <li>
         <a
           href="/cafes/"
-          aria-current={pathname === "/cafes" ? "page" : undefined}
+          aria-current={pathname === "/cafes/" ? "page" : undefined}
           data-current={pathname.startsWith("/cafes") && !pathname.startsWith("/cafes/areas") ? "" : undefined}
           class="filter_link"
         >
@@ -31,7 +31,7 @@ const pathname = Astro.url.pathname;
         <li>
           <a
             href={`/cafes/areas/${area.slug}/`}
-            aria-current={pathname === `/cafes/areas/${area.slug}` ? "page" : undefined}
+            aria-current={pathname === `/cafes/areas/${area.slug}/` ? "page" : undefined}
             data-current={pathname.startsWith(`/cafes/areas/${area.slug}`) ? "" : undefined}
             class="filter_link"
           >
