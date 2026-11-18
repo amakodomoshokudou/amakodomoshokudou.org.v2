@@ -2,7 +2,7 @@
 
 ## 方針
 
-- 移行時の具体的な書き方（クラス名の形式、1 要素 1 クラス名、状態・疑似要素のネスト表現、hover の扱い、参考例など）は `tailwind-to-css-migration` skill（`.agents/skills/tailwind-to-css-migration/SKILL.md`）を参照する
+- CSS の具体的な書き方（クラス名の形式、1 要素 1 クラス名、状態・疑似要素のネスト表現、hover の扱い、参考例など）は `css-style` skill（`.agents/skills/css-style/SKILL.md`）を参照する
 - `global.css` は CSS 標準のカスケードレイヤー `@layer reset, base, util` で構成する。トークン定義（`:root`）も base レイヤー内に置く。リセットは別ファイル `src/shared/reset.css` に切り出し、`@import "./reset.css" layer(reset)` で読み込む
 - トークンは Tailwind の `@theme` が出力していた CSS 変数の名前（`--spacing-84`、`--text-sm` など）を `@layer base` の `:root` で直接定義して維持する。`--container-*` と `--breakpoint-*` は参照が無いため定義しない
 - `prose` と `sr-only` は `global.css` の `@layer util` 内の共通クラスとして定義する。`sr-only` は Tailwind のビルトインと同名で使い続ける。それ以外はコンポーネントごとの scoped `<style>` に書き、重複を許容する（新規コンポーネントの切り出しはしない）
@@ -11,7 +11,7 @@
 
 ## TODO
 
-- 作業時は `tailwind-to-css-migration` skill を読むこと。規約の正本は skill 側で、この issue の「方針」は決定時点の記録である
+- 作業時は `css-style` skill を読むこと。規約の正本は skill 側で、この issue の「方針」は決定時点の記録である
 - [x] 移行方針を決める（上記「方針」の通り）
 - [x] メニュー開状態の VRT をトップページ向けに追加する（背面の img / iframe を `visibility: hidden` で隠して安定させた。ベースライン作成済み）
 - [x] VRT で表しきれていない状態を代表ページのみで追加する（ダークモード・コピーボタンの通知表示・area-filter の details 開状態。ベースライン作成済み）
@@ -30,7 +30,7 @@
 - [x] 自作のリセット CSS を作り preflight と置き換える（`src/shared/reset.css` を作成し、`@layer reset` として読み込み。preflight 由来の `vertical-align: middle` は本サイトで効果が無いため外した。VRT 全実行 OK）
 - [ ] リセット CSS を暫定の preflight 相当の内容から、このサイト向けに独自に整理した内容へ移す（使用していない要素・宣言の見直しなど）
 - [x] `@layer` を CSS 標準のカスケードレイヤーに整理し、`@apply` を純粋な CSS に書き換える（`@layer reset, base, util` 構成。`:focus` は暫定として base に global 定義、`.prose` / `.sr-only` は util の通常クラス化。VRT 全実行 OK）
-- [ ] `tailwind-to-css-migration` skill を実装後の構成に合わせて更新する（`@utility` の廃止、focus の global 化、`@layer` 構成の反映）
+- [x] 移行専用の `tailwind-to-css-migration` skill を削除し、CSS 規約を `css-style` skill（`.agents/skills/css-style/SKILL.md`）として整備する（移行手順を除き、`global.css` の `@layer` 構成、focus の global 定義、`prose` / `sr-only` の util レイヤー化を反映）
 - [ ] focus を暫定の `:focus` 定義から `:focus-visible` のみへ絞り込む（マウスフォーカス時に輪郭を出さない挙動に変わる）
 - [ ] 物理プロパティ（`margin-left` / `padding-left` / `padding-right` / `border-left` など left / right / top / bottom を使う宣言）を論理プロパティ（`*-inline-start` / `*-inline-end` / `*-block-start` / `*-block-end`）に統一する。移行済みの scoped style で混在しているものを整理する
 - [ ] `tailwindcss` と `@tailwindcss/vite` を依存関係から削除し、`astro.config.ts`・`biome.json` の `tailwindDirectives`・dependabot の設定・lockfile を整理する
