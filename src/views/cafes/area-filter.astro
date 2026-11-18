@@ -10,29 +10,19 @@ const { areas } = Astro.props;
 const pathname = Astro.url.pathname;
 ---
 
-<details class="group border-primary-border bg-tertiary-background rounded-xl border">
-  <summary
-    class="bg-primary-background grid cursor-pointer grid-cols-[1fr_1.5em] items-center rounded-xl px-12 py-8 group-open:rounded-b-none [&::-webkit-details-marker]:hidden"
-  >
-    <span class="font-bold">地区で絞る</span>
-    <span
-      role="img"
-      aria-hidden="true"
-      class="size-6 bg-[currentColor] mask-[url(/assets/icons/drop_down.svg)] mask-cover mask-center mask-no-repeat group-open:rotate-180"
-    ></span>
+<details class="area_filter">
+  <summary class="filter_summary">
+    <span class="filter_summary_label">地区で絞る</span>
+    <span role="img" aria-hidden="true" class="filter_icon"></span>
   </summary>
-  <nav class="border-t-secondary-border border-t p-12" aria-label="地区別">
-    <ol class="grid grid-cols-[repeat(auto-fill,min(var(--spacing-84),100%))] gap-12">
+  <nav class="filter_nav" aria-label="地区別">
+    <ol class="filter_list">
       <li>
         <a
           href="/cafes/"
           aria-current={pathname === "/cafes" ? "page" : undefined}
-          class={[
-            "grid justify-center rounded-xl border border-primary-border px-12 py-8",
-            pathname.startsWith("/cafes") && !pathname.startsWith("/cafes/areas")
-              ? "bg-secondary-background"
-              : "bg-primary-background",
-          ].join(" ")}
+          data-current={pathname.startsWith("/cafes") && !pathname.startsWith("/cafes/areas") ? "" : undefined}
+          class="filter_link"
         >
           すべて
         </a>
@@ -42,10 +32,8 @@ const pathname = Astro.url.pathname;
           <a
             href={`/cafes/areas/${area.slug}/`}
             aria-current={pathname === `/cafes/areas/${area.slug}` ? "page" : undefined}
-            class={[
-              "border-primary-border grid justify-center rounded-xl border px-12 py-8",
-              pathname.startsWith(`/cafes/areas/${area.slug}`) ? "bg-secondary-background" : "bg-primary-background",
-            ].join(" ")}
+            data-current={pathname.startsWith(`/cafes/areas/${area.slug}`) ? "" : undefined}
+            class="filter_link"
           >
             {area.name}
           </a>
@@ -54,3 +42,72 @@ const pathname = Astro.url.pathname;
     </ol>
   </nav>
 </details>
+
+<style>
+  .area_filter {
+    background-color: var(--color-tertiary-background);
+    border: 1px solid var(--color-primary-border);
+    border-radius: var(--radius-xl);
+
+    &[open] .filter_summary {
+      border-end-start-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    &[open] .filter_icon {
+      rotate: 180deg;
+    }
+  }
+
+  .filter_summary {
+    display: grid;
+    grid-template-columns: 1fr 1.5em;
+    align-items: center;
+    background-color: var(--color-primary-background);
+    border-radius: var(--radius-xl);
+    padding-inline: var(--spacing-12);
+    padding-block: var(--spacing-8);
+    cursor: pointer;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  .filter_summary_label {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .filter_icon {
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+    background-color: currentColor;
+    -webkit-mask: url(/assets/icons/drop_down.svg) center / cover no-repeat;
+    mask: url(/assets/icons/drop_down.svg) center / cover no-repeat;
+  }
+
+  .filter_nav {
+    border-block-start: 1px solid var(--color-secondary-border);
+    padding: var(--spacing-12);
+  }
+
+  .filter_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, min(var(--spacing-84), 100%));
+    gap: var(--spacing-12);
+  }
+
+  .filter_link {
+    display: grid;
+    justify-content: center;
+    background-color: var(--color-primary-background);
+    border: 1px solid var(--color-primary-border);
+    border-radius: var(--radius-xl);
+    padding-inline: var(--spacing-12);
+    padding-block: var(--spacing-8);
+
+    &[data-current] {
+      background-color: var(--color-secondary-background);
+    }
+  }
+</style>
