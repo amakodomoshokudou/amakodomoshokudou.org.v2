@@ -2,10 +2,12 @@
 
 ## 方針
 
-- 移行時の具体的な書き方（クラス名の形式、1 要素 1 クラス名、状態・疑似要素のネスト表現、hover・focus の扱い、参考例など）は `tailwind-to-css-migration` skill（`.agents/skills/tailwind-to-css-migration/SKILL.md`）を参照する
-- `prose` と `sr-only` を `globals.css` の共通クラス（`@utility`）として定義する。`sr-only` は Tailwind のビルトインを上書きし、廃止後も同名で使い続ける。それ以外はコンポーネントごとの scoped `<style>` に書き、重複を許容する（新規コンポーネントの切り出しはしない）
-- Tailwind の `@theme` が出力する CSS 変数の名前（`--spacing-84`、`--text-sm` など）は最終段の `:root` 定義でも維持する
-- `globals.css` への追加は限定的とする。hover・focus などのインタラクションスタイルは global に置かず、各コンポーネントの scoped `<style>` でその class に明示する
+- 移行時の具体的な書き方（クラス名の形式、1 要素 1 クラス名、状態・疑似要素のネスト表現、hover の扱い、参考例など）は `tailwind-to-css-migration` skill（`.agents/skills/tailwind-to-css-migration/SKILL.md`）を参照する
+- `globals.css` は CSS 標準のカスケードレイヤー `@layer reset, base, util` で構成する。トークン定義（`:root`）も base レイヤー内に置く。リセットは別ファイル `src/shared/reset.css` に切り出し、`@import "./reset.css" layer(reset)` で読み込む
+- トークンは Tailwind の `@theme` が出力していた CSS 変数の名前（`--spacing-84`、`--text-sm` など）を `@layer base` の `:root` で直接定義して維持する。`--container-*` と `--breakpoint-*` は参照が無いため定義しない
+- `prose` と `sr-only` は `globals.css` の `@layer util` 内の共通クラスとして定義する。`sr-only` は Tailwind のビルトインと同名で使い続ける。それ以外はコンポーネントごとの scoped `<style>` に書き、重複を許容する（新規コンポーネントの切り出しはしない）
+- focus は移行中の暫定対応として、旧実装と同じ全フォーカス状態に適用する `:focus` を `@layer base` に global 定義している（マウスフォーカスでも輪郭が出る。当初は各コンポーネントの scoped style に `:focus-visible` を置く方針だったが、breadcrumb リンクや iframe への適用漏れを防ぐため global に一本化した）。移行完了後は `:focus` を使わず `:focus-visible` のみへ絞り込む方針は維持する（その際、マウスフォーカス時には輪郭が出なくなる挙動変化がある）。hover は各コンポーネントの scoped `<style>` でその class に明示する
+- `globals.css` への追加は限定的とする
 
 ## TODO
 
@@ -14,8 +16,8 @@
 - [x] メニュー開状態の VRT をトップページ向けに追加する（背面の img / iframe を `visibility: hidden` で隠して安定させた。ベースライン作成済み）
 - [x] VRT で表しきれていない状態を代表ページのみで追加する（ダークモード・コピーボタンの通知表示・area-filter の details 開状態。ベースライン作成済み）
 - [x] 移行開始前に VRT のスナップショットが現状と一致していることを確認する（VRT 全実行 OK、ベースライン作成済み）
-- [ ] `.astro` ファイルの Tailwind クラスを、同じファイルの `<style>` ブロックへ純粋な CSS として移行する。トークンは Tailwind の `@theme` が出力する CSS 変数を `var()` で参照する（この間 Tailwind 依存は残す）
-- [ ] 移行単位ごとに VRT を実行し、表示差分を確認・修正しながら移行する
+- [x] `.astro` ファイルの Tailwind クラスを、同じファイルの `<style>` ブロックへ純粋な CSS として移行する。トークンは Tailwind の `@theme` が出力する CSS 変数を `var()` で参照した（この間 Tailwind 依存は残した。全ページの移行完了）
+- [x] 移行単位ごとに VRT を実行し、表示差分を確認・修正しながら移行する（全移行単位で VRT 全実行 OK）
 - [x] src/shared のコンポーネントを移行する（全ページ共通のため、完了後に全ページの VRT を確認する。VRT 全実行 OK）
 - [x] トップページ（views/index）を移行する（VRT 全実行 OK）
 - [x] 私たちについて（views/about）を移行する（VRT 全実行 OK）
@@ -24,10 +26,12 @@
 - [x] こども食堂の立ち上げ（views/start-cafe）を移行する（VRT 全実行 OK）
 - [x] プライバシーポリシー（views/privacy-policy）を移行する（VRT 全実行 OK）
 - [x] 404（views/not-found）を移行する（VRT 全実行 OK）
-- [ ] `globals.css` を純粋な CSS に置き換える: `@import "tailwindcss"` と `@theme` を廃止し、トークンを `:root` の CSS 変数として直接定義する
-- [ ] `--spacing-*` と `--container-*` のトークンの区別を明確にする。`max-w-640` など Tailwind では `--container-*` に解決される参照が移行後 `--spacing-*` で代用されており、値が同一のため現状は等価だが、最終段の `:root` 定義時に用途ごとの参照先を整理する（移行済みページでは `--spacing-*` 参照に統一されている）
+- [x] `globals.css` を純粋な CSS に置き換える: `@import "tailwindcss"` と `@theme` を廃止し、トークンを `@layer base` の `:root` で直接定義する。`--container-*` と `--breakpoint-*` は参照が無いため削除する（VRT 全実行 OK）
+- [x] 自作のリセット CSS を作り preflight と置き換える（`src/shared/reset.css` を作成し、`@layer reset` として読み込み。preflight 由来の `vertical-align: middle` は本サイトで効果が無いため外した。VRT 全実行 OK）
+- [ ] リセット CSS を暫定の preflight 相当の内容から、このサイト向けに独自に整理した内容へ移す（使用していない要素・宣言の見直しなど）
+- [x] `@layer` を CSS 標準のカスケードレイヤーに整理し、`@apply` を純粋な CSS に書き換える（`@layer reset, base, util` 構成。`:focus` は暫定として base に global 定義、`.prose` / `.sr-only` は util の通常クラス化。VRT 全実行 OK）
+- [ ] `tailwind-to-css-migration` skill を実装後の構成に合わせて更新する（`@utility` の廃止、focus の global 化、`@layer` 構成の反映）
+- [ ] focus を暫定の `:focus` 定義から `:focus-visible` のみへ絞り込む（マウスフォーカス時に輪郭を出さない挙動に変わる）
 - [ ] 物理プロパティ（`margin-left` / `padding-left` / `padding-right` / `border-left` など left / right / top / bottom を使う宣言）を論理プロパティ（`*-inline-start` / `*-inline-end` / `*-block-start` / `*-block-end`）に統一する。移行済みの scoped style で混在しているものを整理する
-- [ ] 自作のリセット CSS を作り preflight と置き換える
-- [ ] `@layer` を CSS 標準のカスケードレイヤーに整理し、`@apply` を純粋な CSS に書き換える（`:focus` / `:focus-visible` のスタイルは方針に従い、対象要素を持つコンポーネントの scoped style へ移す）
 - [ ] `tailwindcss` と `@tailwindcss/vite` を依存関係から削除し、`astro.config.ts`・`biome.json` の `tailwindDirectives`・dependabot の設定・lockfile を整理する
 - [ ] 最終確認: `build` と `build:mock`、`astro check`、`biome check`、`lint:html`、VRT を実行する
