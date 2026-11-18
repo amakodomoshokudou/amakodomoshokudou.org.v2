@@ -30,8 +30,6 @@ updates:
         patterns:
           - "astro"
           - "@astrojs/*"
-          - "tailwindcss"
-          - "@tailwindcss/vite"
           - "microcms-js-sdk"
           - "sharp"
       typescript:
