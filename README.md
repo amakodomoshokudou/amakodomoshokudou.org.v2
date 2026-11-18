@@ -39,6 +39,7 @@ MICROCMS_API_KEY=xxxx
 ### VRT
 
 Docker Compose 2.17.0 以降で実行できます。microCMS の環境変数の設定は不要です。
+
 - `pnpm run vrt`：モックデータで画像比較
 - `pnpm run vrt:update`：`vrt/screenshot.spec.ts-snapshots/` のスナップショットを更新
 - `pnpm exec playwright show-report playwright-outputs/report`：レポートを表示
