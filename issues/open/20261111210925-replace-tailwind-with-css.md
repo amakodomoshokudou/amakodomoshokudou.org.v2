@@ -33,5 +33,5 @@
 - [x] 移行専用の `tailwind-to-css-migration` skill を削除し、CSS 規約を `css-style` skill（`.agents/skills/css-style/SKILL.md`）として整備する（移行手順を除き、`global.css` の `@layer` 構成、focus の global 定義、`prose` / `sr-only` の util レイヤー化を反映）
 - [ ] focus を暫定の `:focus` 定義から `:focus-visible` のみへ絞り込む（マウスフォーカス時に輪郭を出さない挙動に変わる）
 - [ ] 物理プロパティ（`margin-left` / `padding-left` / `padding-right` / `border-left` など left / right / top / bottom を使う宣言）を論理プロパティ（`*-inline-start` / `*-inline-end` / `*-block-start` / `*-block-end`）に統一する。移行済みの scoped style で混在しているものを整理する
-- [ ] `tailwindcss` と `@tailwindcss/vite` を依存関係から削除し、`astro.config.ts`・`biome.json` の `tailwindDirectives`・dependabot の設定・lockfile を整理する
+- [x] `tailwindcss` と `@tailwindcss/vite` を依存関係から削除し、`astro.config.ts`・`biome.json` の `tailwindDirectives`・dependabot の設定・lockfile を整理する（lockfile はユーザーが `pnpm install` で更新。ビルド成果物の CSS は削除前と完全一致）
 - [ ] 最終確認: `build` と `build:mock`、`astro check`、`biome check`、`lint:html`、VRT を実行する
