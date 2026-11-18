@@ -1,6 +1,6 @@
 @layer reset, base, util;
 
-@import "./reset.css" layer(reset);
+@import "./_reset.css" layer(reset);
 
 @layer base {
   :root {
