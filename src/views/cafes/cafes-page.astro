@@ -16,23 +16,17 @@ export type Props = {
 const { isFirstPage, currentPage, lastPage, cafes, allAreas } = Astro.props;
 ---
 
-<div
-  class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
->
-  <div
-    class="border-t-accent col-span-full grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:col-2 lg:gap-y-32 lg:py-52"
-  >
-    <div class="grid gap-y-20">
-      <h1 class="grid justify-items-start gap-y-12 font-bold">
-        <span class="text-2xl/2xl lg:text-3xl/3xl">尼崎のこども食堂</span>
-        {!isFirstPage && (
-          <span class="bg-secondary-background text-xs/xs rounded-xs px-8 py-4">{currentPage}ページ目</span>
-        )}
+<div class="cafes_page">
+  <div class="cafes_header">
+    <div class="cafes_heading">
+      <h1 class="cafes_heading_title">
+        <span class="cafes_heading_title_label">尼崎のこども食堂</span>
+        {!isFirstPage && <span class="cafes_heading_title_page">{currentPage}ページ目</span>}
       </h1>
-      <p class="text-sm/sm">掲載許可の取れたこども食堂のみ掲載しています。</p>
+      <p class="cafes_description">掲載許可の取れたこども食堂のみ掲載しています。</p>
     </div>
-    <div class="border-secondary-border grid gap-y-12 rounded-xl border p-12 lg:p-20">
-      <p class="font-bold">PDF版の資料</p>
+    <div class="cafes_document">
+      <p class="cafes_document_heading">PDF版の資料</p>
       <p>
         <DownloadLink
           href="/media/documents/amakodomoshokudou-map.pdf"
@@ -42,9 +36,115 @@ const { isFirstPage, currentPage, lastPage, cafes, allAreas } = Astro.props;
       </p>
     </div>
   </div>
-  <div class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-32 py-32 *:col-2 lg:gap-y-52 lg:py-52">
+  <div class="cafes_sections">
     <AreaFilter areas={allAreas} />
     <CafeList cafes={cafes} />
     {lastPage > 1 && <Pagination current={currentPage} total={lastPage} baseUrl="/cafes/" />}
   </div>
 </div>
+
+<style>
+  .cafes_page {
+    display: grid;
+    grid-template-columns:
+      minmax(var(--spacing-20), 1fr)
+      minmax(0, var(--spacing-932))
+      minmax(var(--spacing-20), 1fr);
+
+    @media (width >= 64rem) {
+      grid-template-columns:
+        minmax(var(--spacing-32), 1fr)
+        minmax(0, var(--spacing-932))
+        minmax(var(--spacing-32), 1fr);
+    }
+  }
+
+  .cafes_header {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    border-block-start: 8px solid var(--color-accent);
+    row-gap: var(--spacing-20);
+    padding-block: var(--spacing-32);
+
+    & > * {
+      grid-column: 2;
+    }
+
+    @media (width >= 64rem) {
+      row-gap: var(--spacing-32);
+      padding-block: var(--spacing-52);
+    }
+  }
+
+  .cafes_heading {
+    display: grid;
+    row-gap: var(--spacing-20);
+  }
+
+  .cafes_heading_title {
+    display: grid;
+    justify-items: start;
+    row-gap: var(--spacing-12);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .cafes_heading_title_label {
+    font-size: var(--text-2xl);
+    line-height: var(--leading-2xl);
+
+    @media (width >= 64rem) {
+      font-size: var(--text-3xl);
+      line-height: var(--leading-3xl);
+    }
+  }
+
+  .cafes_heading_title_page {
+    background-color: var(--color-secondary-background);
+    border-radius: var(--radius-xs);
+    padding-inline: var(--spacing-8);
+    padding-block: var(--spacing-4);
+    font-size: var(--text-xs);
+    line-height: var(--leading-xs);
+  }
+
+  .cafes_description {
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+  }
+
+  .cafes_document {
+    display: grid;
+    row-gap: var(--spacing-12);
+    border: 1px solid var(--color-secondary-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-12);
+
+    @media (width >= 64rem) {
+      padding: var(--spacing-20);
+    }
+  }
+
+  .cafes_document_heading {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .cafes_sections {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    background-color: var(--color-secondary-background);
+    row-gap: var(--spacing-32);
+    padding-block: var(--spacing-32);
+
+    /* AreaFilter / CafeList / Pagination の要素にはスコープが付かないため :global() を使う */
+    & > :global(*) {
+      grid-column: 2;
+    }
+
+    @media (width >= 64rem) {
+      row-gap: var(--spacing-52);
+      padding-block: var(--spacing-52);
+    }
+  }
+</style>

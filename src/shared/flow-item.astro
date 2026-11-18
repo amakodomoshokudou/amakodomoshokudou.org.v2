@@ -7,12 +7,58 @@ export type Props = {
 const props = Astro.props;
 ---
 
-<section class="bg-primary-background grid gap-y-20 rounded-xl p-20 lg:p-32">
-  <h3 class="grid justify-items-start gap-y-12">
-    <span class="bg-secondary-background text-sm/sm inline-block rounded-xs px-8 py-4">手順{props.step}</span>
-    <span class="text-lg/lg lg:text-xl/xl font-bold">{props.title}</span>
+<section class="flow_item">
+  <h3 class="flow_item_heading">
+    <span class="flow_item_step">手順{props.step}</span>
+    <span class="flow_item_title">{props.title}</span>
   </h3>
-  <div class="prose grid gap-y-20">
+  <div class="prose flow_item_body">
     <slot />
   </div>
 </section>
+
+<style>
+  .flow_item {
+    display: grid;
+    row-gap: var(--spacing-20);
+    background-color: var(--color-primary-background);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-20);
+
+    @media (width >= 64rem) {
+      padding: var(--spacing-32);
+    }
+  }
+
+  .flow_item_heading {
+    display: grid;
+    justify-items: start;
+    row-gap: var(--spacing-12);
+  }
+
+  .flow_item_step {
+    display: inline-block;
+    background-color: var(--color-secondary-background);
+    border-radius: var(--radius-xs);
+    padding-inline: var(--spacing-8);
+    padding-block: var(--spacing-4);
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+  }
+
+  .flow_item_title {
+    font-size: var(--text-lg);
+    line-height: var(--leading-lg);
+    font-weight: var(--font-weight-bold);
+
+    @media (width >= 64rem) {
+      font-size: var(--text-xl);
+      line-height: var(--leading-xl);
+    }
+  }
+
+  .flow_item_body {
+    display: grid;
+    row-gap: var(--spacing-20);
+  }
+</style>

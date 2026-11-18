@@ -1,8 +1,15 @@
 ---
 ---
 
-<span
-  role="img"
-  aria-label="次"
-  class="mx-auto size-20 bg-[currentColor] mask-[url(/assets/icons/next_step.svg)] mask-cover mask-center mask-no-repeat"
-></span>
+<span role="img" aria-label="次" class="next_step"></span>
+
+<style>
+  .next_step {
+    margin-inline: auto;
+    inline-size: var(--spacing-20);
+    block-size: var(--spacing-20);
+    background-color: currentColor;
+    -webkit-mask: url("/assets/icons/next_step.svg") center / cover no-repeat;
+    mask: url("/assets/icons/next_step.svg") center / cover no-repeat;
+  }
+</style>

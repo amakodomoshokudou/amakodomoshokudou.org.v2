@@ -8,15 +8,30 @@ export type Props = {
 const { href, filename, text } = Astro.props;
 ---
 
-<a
-  href={href}
-  download={filename}
-  class="border-primary-border text-md/md inline-grid grid-cols-[1fr_auto] items-center gap-x-8 rounded-xl border px-12 py-8"
->
+<a href={href} download={filename} class="download_link">
   {text}
-  <span
-    role="img"
-    aria-label="をダウンロード"
-    class="size-[1em] bg-[currentColor] mask-[url(/assets/icons/download.svg)] mask-cover mask-center mask-no-repeat"
-  ></span>
+  <span role="img" aria-label="をダウンロード" class="download_link_icon"></span>
 </a>
+
+<style>
+  .download_link {
+    display: inline-grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: var(--spacing-8);
+    border: 1px solid var(--color-primary-border);
+    border-radius: var(--radius-xl);
+    padding-inline: var(--spacing-12);
+    padding-block: var(--spacing-8);
+    font-size: var(--text-md);
+    line-height: var(--leading-md);
+  }
+
+  .download_link_icon {
+    inline-size: 1em;
+    block-size: 1em;
+    background-color: currentColor;
+    -webkit-mask: url("/assets/icons/download.svg") center / cover no-repeat;
+    mask: url("/assets/icons/download.svg") center / cover no-repeat;
+  }
+</style>

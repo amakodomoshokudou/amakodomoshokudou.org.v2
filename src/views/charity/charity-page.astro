@@ -14,16 +14,12 @@ export type Props = {
 const { title } = Astro.props;
 ---
 
-<div
-  class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
->
-  <div
-    class="border-t-accent col-span-full grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:col-2 lg:gap-y-32 lg:py-52"
-  >
-    <h1 class="text-2xl/2xl lg:text-3xl/3xl font-bold">
+<div class="charity_page">
+  <div class="charity_header">
+    <h1 class="charity_header_title">
       {title}
     </h1>
-    <ol class="flex flex-wrap gap-x-20 gap-y-12">
+    <ol class="charity_links">
       <li>
         <ToSectionLink target="with-items" text="物品で支援する" />
       </li>
@@ -32,22 +28,22 @@ const { title } = Astro.props;
       </li>
     </ol>
   </div>
-  <div class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-52 py-32 *:col-2 lg:gap-y-84 lg:py-52">
-    <section class="grid gap-y-32">
-      <div class="prose grid gap-y-20">
+  <div class="charity_sections">
+    <section class="section">
+      <div class="prose support_intro">
         <Heading id="with-items">物品で支援する</Heading>
         <p>
           フードパントリーで使うレトルト食品や日持ちのする食料品、会食や弁当づくりに使う缶詰やお米等を寄付頂ける方は、こちらの手順にそって、ご支援をよろしくお願いします。
         </p>
-        <div class="border-danger bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20">
-          <p class="text-danger font-bold">重要なお知らせ</p>
-          <p class="text-md/loose">
+        <div class="notice_box">
+          <p class="notice_box_heading">重要なお知らせ</p>
+          <p class="notice_box_text">
             現在、生鮮食品は保管場所の関係から、原則受付していません。<br />
             ご理解のほど、よろしくお願いします。
           </p>
         </div>
       </div>
-      <div class="grid gap-y-20">
+      <div class="support_flow">
         <FlowItem step={1} title="寄付頂けるものをお選びください">
           <p>
             <TextLink href="https://www.amazon.co.jp/hz/wishlist/ls/2H3AWSTZSQY2L?ref_=wl_share" target="_blank">
@@ -62,9 +58,9 @@ const { title } = Astro.props;
             寄付頂けるものがご準備できましたら、下記メールアドレスまで寄付頂ける物品等の情報を、事務局までご連絡ください。
           </p>
           <p>送付先の情報等、折り返しご連絡させていただきます。</p>
-          <div class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20">
-            <p class="font-bold">連絡先のメールアドレス</p>
-            <p class="text-sm/sm">{summary.mail.value}</p>
+          <div class="mail_box">
+            <p class="mail_box_heading">連絡先のメールアドレス</p>
+            <p class="mail_box_address">{summary.mail.value}</p>
             <p>
               <CopyButton copyText={summary.mail.value}>メールアドレスをコピー</CopyButton>
             </p>
@@ -72,21 +68,21 @@ const { title } = Astro.props;
         </FlowItem>
       </div>
     </section>
-    <section class="grid gap-y-32">
-      <div class="prose grid gap-y-20">
+    <section class="section">
+      <div class="prose support_intro">
         <Heading id="with-donations">寄付金で支援する</Heading>
         <p>「アマのこども食堂を応援したい！」という思いで寄付金をお寄せ頂ける方は、以下の口座よりお願いいたします。</p>
         <p>お寄せ頂いた寄付金はこども食堂の運営にかかる経費助成等に使わせて頂きます。</p>
       </div>
-      <div class="grid gap-y-20">
+      <div class="support_flow">
         <FlowItem step={1} title="指定の口座までご振込ください">
-          <div class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20">
-            <p class="font-bold">口座情報</p>
+          <div class="bank_box">
+            <p class="bank_box_heading">口座情報</p>
             <dl>
               {Object.values(bankAccount).map(({ title, value }) => (
-                <div class="odd:bg-tertiary-background flex flex-wrap gap-y-8 rounded-md py-8">
-                  <dt class="text-sm/sm flex-[1_0_var(--spacing-136)] px-12">{title}</dt>
-                  <dd class="text-sm/sm min-w-[60%] flex-[9999_0_0] px-12">{value}</dd>
+                <div class="bank_row">
+                  <dt class="bank_row_term">{title}</dt>
+                  <dd class="bank_row_description">{value}</dd>
                 </div>
               ))}
             </dl>
@@ -95,9 +91,9 @@ const { title } = Astro.props;
         <NextStep />
         <FlowItem step={2} title="事務局までご連絡をお願いします">
           <p>ご寄付をお寄せ頂いた場合は、お手数ですが下記のメールアドレスまでご連絡ください。</p>
-          <div class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20">
-            <p class="font-bold">連絡先のメールアドレス</p>
-            <p class="text-sm/sm">{summary.mail.value}</p>
+          <div class="mail_box">
+            <p class="mail_box_heading">連絡先のメールアドレス</p>
+            <p class="mail_box_address">{summary.mail.value}</p>
             <p>
               <CopyButton copyText={summary.mail.value}>メールアドレスをコピー</CopyButton>
             </p>
@@ -107,3 +103,178 @@ const { title } = Astro.props;
     </section>
   </div>
 </div>
+
+<style>
+  .charity_page {
+    display: grid;
+    grid-template-columns:
+      minmax(var(--spacing-20), 1fr)
+      minmax(0, var(--spacing-932))
+      minmax(var(--spacing-20), 1fr);
+
+    @media (width >= 64rem) {
+      grid-template-columns:
+        minmax(var(--spacing-32), 1fr)
+        minmax(0, var(--spacing-932))
+        minmax(var(--spacing-32), 1fr);
+    }
+  }
+
+  .charity_header {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    border-block-start: 8px solid var(--color-accent);
+    row-gap: var(--spacing-20);
+    padding-block: var(--spacing-32);
+
+    & > * {
+      grid-column: 2;
+    }
+
+    @media (width >= 64rem) {
+      row-gap: var(--spacing-32);
+      padding-block: var(--spacing-52);
+    }
+  }
+
+  .charity_header_title {
+    font-size: var(--text-2xl);
+    line-height: var(--leading-2xl);
+    font-weight: var(--font-weight-bold);
+
+    @media (width >= 64rem) {
+      font-size: var(--text-3xl);
+      line-height: var(--leading-3xl);
+    }
+  }
+
+  .charity_links {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--spacing-20);
+    row-gap: var(--spacing-12);
+  }
+
+  .charity_sections {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    background-color: var(--color-secondary-background);
+    row-gap: var(--spacing-52);
+    padding-block: var(--spacing-32);
+
+    & > * {
+      grid-column: 2;
+    }
+
+    @media (width >= 64rem) {
+      row-gap: var(--spacing-84);
+      padding-block: var(--spacing-52);
+    }
+  }
+
+  .section {
+    display: grid;
+    row-gap: var(--spacing-32);
+  }
+
+  .support_intro {
+    display: grid;
+    row-gap: var(--spacing-20);
+  }
+
+  .support_flow {
+    display: grid;
+    row-gap: var(--spacing-20);
+  }
+
+  .notice_box {
+    display: grid;
+    row-gap: var(--spacing-12);
+    background-color: var(--color-primary-background);
+    border: 1px solid var(--color-danger);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-12);
+
+    @media (width >= 64rem) {
+      padding: var(--spacing-20);
+    }
+  }
+
+  .notice_box_heading {
+    color: var(--color-danger);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .notice_box_text {
+    font-size: var(--text-md);
+    line-height: var(--leading-loose);
+  }
+
+  .mail_box {
+    display: grid;
+    row-gap: var(--spacing-12);
+    background-color: var(--color-primary-background);
+    border: 1px solid var(--color-secondary-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-12);
+
+    @media (width >= 64rem) {
+      padding: var(--spacing-20);
+    }
+  }
+
+  .mail_box_heading {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .mail_box_address {
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+  }
+
+  .bank_box_heading {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .bank_box {
+    display: grid;
+    row-gap: var(--spacing-12);
+    background-color: var(--color-primary-background);
+    border: 1px solid var(--color-secondary-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-12);
+
+    @media (width >= 64rem) {
+      padding: var(--spacing-20);
+    }
+  }
+
+  .bank_row {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: var(--spacing-8);
+    border-radius: var(--radius-md);
+    padding-block: var(--spacing-8);
+
+    &:nth-child(odd) {
+      background-color: var(--color-tertiary-background);
+    }
+  }
+
+  .bank_row_term {
+    flex: 1 0 var(--spacing-136);
+    padding-inline: var(--spacing-12);
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+  }
+
+  .bank_row_description {
+    flex: 9999 0 0;
+    min-inline-size: 60%;
+    padding-inline: var(--spacing-12);
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+  }
+</style>

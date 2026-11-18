@@ -15,15 +15,11 @@ export type Props = {
 const { title } = Astro.props;
 ---
 
-<div
-  class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
->
-  <div
-    class="border-t-accent col-span-full grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:col-2 lg:gap-y-32 lg:py-52"
-  >
-    <h1 class="text-2xl/2xl lg:text-3xl/3xl font-bold">{title}</h1>
-    <div class="border-secondary-border grid gap-y-12 rounded-xl border p-12 lg:p-20">
-      <p class="font-bold">PDF版の資料</p>
+<div class="start_cafe_page">
+  <div class="start_cafe_header">
+    <h1 class="start_cafe_header_title">{title}</h1>
+    <div class="start_cafe_document">
+      <p class="start_cafe_document_heading">PDF版の資料</p>
       <p>
         <DownloadLink
           href="/media/documents/amakodomoshokudou-leaflet.pdf"
@@ -32,7 +28,7 @@ const { title } = Astro.props;
         />
       </p>
     </div>
-    <ol class="flex flex-wrap gap-x-20 gap-y-12">
+    <ol class="start_cafe_links">
       <li>
         <ToSectionLink target="flow" text="立ち上げの流れ" />
       </li>
@@ -41,8 +37,8 @@ const { title } = Astro.props;
       </li>
     </ol>
   </div>
-  <div class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-52 py-32 *:col-2 lg:gap-y-84 lg:py-52">
-    <section class="grid gap-y-20">
+  <div class="start_cafe_sections">
+    <section class="section">
       <Heading id="flow">立ち上げの流れ</Heading>
       <FlowItem step={1} title="まずは気持ちを整理!">
         <p>なぜ活動しようと思ったのか、どんな食堂にしたいのか、気持ちを整理してみましょう。</p>
@@ -92,13 +88,13 @@ const { title } = Astro.props;
         </p>
       </FlowItem>
     </section>
-    <section class="prose grid gap-y-20">
+    <section class="prose section">
       <Heading id="mailing-list">メーリングリストに登録することができます</Heading>
       <p>寄付食材や研修会の情報等、活動を続けていくために役立つ情報をお届けします。</p>
       <p>尼崎こども食堂ネットワーク事務局まで、登録希望のご連絡をお願いします。</p>
-      <div class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20">
-        <p class="font-bold">連絡先のメールアドレス</p>
-        <p class="text-sm/sm">{summary.mail.value}</p>
+      <div class="mail_box">
+        <p class="mail_box_heading">連絡先のメールアドレス</p>
+        <p class="mail_box_address">{summary.mail.value}</p>
         <p>
           <CopyButton copyText={summary.mail.value}>メールアドレスをコピー</CopyButton>
         </p>
@@ -106,3 +102,117 @@ const { title } = Astro.props;
     </section>
   </div>
 </div>
+
+<style>
+  .start_cafe_page {
+    display: grid;
+    grid-template-columns:
+      minmax(var(--spacing-20), 1fr)
+      minmax(0, var(--spacing-932))
+      minmax(var(--spacing-20), 1fr);
+
+    @media (width >= 64rem) {
+      grid-template-columns:
+        minmax(var(--spacing-32), 1fr)
+        minmax(0, var(--spacing-932))
+        minmax(var(--spacing-32), 1fr);
+    }
+  }
+
+  .start_cafe_header {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    border-block-start: 8px solid var(--color-accent);
+    row-gap: var(--spacing-20);
+    padding-block: var(--spacing-32);
+
+    & > * {
+      grid-column: 2;
+    }
+
+    @media (width >= 64rem) {
+      row-gap: var(--spacing-32);
+      padding-block: var(--spacing-52);
+    }
+  }
+
+  .start_cafe_header_title {
+    font-size: var(--text-2xl);
+    line-height: var(--leading-2xl);
+    font-weight: var(--font-weight-bold);
+
+    @media (width >= 64rem) {
+      font-size: var(--text-3xl);
+      line-height: var(--leading-3xl);
+    }
+  }
+
+  .start_cafe_document {
+    display: grid;
+    row-gap: var(--spacing-12);
+    border: 1px solid var(--color-secondary-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-12);
+
+    @media (width >= 64rem) {
+      padding: var(--spacing-20);
+    }
+  }
+
+  .start_cafe_document_heading {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .start_cafe_links {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--spacing-20);
+    row-gap: var(--spacing-12);
+  }
+
+  .start_cafe_sections {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    background-color: var(--color-secondary-background);
+    row-gap: var(--spacing-52);
+    padding-block: var(--spacing-32);
+
+    & > * {
+      grid-column: 2;
+    }
+
+    @media (width >= 64rem) {
+      row-gap: var(--spacing-84);
+      padding-block: var(--spacing-52);
+    }
+  }
+
+  .section {
+    display: grid;
+    row-gap: var(--spacing-20);
+  }
+
+  .mail_box {
+    display: grid;
+    row-gap: var(--spacing-12);
+    background-color: var(--color-primary-background);
+    border: 1px solid var(--color-secondary-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-12);
+
+    @media (width >= 64rem) {
+      padding: var(--spacing-20);
+    }
+  }
+
+  .mail_box_heading {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .mail_box_address {
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+  }
+</style>

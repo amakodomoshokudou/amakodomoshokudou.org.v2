@@ -13,70 +13,194 @@ export type Props = {
 const { title } = Astro.props;
 ---
 
-<div
-  class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
->
-  <section class="border-t-accent col-span-full grid grid-cols-subgrid border-t-8 py-32 lg:py-52">
-    <div
-      class="col-2 grid items-center gap-20 [grid-template-areas:'title'_'desc'_'img'] sm:grid-cols-2 sm:grid-rows-[1fr_auto_var(--spacing-20)_auto_1fr] sm:gap-y-0 sm:[grid-template-areas:'._img'_'title_img'_'._img'_'desc_img'_'._img'] lg:gap-x-32"
-    >
-      <h1 class="text-3xl/3xl lg:text-4xl/4xl font-bold text-balance [grid-area:title]">
-        {title}
-      </h1>
-      <p class="text-md/loose [grid-area:desc]">
+<div class="index_page">
+  <section class="key_visual">
+    <div class="key_visual_body">
+      <h1 class="key_visual_title">{title}</h1>
+      <p class="key_visual_description">
         私たちは尼崎市内のこども食堂が、これからもアマのこどもたちにとっての「身近な地域の居場所」であり続けられるように活動しています。
       </p>
       <Image
         src={key}
         alt="写真：スクリーンに写したスライドを見ながら、マイクを持った方の声に耳を傾ける椅子に座った方達"
-        class="aspect-video rounded-xl object-cover shadow-[var(--spacing-4)_var(--spacing-4)_0_0_var(--color-accent)] [grid-area:img]"
+        class="key_visual_image"
       />
     </div>
   </section>
 
-  <div class="bg-secondary-background col-span-full grid grid-cols-subgrid gap-y-52 py-32 *:col-2 lg:gap-y-84 lg:py-52">
-    <section class="grid gap-y-20">
+  <div class="index_sections">
+    <section class="section">
       <Heading>活動内容</Heading>
       <Activities />
-      <p class="grid grid-cols-[1fr_minmax(0,var(--spacing-220))_1fr] *:col-2">
+      <p class="section_button_center">
         <ButtonLink href="/about/" text="私たちについて" />
       </p>
     </section>
-    <section class="prose grid gap-y-20">
+    <section class="prose section">
       <Heading>尼崎のこども食堂の様子</Heading>
       <p>
         （公財）尼崎市文化振興財団が、尼崎市内のこども食堂を取材し、動画にまとめておられます。実際の雰囲気を、ぜひ感じてください。
       </p>
       <Video />
     </section>
-    <section class="prose grid gap-y-20">
+    <section class="prose section">
       <Heading>尼崎のこども食堂</Heading>
       <p>尼崎市内のこども食堂は一覧ページから探すことができます。</p>
-      <p class="grid max-w-220">
+      <p class="section_button_start">
         <ButtonLink href="/cafes/" text="尼崎のこども食堂" />
       </p>
     </section>
-    <section class="prose grid gap-y-20">
+    <section class="prose section">
       <Heading>尼崎のこども食堂を支援する</Heading>
       <p>尼崎市内のこども食堂を支援するには２つの方法があります。</p>
       <p>
         多くの食堂が地域のこどもたちにとっての「身近な地域の居場所」であり続けられるために、応援よろしくお願いします。
       </p>
-      <ul class="grid grid-cols-[repeat(auto-fill,min(var(--spacing-220),100%))] gap-20">
-        <li class="grid">
+      <ul class="section_buttons">
+        <li class="section_buttons_item">
           <ButtonLink href="/charity/#with-items" text="物品で支援" />
         </li>
-        <li class="grid">
+        <li class="section_buttons_item">
           <ButtonLink href="/charity/#with-donations" text="寄付金で支援" />
         </li>
       </ul>
     </section>
-    <section class="prose grid gap-y-20">
+    <section class="prose section">
       <Heading>こども食堂を立ち上げる</Heading>
       <p>尼崎市でこども食堂を始めたい場合は、立ち上げの流れを解説したページを参考にしてください。</p>
-      <p class="grid max-w-220">
+      <p class="section_button_start">
         <ButtonLink href="/start-cafe/" text="こども食堂の立ち上げ" />
       </p>
     </section>
   </div>
 </div>
+
+<style>
+  .index_page {
+    display: grid;
+    grid-template-columns:
+      minmax(var(--spacing-20), 1fr)
+      minmax(0, var(--spacing-932))
+      minmax(var(--spacing-20), 1fr);
+
+    @media (width >= 64rem) {
+      grid-template-columns:
+        minmax(var(--spacing-32), 1fr)
+        minmax(0, var(--spacing-932))
+        minmax(var(--spacing-32), 1fr);
+    }
+  }
+
+  .key_visual {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    border-block-start: 8px solid var(--color-accent);
+    padding-block: var(--spacing-32);
+
+    @media (width >= 64rem) {
+      padding-block: var(--spacing-52);
+    }
+  }
+
+  .key_visual_body {
+    grid-column: 2;
+    display: grid;
+    align-items: center;
+    gap: var(--spacing-20);
+    grid-template-areas:
+      "title"
+      "desc"
+      "img";
+
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: 1fr auto var(--spacing-20) auto 1fr;
+      row-gap: 0;
+      grid-template-areas:
+        ". img"
+        "title img"
+        ". img"
+        "desc img"
+        ". img";
+    }
+
+    @media (width >= 64rem) {
+      column-gap: var(--spacing-32);
+    }
+  }
+
+  .key_visual_title {
+    grid-area: title;
+    font-size: var(--text-3xl);
+    line-height: var(--leading-3xl);
+    font-weight: var(--font-weight-bold);
+    text-wrap: balance;
+
+    @media (width >= 64rem) {
+      font-size: var(--text-4xl);
+      line-height: var(--leading-4xl);
+    }
+  }
+
+  .key_visual_description {
+    grid-area: desc;
+    font-size: var(--text-md);
+    line-height: var(--leading-loose);
+  }
+
+  .key_visual_image {
+    grid-area: img;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--spacing-4) var(--spacing-4) 0 0 var(--color-accent);
+  }
+
+  .index_sections {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    background-color: var(--color-secondary-background);
+    row-gap: var(--spacing-52);
+    padding-block: var(--spacing-32);
+
+    & > * {
+      grid-column: 2;
+    }
+
+    @media (width >= 64rem) {
+      row-gap: var(--spacing-84);
+      padding-block: var(--spacing-52);
+    }
+  }
+
+  .section {
+    display: grid;
+    row-gap: var(--spacing-20);
+  }
+
+  .section_button_center {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, var(--spacing-220)) 1fr;
+
+    & > :global(*) {
+      grid-column: 2;
+    }
+  }
+
+  .section_button_start {
+    display: grid;
+    max-width: var(--spacing-220);
+  }
+
+  .section_buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, min(var(--spacing-220), 100%));
+    gap: var(--spacing-20);
+  }
+
+  .section_buttons_item {
+    display: grid;
+  }
+</style>

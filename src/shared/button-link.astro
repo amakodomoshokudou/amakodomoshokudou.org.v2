@@ -7,14 +7,29 @@ export type Props = {
 const { href, text } = Astro.props;
 ---
 
-<a
-  href={href}
-  class="border-primary-border bg-primary-background inline-grid grid-cols-[1fr_auto] items-center gap-x-8 rounded-xl border px-12 py-8"
->
+<a href={href} class="button_link">
   {text}
-  <span
-    aria-hidden="true"
-    role="img"
-    class="size-[1em] bg-[currentColor] mask-[url(/assets/icons/arrow_forward.svg)] mask-cover mask-center mask-no-repeat"
-  ></span>
+  <span aria-hidden="true" role="img" class="button_link_icon"></span>
 </a>
+
+<style>
+  .button_link {
+    display: inline-grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: var(--spacing-8);
+    border: 1px solid var(--color-primary-border);
+    border-radius: var(--radius-xl);
+    background-color: var(--color-primary-background);
+    padding-inline: var(--spacing-12);
+    padding-block: var(--spacing-8);
+  }
+
+  .button_link_icon {
+    inline-size: 1em;
+    block-size: 1em;
+    background-color: currentColor;
+    -webkit-mask: url("/assets/icons/arrow_forward.svg") center / cover no-repeat;
+    mask: url("/assets/icons/arrow_forward.svg") center / cover no-repeat;
+  }
+</style>
