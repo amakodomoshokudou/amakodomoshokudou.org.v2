@@ -28,8 +28,8 @@
 - [x] 404（views/not-found）を移行する（VRT 全実行 OK）
 - [x] `global.css` を純粋な CSS に置き換える: `@import "tailwindcss"` と `@theme` を廃止し、トークンを `@layer base` の `:root` で直接定義する。`--container-*` と `--breakpoint-*` は参照が無いため削除する（旧 `globals.css` から改名。VRT 全実行 OK）
 - [x] 自作のリセット CSS を作り preflight と置き換える（`src/shared/reset.css` を作成し、`@layer reset` として読み込み。preflight 由来の `vertical-align: middle` は本サイトで効果が無いため外した。VRT 全実行 OK）
-- [ ] 移行中の暫定対応と見送った整理は、`issues/open/20261118103214-clean-up-css.md` に切り出した（リセット CSS の独自化、focus の絞り込み、論理プロパティの統一）
+- [ ] 移行中の暫定対応と見送った整理は、`issues/open/20261118103214-clean-up-css.md` に切り出した（リセット CSS の独自化、focus の絞り込み、論理プロパティの統一。対応完了後にチェックを付ける）
 - [x] `@layer` を CSS 標準のカスケードレイヤーに整理し、`@apply` を純粋な CSS に書き換える（`@layer reset, base, util` 構成。`:focus` は暫定として base に global 定義、`.prose` / `.sr-only` は util の通常クラス化。VRT 全実行 OK）
 - [x] 移行専用の `tailwind-to-css-migration` skill を削除し、CSS 規約を `css-style` skill（`.agents/skills/css-style/SKILL.md`）として整備する（移行手順を除き、`global.css` の `@layer` 構成、focus の global 定義、`prose` / `sr-only` の util レイヤー化を反映）
 - [x] `tailwindcss` と `@tailwindcss/vite` を依存関係から削除し、`astro.config.ts`・`biome.json` の `tailwindDirectives`・dependabot の設定・lockfile を整理する（lockfile はユーザーが `pnpm install` で更新。ビルド成果物の CSS は削除前と完全一致）
-- [ ] 最終確認: `build` と `build:mock`、`astro check`、`biome check`、`lint:html`、VRT を実行する
+- [x] 最終確認: `build` と `build:mock`、`astro check`、`biome check`、`lint:html`、VRT を実行する（全て 0 errors。VRT 全実行 OK）
