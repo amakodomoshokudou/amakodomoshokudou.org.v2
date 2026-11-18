@@ -101,12 +101,12 @@ Tailwind CSS のクラスを `.astro` ファイルの scoped `<style>` へ書き
 }
 ```
 
-祖先のクラスから書く場合は次のようになる:
+祖先の `details`（`area_filter`）のクラスから書く場合は次のようになる。`open` 属性は `summary` ではなく `details` に付くため、`summary` 側のクラス内で `&[open]` と書いても決してマッチしない:
 
 ```css
-.filter_summary {
+.area_filter {
   /* Tailwind: group-open:rounded-b-none（summary 自身への状態） */
-  &[open] {
+  &[open] .filter_summary {
     border-end-start-radius: 0;
     border-end-end-radius: 0;
   }
