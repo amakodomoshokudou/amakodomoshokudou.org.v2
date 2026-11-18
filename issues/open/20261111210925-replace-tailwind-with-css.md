@@ -19,7 +19,7 @@
 - [x] src/shared のコンポーネントを移行する（全ページ共通のため、完了後に全ページの VRT を確認する。VRT 全実行 OK）
 - [x] トップページ（views/index）を移行する（VRT 全実行 OK）
 - [x] 私たちについて（views/about）を移行する（VRT 全実行 OK）
-- [ ] 尼崎のこども食堂（views/cafes）を移行する（cafe-list・pagination・cafes-page・cafes-by-area-page・area-filter を移行済み。area-filter の aria-current 条件の修正を次に行う）
+- [ ] 尼崎のこども食堂（views/cafes）を移行する（VRT 全実行 OK）
 - [x] こども食堂への支援（views/charity）を移行する（VRT 全実行 OK）
 - [x] こども食堂の立ち上げ（views/start-cafe）を移行する（VRT 全実行 OK）
 - [x] プライバシーポリシー（views/privacy-policy）を移行する（VRT 全実行 OK）
