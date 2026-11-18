@@ -3,11 +3,11 @@
 ## 方針
 
 - 移行時の具体的な書き方（クラス名の形式、1 要素 1 クラス名、状態・疑似要素のネスト表現、hover の扱い、参考例など）は `tailwind-to-css-migration` skill（`.agents/skills/tailwind-to-css-migration/SKILL.md`）を参照する
-- `globals.css` は CSS 標準のカスケードレイヤー `@layer reset, base, util` で構成する。トークン定義（`:root`）も base レイヤー内に置く。リセットは別ファイル `src/shared/reset.css` に切り出し、`@import "./reset.css" layer(reset)` で読み込む
+- `global.css` は CSS 標準のカスケードレイヤー `@layer reset, base, util` で構成する。トークン定義（`:root`）も base レイヤー内に置く。リセットは別ファイル `src/shared/reset.css` に切り出し、`@import "./reset.css" layer(reset)` で読み込む
 - トークンは Tailwind の `@theme` が出力していた CSS 変数の名前（`--spacing-84`、`--text-sm` など）を `@layer base` の `:root` で直接定義して維持する。`--container-*` と `--breakpoint-*` は参照が無いため定義しない
-- `prose` と `sr-only` は `globals.css` の `@layer util` 内の共通クラスとして定義する。`sr-only` は Tailwind のビルトインと同名で使い続ける。それ以外はコンポーネントごとの scoped `<style>` に書き、重複を許容する（新規コンポーネントの切り出しはしない）
+- `prose` と `sr-only` は `global.css` の `@layer util` 内の共通クラスとして定義する。`sr-only` は Tailwind のビルトインと同名で使い続ける。それ以外はコンポーネントごとの scoped `<style>` に書き、重複を許容する（新規コンポーネントの切り出しはしない）
 - focus は移行中の暫定対応として、旧実装と同じ全フォーカス状態に適用する `:focus` を `@layer base` に global 定義している（マウスフォーカスでも輪郭が出る。当初は各コンポーネントの scoped style に `:focus-visible` を置く方針だったが、breadcrumb リンクや iframe への適用漏れを防ぐため global に一本化した）。移行完了後は `:focus` を使わず `:focus-visible` のみへ絞り込む方針は維持する（その際、マウスフォーカス時には輪郭が出なくなる挙動変化がある）。hover は各コンポーネントの scoped `<style>` でその class に明示する
-- `globals.css` への追加は限定的とする
+- `global.css` への追加は限定的とする
 
 ## TODO
 
@@ -26,7 +26,7 @@
 - [x] こども食堂の立ち上げ（views/start-cafe）を移行する（VRT 全実行 OK）
 - [x] プライバシーポリシー（views/privacy-policy）を移行する（VRT 全実行 OK）
 - [x] 404（views/not-found）を移行する（VRT 全実行 OK）
-- [x] `globals.css` を純粋な CSS に置き換える: `@import "tailwindcss"` と `@theme` を廃止し、トークンを `@layer base` の `:root` で直接定義する。`--container-*` と `--breakpoint-*` は参照が無いため削除する（VRT 全実行 OK）
+- [x] `global.css` を純粋な CSS に置き換える: `@import "tailwindcss"` と `@theme` を廃止し、トークンを `@layer base` の `:root` で直接定義する。`--container-*` と `--breakpoint-*` は参照が無いため削除する（旧 `globals.css` から改名。VRT 全実行 OK）
 - [x] 自作のリセット CSS を作り preflight と置き換える（`src/shared/reset.css` を作成し、`@layer reset` として読み込み。preflight 由来の `vertical-align: middle` は本サイトで効果が無いため外した。VRT 全実行 OK）
 - [ ] リセット CSS を暫定の preflight 相当の内容から、このサイト向けに独自に整理した内容へ移す（使用していない要素・宣言の見直しなど）
 - [x] `@layer` を CSS 標準のカスケードレイヤーに整理し、`@apply` を純粋な CSS に書き換える（`@layer reset, base, util` 構成。`:focus` は暫定として base に global 定義、`.prose` / `.sr-only` は util の通常クラス化。VRT 全実行 OK）
