@@ -1,28 +1,33 @@
 ---
-name: tailwind-to-css-migration
-description: Tailwind CSS のクラスを通常の CSS（Astro の scoped <style>）へ書き換える・移行するときの書き方。Tailwind クラスを剥がす、スタイルを CSS に書き直す、新たにスタイルを当てるときに使う。
+name: css-style
+description: このプロジェクトの CSS（.astro の scoped <style> と global.css / reset.css）を書く・編集するときの規約。新たにスタイルを当てるとき、クラス名を付けるとき、状態やレスポンシブを書くときに使う。
 ---
 
-# Tailwind CSS から通常の CSS への移行の書き方
+# CSS の書き方の規約
 
-Tailwind CSS のクラスを `.astro` ファイルの scoped `<style>` へ書き換えるときは、次を守る。
-移行が完了した後の新規スタイル記述でも同じルールに従う。
+このプロジェクトで CSS を書く（`.astro` ファイルの scoped `<style>`、`src/shared/global.css`、`src/shared/reset.css`）ときは、次を守る。
+
+## レイヤー構成
+
+- `global.css` は CSS 標準のカスケードレイヤー `@layer reset, base, util` で構成する。トークン定義（`:root`）も base レイヤー内に置く
+- リセットは `src/shared/reset.css` を `@import "./reset.css" layer(reset)` で読み込む
+- トークンは Tailwind 時代からの変数名を維持する（`--spacing-84` = 5.25rem の「数値 / 4 = rem」スケール、`--text-sm`、`--leading-sm` など）
+- `prose` と `sr-only` は `global.css` の `@layer util` 内の共通クラスとして定義する。それ以外のスタイルはコンポーネントごとの scoped `<style>` に書き、重複を許容する（新規コンポーネントの切り出しはしない）
 
 ## クラス名
 
 - `block_element` 形式のクラス名を使う
 - 1 つの要素には 1 つのクラス名を書き、その要素のスタイルをすべてそのクラスに集約する
 - クラス名はコンポーネント内で別々の役割には重複して使わない。同じ構造の繰り返し要素（ループやコピペで並ぶ行）は同名を共有してよい
-- `prose` と `sr-only` は `globals.css` の共通クラス（`@utility`）として定義する。`sr-only` は Tailwind のビルトインを上書きし、廃止後も同名で使い続ける。それ以外はコンポーネントごとの scoped `<style>` に書き、重複を許容する（新規コンポーネントの切り出しはしない）
 
 ## 状態・疑似要素の表現
 
 状態・疑似要素・疑似クラスは、対応するクラスのブロック内に CSS ネスティング（`&`）で表現する。
 
-- `aria-[current=page]:bg-*` → `&[aria-current="page"]`、`aria-[current]:bg-*` → `&[aria-current]`、`data-[open=true]:border` → `&[data-open="true"]`
+- 属性セレクタは `&[aria-current="page"]`、`&[aria-current]`、`&[data-open="true"]` の形
 - `::-webkit-details-marker` などの疑似要素も `&::-webkit-details-marker { … }` とネストする
-- 祖先の状態に連動するもの（`group-open:`）は祖先要素（`details`）のクラス内で `&[open] .icon { … }` とする
-- `dark:invert` は `@media (prefers-color-scheme: dark)` 内にネストする
+- 祖先の状態に連動するもの（`details` の `open` など）は祖先要素のクラス内で `&[open] .icon { … }` とする。`open` 属性は `summary` ではなく `details` に付くことに注意（`summary` 側のクラス内で `&[open]` と書いてもマッチしない）
+- ダークモードは `@media (prefers-color-scheme: dark)` 内にネストする
 
 ## ネスティングでの `&` の要否
 
@@ -31,29 +36,23 @@ Tailwind CSS のクラスを `.astro` ファイルの scoped `<style>` へ書き
 
 ## hover・focus
 
-- hover は `@media (any-hover: hover)` で囲んで `&:hover` とする
-- focus は `:focus` を使わず `:focus-visible` のみとする
-- これらのインタラクションスタイルは global に置かず、各コンポーネントの scoped `<style>` でその class に明示する
+- hover は `@media (any-hover: hover)` で囲んで `&:hover` とし、各コンポーネントの scoped `<style>` でその class に明示する
+- focus は `global.css` の `@layer base` に global 定義済みのため、コンポーネント側では書かない（暫定で全フォーカス状態に適用する `:focus`。将来的に `:focus-visible` のみへ絞り込む）
 
 ## Astro scoped style の仕様
 
 - スコープは `data-astro-cid-*` 属性セレクタで付与される。specificity が属性分の 0,1,0 増える
-- slot の中身にはスコープの data 属性が付かないため、スタイルが必要な場合は `:global()` を使う
+- slot の中身や子コンポーネントの要素にはスコープの data 属性が付かないため、スタイルが必要な場合は `:global()` を使う
 - メディアクエリ・コンテナクエリ内では `var()` が使えないため、ブレークポイントは rem 直書き（sm 40rem / md 48rem / lg 64rem / xl 80rem / 2xl 96rem、`@container` は 22.25rem / 40rem）
-
-## 移行期間の経過措置（移行完了まで）
-
-- トークンは Tailwind の `@theme` が出力する CSS 変数を `var()` で参照する（`--spacing-84`、`--text-sm` など）。移行完了後の `:root` 定義でも変数名は維持する
 
 ## ネストの参考例
 
-実際にコードベースにある状態の書き換え例。
+実際にコードベースにある例。
 
-`aria-[current=page]`・`aria-[current]`（layout.astro / pagination.astro のナビ）:
+`aria-current`（layout.astro / pagination.astro のナビ）:
 
 ```css
 .nav_link {
-  /* Tailwind: bg-secondary-background aria-[current=page]:bg-secondary-background */
   background-color: var(--color-primary-background);
 
   &[aria-current="page"] {
@@ -62,18 +61,16 @@ Tailwind CSS のクラスを `.astro` ファイルの scoped `<style>` へ書き
 }
 
 .pagination_link {
-  /* Tailwind: aria-[current]:bg-secondary-background */
   &[aria-current] {
     background-color: var(--color-secondary-background);
   }
 }
 ```
 
-`data-[open=true]`（copy-button.astro の通知）:
+`data-open`（copy-button.astro の通知）:
 
 ```css
 .copy_notify {
-  /* Tailwind: data-[open=true]:border data-[open=true]:p-4 */
   &[data-open="true"] {
     border: 1px solid var(--color-secondary-border);
     padding: var(--spacing-4);
@@ -81,19 +78,17 @@ Tailwind CSS のクラスを `.astro` ファイルの scoped `<style>` へ書き
 }
 ```
 
-疑似要素と祖先の状態（area-filter.astro の `::-webkit-details-marker` と `group-open:`）:
+疑似要素と祖先の状態（area-filter.astro の `::-webkit-details-marker` と `open`）:
 
 ```css
 .filter_summary {
-  /* Tailwind: [&::-webkit-details-marker]:hidden */
   &::-webkit-details-marker {
     display: none;
   }
 }
 
 .filter_icon {
-  /* Tailwind: group-open:rotate-180
-     祖先の details のクラス内ではなく、icon のクラスから
+  /* 祖先の details のクラス内ではなく、icon のクラスから
      親の状態を is() で参照して書くこともできる */
   &:is(details[open] *) {
     rotate: 180deg;
@@ -101,35 +96,34 @@ Tailwind CSS のクラスを `.astro` ファイルの scoped `<style>` へ書き
 }
 ```
 
-祖先の `details`（`area_filter`）のクラスから書く場合は次のようになる。`open` 属性は `summary` ではなく `details` に付くため、`summary` 側のクラス内で `&[open]` と書いても決してマッチしない:
+祖先の `details`（`area_filter`）のクラスから書く場合:
 
 ```css
 .area_filter {
-  /* Tailwind: group-open:rounded-b-none（summary 自身への状態） */
+  /* summary 自身への状態の連動 */
   &[open] .filter_summary {
     border-end-start-radius: 0;
     border-end-end-radius: 0;
   }
 
-  /* Tailwind: group-open:rotate-180（子孫への連動） */
+  /* 子孫への連動 */
   &[open] .filter_icon {
     rotate: 180deg;
   }
 }
 ```
 
-ダークモード（layout.astro の `dark:invert`）:
+ダークモード（layout.astro のロゴ名）:
 
 ```css
 .logo_name {
-  /* Tailwind: dark:invert */
   @media (prefers-color-scheme: dark) {
     filter: invert(1);
   }
 }
 ```
 
-hover と focus（新規に書く場合の例）:
+hover（新規に書く場合の例）:
 
 ```css
 .nav_link {
@@ -138,11 +132,6 @@ hover と focus（新規に書く場合の例）:
       background-color: var(--color-tertiary-background);
     }
   }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-outline);
-    outline-offset: 2px;
-  }
 }
 ```
 
@@ -150,14 +139,12 @@ hover と focus（新規に書く場合の例）:
 
 ```css
 .cafe_list {
-  /* Tailwind: sm:grid-cols-2 */
   @media (width >= 40rem) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 .cafe_list_row {
-  /* Tailwind: @640:grid-cols-[var(--spacing-136)_1fr] */
   @container (width >= 40rem) {
     grid-template-columns: var(--spacing-136) 1fr;
   }
@@ -175,7 +162,7 @@ slot の中身（`:global()` が必要）:
 }
 ```
 
-## 参考例
+## マークアップの参考例
 
 ```html
 <dl class="cafe_list">
