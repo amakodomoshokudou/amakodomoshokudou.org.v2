@@ -1,127 +1,10 @@
-@import "tailwindcss";
+@layer reset, base, util;
 
-@theme {
-  --color-accent: var(--accent);
-  --color-danger: var(--danger);
-  --color-link: var(--link);
-  --color-outline: var(--outline);
-  --color-primary-background: var(--primary-background);
-  --color-primary-text: var(--primary-text);
-  --color-primary-border: var(--primary-border);
-  --color-secondary-background: var(--secondary-background);
-  --color-secondary-border: var(--secondary-border);
-  --color-tertiary-background: var(--tertiary-background);
-
-  --text-xs: calc(1rem * 8 / 10);
-  --text-sm: calc(1rem * 8 / 9);
-  --text-md: 1rem;
-  --text-lg: calc(1rem * 8 / 7);
-  --text-xl: calc(1rem * 8 / 6);
-  --text-2xl: calc(1rem * 8 / 5);
-  --text-3xl: calc(1rem * 8 / 4);
-  --text-4xl: calc(1rem * 8 / 3);
-
-  --leading-xs: 1rem;
-  --leading-sm: 1.25rem;
-  --leading-md: 1.5rem;
-  --leading-lg: 1.5rem;
-  --leading-xl: 1.75rem;
-  --leading-2xl: 2rem;
-  --leading-3xl: 2.5rem;
-  --leading-4xl: 3.25rem;
-
-  --leading-none: 1;
-  --leading-tight: 1.25;
-  --leading-base: 1.5;
-  --leading-relaxed: 1.75;
-  --leading-loose: 2;
-
-  --font-sans: sans-serif;
-
-  --font-weight-normal: 400;
-  --font-weight-bold: 700;
-
-  --spacing-0: 0;
-  --spacing-4: 0.25rem;
-  --spacing-8: 0.5rem;
-  --spacing-12: 0.75rem;
-  --spacing-20: 1.25rem;
-  --spacing-32: 2rem;
-  --spacing-52: 3.25rem;
-  --spacing-84: 5.25rem;
-  --spacing-136: 8.5rem;
-  --spacing-220: 13.75rem;
-  --spacing-356: 22.25rem;
-  --spacing-576: 36rem;
-  --spacing-932: 58.25rem;
-  --spacing-640: 40rem;
-
-  --radius-xs: 0.125rem;
-  --radius-md: 0.375rem;
-  --radius-xl: 0.75rem;
-
-  --breakpoint-sm: 40rem;
-  --breakpoint-md: 48rem;
-  --breakpoint-lg: 64rem;
-  --breakpoint-xl: 80rem;
-  --breakpoint-2xl: 96rem;
-
-  --container-356: 22.25rem;
-  --container-640: 40rem;
-}
-
-@utility prose {
-  font-size: var(--text-md);
-  line-height: var(--leading-md);
-
-  & > p:not([class]) {
-    max-width: var(--spacing-640);
-    line-height: var(--leading-loose);
-  }
-
-  & > ul:not([class]) {
-    list-style-type: disc;
-    display: grid;
-    row-gap: var(--spacing-12);
-    max-width: var(--spacing-640);
-    line-height: var(--leading-loose);
-    padding-left: var(--spacing-20);
-  }
-}
-
-/* Tailwind のビルトイン sr-only を上書きする（clip の代わりに clip-path を使用）。Tailwind 廃止後も同名で使う */
-@utility sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
-}
+@import "./reset.css" layer(reset);
 
 @layer base {
   :root {
+    /* 生の色トークン */
     --accent: #ffcc66;
     --danger: #cc0f0f;
     --link: #0f72cc;
@@ -132,6 +15,68 @@
     --secondary-background: #fff5e0;
     --secondary-border: #d1d1d1;
     --tertiary-background: #efefef;
+
+    /* --color-* エイリアス */
+    --color-accent: var(--accent);
+    --color-danger: var(--danger);
+    --color-link: var(--link);
+    --color-outline: var(--outline);
+    --color-primary-background: var(--primary-background);
+    --color-primary-text: var(--primary-text);
+    --color-primary-border: var(--primary-border);
+    --color-secondary-background: var(--secondary-background);
+    --color-secondary-border: var(--secondary-border);
+    --color-tertiary-background: var(--tertiary-background);
+
+    /* フォントサイズ（単位なしの数値 / 4 = rem に相当） */
+    --text-xs: calc(1rem * 8 / 10);
+    --text-sm: calc(1rem * 8 / 9);
+    --text-md: 1rem;
+    --text-lg: calc(1rem * 8 / 7);
+    --text-xl: calc(1rem * 8 / 6);
+    --text-2xl: calc(1rem * 8 / 5);
+    --text-3xl: calc(1rem * 8 / 4);
+    --text-4xl: calc(1rem * 8 / 3);
+
+    --leading-xs: 1rem;
+    --leading-sm: 1.25rem;
+    --leading-md: 1.5rem;
+    --leading-lg: 1.5rem;
+    --leading-xl: 1.75rem;
+    --leading-2xl: 2rem;
+    --leading-3xl: 2.5rem;
+    --leading-4xl: 3.25rem;
+
+    --leading-none: 1;
+    --leading-tight: 1.25;
+    --leading-base: 1.5;
+    --leading-relaxed: 1.75;
+    --leading-loose: 2;
+
+    --font-sans: sans-serif;
+
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+
+    /* 数値 / 4 = rem の spacing スケール */
+    --spacing-0: 0;
+    --spacing-4: 0.25rem;
+    --spacing-8: 0.5rem;
+    --spacing-12: 0.75rem;
+    --spacing-20: 1.25rem;
+    --spacing-32: 2rem;
+    --spacing-52: 3.25rem;
+    --spacing-84: 5.25rem;
+    --spacing-136: 8.5rem;
+    --spacing-220: 13.75rem;
+    --spacing-356: 22.25rem;
+    --spacing-576: 36rem;
+    --spacing-640: 40rem;
+    --spacing-932: 58.25rem;
+
+    --radius-xs: 0.125rem;
+    --radius-md: 0.375rem;
+    --radius-xl: 0.75rem;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -150,19 +95,32 @@
   }
 
   body {
-    @apply bg-primary-background text-md text-primary-text font-sans wrap-break-word break-all has-[dialog[open]]:overflow-hidden;
+    background-color: var(--color-primary-background);
+    color: var(--color-primary-text);
+    font-family: var(--font-sans);
+    font-size: var(--text-md);
+    overflow-wrap: break-word;
+    word-break: break-all;
+
+    /* dialog が開いている間は背景のスクロールを止める */
+    &:has(dialog[open]) {
+      overflow: hidden;
+    }
   }
 
+  /* 一時的に旧実装と同じ全フォーカス状態に適用する（移行完了後に :focus-visible のみへ絞り込む） */
   :focus {
-    @apply outline-outline outline-2 outline-offset-2;
-  }
-
-  :focus-visible {
-    @apply outline-outline outline-2 outline-offset-2;
+    outline: 2px solid var(--color-outline);
+    outline-offset: 2px;
   }
 
   :target {
-    @apply scroll-mt-84 scroll-p-0 lg:scroll-mt-20;
+    scroll-margin-top: var(--spacing-84);
+    scroll-padding: 0;
+
+    @media (width >= 64rem) {
+      scroll-margin-top: var(--spacing-20);
+    }
   }
 
   small {
@@ -176,5 +134,40 @@
 
   button {
     text-align: start;
+  }
+}
+
+@layer util {
+  /* 記事本文などの長文用 */
+  .prose {
+    font-size: var(--text-md);
+    line-height: var(--leading-md);
+
+    & > p:not([class]) {
+      max-width: var(--spacing-640);
+      line-height: var(--leading-loose);
+    }
+
+    & > ul:not([class]) {
+      list-style-type: disc;
+      display: grid;
+      row-gap: var(--spacing-12);
+      max-width: var(--spacing-640);
+      line-height: var(--leading-loose);
+      padding-left: var(--spacing-20);
+    }
+  }
+
+  /* 補助技術専用のテキスト（clip の代わりに clip-path を使用） */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
   }
 }
