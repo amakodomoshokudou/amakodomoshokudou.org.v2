@@ -4,6 +4,8 @@
 
 @layer base {
   :root {
+    color-scheme: light dark;
+
     /* 生の色トークン */
     --accent: #ffcc66;
     --danger: #cc0f0f;
