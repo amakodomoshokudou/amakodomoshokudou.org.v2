@@ -136,12 +136,12 @@ const navItems = [
   .layout {
     position: relative;
     display: grid;
-    min-height: 100svh;
+    min-block-size: 100svb;
     grid-template-columns: repeat(1, minmax(0, 1fr));
     grid-template-rows: auto 1fr;
 
     @media (width >= 64rem) {
-      height: 100svh;
+      block-size: 100svb;
       grid-template-columns: var(--spacing-220) minmax(0, 1fr);
       grid-template-rows: repeat(1, minmax(0, 1fr));
     }
@@ -150,7 +150,7 @@ const navItems = [
   .layout_header {
     position: sticky;
     inset-inline: 0;
-    top: 0;
+    inset-block-start: 0;
     z-index: 10;
     display: grid;
     grid-template-columns: minmax(var(--spacing-20), 1fr) minmax(0, var(--spacing-932)) minmax(var(--spacing-20), 1fr);
@@ -160,7 +160,9 @@ const navItems = [
     @media (width >= 64rem) {
       grid-column: 1;
       grid-template-columns: repeat(1, minmax(0, 1fr));
+      /* Safari 26 / Chrome 135 未満向けのフォールバック */
       overflow-y: auto;
+      overflow-block: auto;
       border-inline-end: 1px solid var(--color-secondary-border);
       border-block-end-width: 0;
     }
@@ -321,7 +323,9 @@ const navItems = [
     @media (width >= 64rem) {
       grid-column: 2;
       grid-template-columns: minmax(var(--spacing-32), 1fr) minmax(0, var(--spacing-932)) minmax(var(--spacing-32), 1fr);
+      /* Safari 26 / Chrome 135 未満向けのフォールバック */
       overflow-y: auto;
+      overflow-block: auto;
     }
   }
 

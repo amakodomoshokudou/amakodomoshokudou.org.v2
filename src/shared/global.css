@@ -115,11 +115,11 @@
   }
 
   :target {
-    scroll-margin-top: var(--spacing-84);
+    scroll-margin-block-start: var(--spacing-84);
     scroll-padding: 0;
 
     @media (width >= 64rem) {
-      scroll-margin-top: var(--spacing-20);
+      scroll-margin-block-start: var(--spacing-20);
     }
   }
 
@@ -144,7 +144,7 @@
     line-height: var(--leading-md);
 
     & > p:not([class]) {
-      max-width: var(--spacing-640);
+      max-inline-size: var(--spacing-640);
       line-height: var(--leading-loose);
     }
 
@@ -152,17 +152,17 @@
       list-style-type: disc;
       display: grid;
       row-gap: var(--spacing-12);
-      max-width: var(--spacing-640);
+      max-inline-size: var(--spacing-640);
       line-height: var(--leading-loose);
-      padding-left: var(--spacing-20);
+      padding-inline-start: var(--spacing-20);
     }
   }
 
   /* 補助技術専用のテキスト（clip の代わりに clip-path を使用） */
   .sr-only {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    inline-size: 1px;
+    block-size: 1px;
     padding: 0;
     margin: -1px;
     overflow: hidden;
