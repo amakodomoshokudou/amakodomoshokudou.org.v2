@@ -101,6 +101,8 @@
     color: var(--color-primary-text);
     font-family: var(--font-sans);
     font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-md);
     overflow-wrap: break-word;
     word-break: break-all;
 
@@ -127,6 +129,8 @@
 
   small {
     font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
   }
 
   dialog {
@@ -143,10 +147,13 @@
   /* 記事本文などの長文用 */
   .prose {
     font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
     line-height: var(--leading-md);
 
     & > p:not([class]) {
       max-inline-size: var(--spacing-640);
+      font-size: var(--text-md);
+      font-weight: var(--font-weight-normal);
       line-height: var(--leading-loose);
     }
 
@@ -155,8 +162,13 @@
       display: grid;
       row-gap: var(--spacing-12);
       max-inline-size: var(--spacing-640);
-      line-height: var(--leading-loose);
       padding-inline-start: var(--spacing-20);
+
+      & > li {
+        font-size: var(--text-md);
+        font-weight: var(--font-weight-normal);
+        line-height: var(--leading-loose);
+      }
     }
   }
 

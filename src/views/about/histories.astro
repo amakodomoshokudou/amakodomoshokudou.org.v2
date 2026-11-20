@@ -47,7 +47,9 @@ const histories = [
   {histories.map((history) => (
     <section class="history">
       <h3 class="history_title">
-        <time datetime={history.data.datatime}>{history.data.title}</time>
+        <time class="history_title_time" datetime={history.data.datatime}>
+          {history.data.title}
+        </time>
       </h3>
       <span class="history_marker" />
       <p class="history_description">{history.content}</p>
@@ -75,7 +77,12 @@ const histories = [
 
   .history_title {
     grid-area: 1 / 1;
+  }
+
+  .history_title_time {
+    font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
+    line-height: var(--leading-md);
   }
 
   .history_marker {
@@ -93,6 +100,7 @@ const histories = [
   .history_description {
     max-inline-size: var(--spacing-640);
     font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
     line-height: var(--leading-loose);
   }
 </style>

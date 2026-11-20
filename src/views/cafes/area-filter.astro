@@ -60,7 +60,9 @@ const pathname = Astro.url.pathname;
   }
 
   .filter_summary_label {
+    font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
+    line-height: var(--leading-md);
   }
 
   .filter_icon {
@@ -90,6 +92,9 @@ const pathname = Astro.url.pathname;
     border-radius: var(--radius-xl);
     padding-inline: var(--spacing-12);
     padding-block: var(--spacing-8);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-md);
 
     &[data-current] {
       background-color: var(--color-secondary-background);

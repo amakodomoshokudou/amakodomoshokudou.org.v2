@@ -77,7 +77,7 @@ const navItems = [
           </nav>
           <div class="contact_box">
             <p class="contact_heading">お問い合わせはこちら</p>
-            <p>
+            <p class="contact_mail">
               {summary.mail.value}
             </p>
             <CopyButton copyText={summary.mail.value}>メールアドレスをコピー</CopyButton>
@@ -239,7 +239,9 @@ const navItems = [
     border-radius: var(--radius-xl);
     padding-inline: var(--spacing-12);
     padding-block: var(--spacing-8);
+    font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
+    line-height: var(--leading-md);
 
     &[aria-current="page"] {
       background-color: var(--color-secondary-background);
@@ -268,7 +270,15 @@ const navItems = [
   }
 
   .contact_heading {
+    font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
+    line-height: var(--leading-md);
+  }
+
+  .contact_mail {
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-md);
   }
 
   .desktop_contact_box {
@@ -292,6 +302,7 @@ const navItems = [
 
   .desktop_contact_mail {
     font-size: var(--text-xs);
+    font-weight: var(--font-weight-normal);
     line-height: var(--leading-xs);
   }
 
@@ -305,6 +316,7 @@ const navItems = [
 
     & .nav_link {
       font-size: var(--text-sm);
+      font-weight: var(--font-weight-bold);
       line-height: var(--leading-sm);
     }
   }
@@ -364,10 +376,14 @@ const navItems = [
 
   .footer_text {
     font-size: var(--text-sm);
+    font-weight: var(--font-weight-normal);
     line-height: var(--leading-sm);
   }
 
   .footer_link {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-sm);
     text-decoration-line: underline;
   }
 </style>
