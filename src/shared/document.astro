@@ -20,6 +20,7 @@ const title = baseTitle === site.title ? baseTitle : `${baseTitle} - ${site.titl
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="color-scheme" content="light dark" />
 
     <title>{title}</title>
 
@@ -27,7 +28,8 @@ const title = baseTitle === site.title ? baseTitle : `${baseTitle} - ${site.titl
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <meta name="theme-color" content="#FFCC66" />
+    <meta name="theme-color" content="#fff5e0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#262522" media="(prefers-color-scheme: dark)" />
     <meta name="generator" content={Astro.generator} />
     <meta name="format-detection" content="telephone=no" />
 

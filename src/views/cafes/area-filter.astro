@@ -60,7 +60,9 @@ const pathname = Astro.url.pathname;
   }
 
   .filter_summary_label {
+    font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
+    line-height: var(--leading-md);
   }
 
   .filter_icon {
@@ -80,9 +82,12 @@ const pathname = Astro.url.pathname;
     display: grid;
     grid-template-columns: repeat(auto-fill, min(var(--spacing-84), 100%));
     gap: var(--spacing-12);
+    padding: 0;
+    list-style: none;
   }
 
   .filter_link {
+    color: var(--color-primary-text);
     display: grid;
     justify-content: center;
     background-color: var(--color-primary-background);
@@ -90,6 +95,10 @@ const pathname = Astro.url.pathname;
     border-radius: var(--radius-xl);
     padding-inline: var(--spacing-12);
     padding-block: var(--spacing-8);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-md);
+    text-decoration-line: none;
 
     &[data-current] {
       background-color: var(--color-secondary-background);

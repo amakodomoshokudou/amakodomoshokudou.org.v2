@@ -9,7 +9,7 @@ const props = Astro.props;
 ---
 
 <nav aria-label="現在位置">
-  <ol>
+  <ol class="breadcrumb_list">
     {props.items.map((item) => {
       if ("href" in item) {
         return (
@@ -32,13 +32,23 @@ const props = Astro.props;
 </nav>
 
 <style>
+  .breadcrumb_list {
+    padding: 0;
+    list-style: none;
+  }
+
   .breadcrumb_item {
     display: inline;
     font-size: var(--text-sm);
+    font-weight: var(--font-weight-normal);
     line-height: var(--leading-sm);
   }
 
   .breadcrumb_link {
+    color: var(--color-primary-text);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-sm);
     text-decoration-line: underline;
     text-underline-offset: 2px;
   }
@@ -47,8 +57,8 @@ const props = Astro.props;
     display: inline-block;
     inline-size: 1em;
     block-size: 1em;
-    margin-right: var(--spacing-4);
-    margin-left: var(--spacing-8);
+    margin-inline-start: var(--spacing-8);
+    margin-inline-end: var(--spacing-4);
     background-color: currentColor;
     vertical-align: -2px;
     -webkit-mask: url("/assets/icons/chevron_right.svg") center / cover no-repeat;

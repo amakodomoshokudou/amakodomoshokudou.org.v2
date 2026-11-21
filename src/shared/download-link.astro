@@ -15,6 +15,7 @@ const { href, filename, text } = Astro.props;
 
 <style>
   .download_link {
+    color: var(--color-primary-text);
     display: inline-grid;
     grid-template-columns: 1fr auto;
     align-items: center;
@@ -24,7 +25,9 @@ const { href, filename, text } = Astro.props;
     padding-inline: var(--spacing-12);
     padding-block: var(--spacing-8);
     font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
     line-height: var(--leading-md);
+    text-decoration-line: none;
   }
 
   .download_link_icon {
