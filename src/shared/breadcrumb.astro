@@ -9,7 +9,7 @@ const props = Astro.props;
 ---
 
 <nav aria-label="現在位置">
-  <ol>
+  <ol class="breadcrumb_list">
     {props.items.map((item) => {
       if ("href" in item) {
         return (
@@ -32,6 +32,11 @@ const props = Astro.props;
 </nav>
 
 <style>
+  .breadcrumb_list {
+    padding: 0;
+    list-style: none;
+  }
+
   .breadcrumb_item {
     display: inline;
     font-size: var(--text-sm);
