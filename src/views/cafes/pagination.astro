@@ -35,6 +35,7 @@ const props = Astro.props;
   }
 
   .pagination_link {
+    color: var(--color-primary-text);
     display: inline-grid;
     place-content: center;
     inline-size: var(--spacing-52);
@@ -45,6 +46,7 @@ const props = Astro.props;
     font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
     line-height: var(--leading-md);
+    text-decoration-line: none;
 
     &[aria-current] {
       background-color: var(--color-secondary-background);

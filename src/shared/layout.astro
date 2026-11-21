@@ -193,6 +193,8 @@ const navItems = [
   }
 
   .layout_logo {
+    color: var(--color-primary-text);
+    text-decoration-line: none;
     display: flex;
     place-items: center;
     column-gap: var(--spacing-4);
@@ -235,6 +237,7 @@ const navItems = [
   }
 
   .nav_link {
+    color: var(--color-primary-text);
     display: grid;
     border-radius: var(--radius-xl);
     padding-inline: var(--spacing-12);
@@ -242,6 +245,7 @@ const navItems = [
     font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
     line-height: var(--leading-md);
+    text-decoration-line: none;
 
     &[aria-current="page"] {
       background-color: var(--color-secondary-background);
@@ -381,6 +385,7 @@ const navItems = [
   }
 
   .footer_link {
+    color: var(--color-primary-text);
     font-size: var(--text-sm);
     font-weight: var(--font-weight-normal);
     line-height: var(--leading-sm);
