@@ -40,7 +40,8 @@
 
   tab-size: 4;
 
-  scrollbar-gutter: stable;
+  /* デスクトップでは左右の領域を個別にスクロールさせるため、:root には適用しない */
+  /* scrollbar-gutter: stable; */
 
   -webkit-tap-highlight-color: transparent;
 
