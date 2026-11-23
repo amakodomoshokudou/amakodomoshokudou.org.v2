@@ -18,7 +18,7 @@ import TextLink from "../../shared/text-link.astro";
     </dt>
     <dd class="overview_description">
       <ul class="overview_list">
-        {summary.constituent.value.map((item) => <li>{item}</li>)}
+        {summary.constituent.value.map((item) => <li class="overview_list_item">{item}</li>)}
       </ul>
     </dd>
   </div>
@@ -82,20 +82,39 @@ import TextLink from "../../shared/text-link.astro";
 
   .overview_term {
     padding-inline: var(--spacing-20);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-md);
 
     @container (width >= 40rem) {
-      padding-right: 0;
+      padding-inline-end: 0;
     }
   }
 
   .overview_description {
     padding-inline: var(--spacing-20);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-md);
+
+    & > * {
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
   }
 
   .overview_list {
     display: grid;
     row-gap: var(--spacing-8);
-    padding-left: var(--spacing-20);
-    list-style-type: disc;
+    padding: 0;
+    padding-inline-start: var(--spacing-20);
+    list-style: disc;
+  }
+
+  .overview_list_item {
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-md);
   }
 </style>

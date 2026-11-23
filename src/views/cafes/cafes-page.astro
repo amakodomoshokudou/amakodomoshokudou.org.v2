@@ -86,11 +86,14 @@ const { isFirstPage, currentPage, lastPage, cafes, allAreas } = Astro.props;
     display: grid;
     justify-items: start;
     row-gap: var(--spacing-12);
+    font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
+    line-height: var(--leading-md);
   }
 
   .cafes_heading_title_label {
     font-size: var(--text-2xl);
+    font-weight: var(--font-weight-bold);
     line-height: var(--leading-2xl);
 
     @media (width >= 64rem) {
@@ -105,11 +108,13 @@ const { isFirstPage, currentPage, lastPage, cafes, allAreas } = Astro.props;
     padding-inline: var(--spacing-8);
     padding-block: var(--spacing-4);
     font-size: var(--text-xs);
+    font-weight: var(--font-weight-bold);
     line-height: var(--leading-xs);
   }
 
   .cafes_description {
     font-size: var(--text-sm);
+    font-weight: var(--font-weight-normal);
     line-height: var(--leading-sm);
   }
 
@@ -126,7 +131,9 @@ const { isFirstPage, currentPage, lastPage, cafes, allAreas } = Astro.props;
   }
 
   .cafes_document_heading {
+    font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
+    line-height: var(--leading-md);
   }
 
   .cafes_sections {

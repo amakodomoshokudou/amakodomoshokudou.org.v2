@@ -47,7 +47,9 @@ const histories = [
   {histories.map((history) => (
     <section class="history">
       <h3 class="history_title">
-        <time datetime={history.data.datatime}>{history.data.title}</time>
+        <time class="history_title_time" datetime={history.data.datatime}>
+          {history.data.title}
+        </time>
       </h3>
       <span class="history_marker" />
       <p class="history_description">{history.content}</p>
@@ -63,19 +65,27 @@ const histories = [
   .history {
     display: grid;
     row-gap: var(--spacing-8);
-    margin-left: var(--spacing-12);
-    border-left: 1px dashed var(--color-primary-border);
-    padding-bottom: var(--spacing-20);
-    padding-left: var(--spacing-12);
+    margin-inline-start: var(--spacing-12);
+    border-inline-start: 1px dashed var(--color-primary-border);
+    padding-block-end: var(--spacing-20);
+    padding-inline-start: var(--spacing-12);
 
     &:last-child {
-      padding-bottom: 0;
+      padding-block-end: 0;
     }
   }
 
   .history_title {
     grid-area: 1 / 1;
+    font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
+    line-height: var(--leading-md);
+  }
+
+  .history_title_time {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
   }
 
   .history_marker {
@@ -84,15 +94,16 @@ const histories = [
     inline-size: var(--spacing-12);
     block-size: var(--spacing-12);
     margin-block-start: var(--spacing-8);
-    margin-left: calc(-1 * var(--spacing-12) - var(--spacing-12) / 2 - 1px);
+    margin-inline-start: calc(-1 * var(--spacing-12) - var(--spacing-12) / 2 - 1px);
     background-color: var(--color-secondary-background);
     border: 1px solid var(--color-primary-border);
     border-radius: 50%;
   }
 
   .history_description {
-    max-width: var(--spacing-640);
+    max-inline-size: var(--spacing-640);
     font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
     line-height: var(--leading-loose);
   }
 </style>

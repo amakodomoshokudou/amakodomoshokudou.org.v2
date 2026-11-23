@@ -64,6 +64,8 @@
     grid-template-columns: minmax(0, var(--spacing-640));
     justify-content: center;
     row-gap: var(--spacing-20);
+    padding: 0;
+    list-style: none;
   }
 
   .video_item {
@@ -82,8 +84,10 @@
   }
 
   .video_player {
+    display: block;
     aspect-ratio: 16 / 9;
-    width: 100%;
-    height: auto;
+    inline-size: 100%;
+    block-size: auto;
+    border: 0;
   }
 </style>

@@ -1,167 +1,130 @@
-/*!
-  Tailwind CSS の preflight（https://github.com/tailwindlabs/tailwindcss）を基に、
-  node_modules/tailwindcss/preflight.css を元に、このサイトで使う要素に絞って改変した
-  リセット CSS。
-
-  Tailwind CSS is Copyright (c) Tailwind Labs, Inc.
-  Released under the MIT License. Full license text follows.
-
-MIT License
-
-Copyright (c) Tailwind Labs, Inc.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-
 /*
-  1. padding と border が要素の幅に影響しないようにする
-  2. デフォルトの margin と padding を消す
-  3. border をすべてリセットする
-*/
+ * 一部の実装は kiso.css を参考・改変しています。
+ * https://github.com/tak-dcxi/kiso.css
+ * 元の著作権表示と MIT ライセンス: /LICENSES/kiso.css-LICENSE.txt
+ *
+ * その他の参考元（Public Domain）:
+ * Josh's Custom CSS Reset — Josh W. Comeau
+ * https://www.joshwcomeau.com/css/custom-css-reset/
+ */
 
 *,
-::after,
-::before,
-::backdrop {
-  box-sizing: border-box; /* 1 */
-  margin: 0; /* 2 */
-  padding: 0; /* 2 */
-  border: 0 solid; /* 3 */
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/*
-  1. すべてのブラウザーで一貫した line-height にする
-  2. iOS で画面の向きを変えたときに文字サイズが自動調整されないようにする
-  3. 読みやすい tab-size にする
-  4. iOS のタップハイライトを無効にする
-*/
-
-html,
-:host {
-  line-height: 1.5; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  tab-size: 4; /* 3 */
-  -webkit-tap-highlight-color: transparent; /* 4 */
+:where(*:not(dialog:modal)) {
+  margin: 0;
 }
 
-/*
-  見出しのフォントサイズと太字をリセットする
-*/
+:where(:root) {
+  --font-mono: ui-monospace, monospace;
+  font-family: sans-serif;
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
+  line-height: 1.5;
+
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  text-spacing-trim: trim-start;
+
+  text-autospace: normal;
+
+  line-break: strict;
+
+  overflow-wrap: anywhere;
+
+  word-break: normal;
+
+  tab-size: 4;
+
+  /* デスクトップでは左右の領域を個別にスクロールさせるため、:root には適用しない */
+  /* scrollbar-gutter: stable; */
+
+  -webkit-tap-highlight-color: transparent;
+
+  /* 0 -> autoへのサイズ変更でのanimationなどを有効化する */
+  /* アクセシビリティを考慮するためアニメーションを有効にしているユーザーのみ */
+  @media (prefers-reduced-motion: no-preference) {
+    interpolate-size: allow-keywords;
+  }
 }
 
-/*
-  リンクの色と下線をリセットする
-*/
-
-a {
-  color: inherit;
-  text-decoration: inherit;
+:where(body) {
+  min-block-size: 100dvb;
 }
 
-/*
-  b 要素と strong 要素を太字にする
-*/
+:where(dialog:modal) {
+  overscroll-behavior-block: contain;
+}
 
-b,
-strong {
+:where(dialog:modal)::backdrop {
+  overflow: hidden;
+  overscroll-behavior-block: contain;
+}
+
+:where(dt, b, strong, em) {
   font-weight: bolder;
 }
 
-/*
-  リストのマーカーを消す
-*/
-
-ol,
-ul {
-  list-style: none;
+:where(em:lang(ja), address:lang(ja), cite:lang(ja)) {
+  font-style: normal;
 }
 
-/*
-  画像や埋め込み要素をブロック表示にする
-*/
+:where(pre) {
+  font-family: var(--font-mono);
+  text-spacing-trim: space-all;
+  text-autospace: no-autospace;
+}
 
-img,
-svg,
-video,
-canvas,
-audio,
-iframe,
-embed,
-object {
+:where(code, kbd, samp) {
+  font-family: var(--font-mono);
+  font-size: unset;
+}
+
+:where(time) {
+  text-autospace: no-autospace;
+}
+
+:where(caption, th) {
+  text-align: unset;
+}
+
+:where(img, picture, video, canvas, svg, audio) {
+  max-inline-size: 100%;
+}
+
+:where(img, video) {
   display: block;
+  block-size: auto;
 }
 
-/*
-  画像と動画がコンテナーからはみ出さないようにする
-*/
-
-img,
-video {
-  max-width: 100%;
-  height: auto;
-}
-
-/*
-  summary の表示をブラウザー間で揃える
-*/
-
-summary {
-  display: list-item;
-}
-
-/*
-  button をリセットする（このサイトで使うフォーム部品は button のみ）
-*/
-
-button {
+:where(input, button, textarea, select) {
   font: inherit;
-  font-feature-settings: inherit;
-  font-variation-settings: inherit;
   letter-spacing: inherit;
-  color: inherit;
-  border-radius: 0;
-  background-color: transparent;
-  opacity: 1;
-  appearance: button;
+  text-align: inherit;
 }
 
-/*
-  Firefox のフォーカスリングをフォーカス可能な要素に適用する
-*/
-
-:-moz-focusring:where(:not(iframe)) {
-  outline: auto;
+:where(button, input[type="button"], input[type="submit"], input[type="reset"]),
+::file-selector-button {
+  touch-action: manipulation;
 }
 
-/*
-  hidden 属性を持つ要素がデフォルトで非表示になるようにする
-*/
+:where(input:not([type="button"], [type="submit"], [type="reset"]), textarea, [contenteditable]) {
+  text-autospace: no-autospace;
+}
 
-[hidden] {
-  display: none;
+:where(textarea) {
+  resize: vertical;
+}
+
+:where(fieldset) {
+  min-inline-size: 0;
+}
+
+[hidden]:not([hidden="until-found"]) {
+  /* biome-ignore lint/complexity/noImportantStyles: hidden 属性を他の display 指定より優先する */
+  display: none !important;
 }

@@ -77,7 +77,7 @@ const navItems = [
           </nav>
           <div class="contact_box">
             <p class="contact_heading">お問い合わせはこちら</p>
-            <p>
+            <p class="contact_mail">
               {summary.mail.value}
             </p>
             <CopyButton copyText={summary.mail.value}>メールアドレスをコピー</CopyButton>
@@ -125,7 +125,7 @@ const navItems = [
           <a href="/privacy-policy/" class="footer_link">プライバシーポリシー</a>
         </p>
         <p class="footer_text">
-          <small>© 2024 尼崎こども食堂ネットワーク</small>
+          <small class="footer_copywright">© 2024 尼崎こども食堂ネットワーク</small>
         </p>
       </div>
     </footer>
@@ -136,12 +136,12 @@ const navItems = [
   .layout {
     position: relative;
     display: grid;
-    min-height: 100svh;
+    min-block-size: 100svb;
     grid-template-columns: repeat(1, minmax(0, 1fr));
     grid-template-rows: auto 1fr;
 
     @media (width >= 64rem) {
-      height: 100svh;
+      block-size: 100svb;
       grid-template-columns: var(--spacing-220) minmax(0, 1fr);
       grid-template-rows: repeat(1, minmax(0, 1fr));
     }
@@ -150,7 +150,7 @@ const navItems = [
   .layout_header {
     position: sticky;
     inset-inline: 0;
-    top: 0;
+    inset-block-start: 0;
     z-index: 10;
     display: grid;
     grid-template-columns: minmax(var(--spacing-20), 1fr) minmax(0, var(--spacing-932)) minmax(var(--spacing-20), 1fr);
@@ -160,7 +160,9 @@ const navItems = [
     @media (width >= 64rem) {
       grid-column: 1;
       grid-template-columns: repeat(1, minmax(0, 1fr));
+      /* Safari 26 / Chrome 135 未満向けのフォールバック */
       overflow-y: auto;
+      overflow-block: auto;
       border-inline-end: 1px solid var(--color-secondary-border);
       border-block-end-width: 0;
     }
@@ -191,6 +193,8 @@ const navItems = [
   }
 
   .layout_logo {
+    color: var(--color-primary-text);
+    text-decoration-line: none;
     display: flex;
     place-items: center;
     column-gap: var(--spacing-4);
@@ -230,14 +234,20 @@ const navItems = [
   .nav_list {
     display: grid;
     row-gap: var(--spacing-8);
+    padding: 0;
+    list-style: none;
   }
 
   .nav_link {
+    color: var(--color-primary-text);
     display: grid;
     border-radius: var(--radius-xl);
     padding-inline: var(--spacing-12);
     padding-block: var(--spacing-8);
+    font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
+    line-height: var(--leading-md);
+    text-decoration-line: none;
 
     &[aria-current="page"] {
       background-color: var(--color-secondary-background);
@@ -266,7 +276,17 @@ const navItems = [
   }
 
   .contact_heading {
+    color: var(--color-primary-text);
+    font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
+    line-height: var(--leading-md);
+  }
+
+  .contact_mail {
+    color: var(--color-primary-text);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-md);
   }
 
   .desktop_contact_box {
@@ -290,6 +310,7 @@ const navItems = [
 
   .desktop_contact_mail {
     font-size: var(--text-xs);
+    font-weight: var(--font-weight-normal);
     line-height: var(--leading-xs);
   }
 
@@ -303,6 +324,7 @@ const navItems = [
 
     & .nav_link {
       font-size: var(--text-sm);
+      font-weight: var(--font-weight-bold);
       line-height: var(--leading-sm);
     }
   }
@@ -310,6 +332,8 @@ const navItems = [
   .desktop_nav_list {
     display: grid;
     row-gap: var(--spacing-4);
+    padding: 0;
+    list-style: none;
   }
 
   .layout_body {
@@ -321,7 +345,9 @@ const navItems = [
     @media (width >= 64rem) {
       grid-column: 2;
       grid-template-columns: minmax(var(--spacing-32), 1fr) minmax(0, var(--spacing-932)) minmax(var(--spacing-32), 1fr);
+      /* Safari 26 / Chrome 135 未満向けのフォールバック */
       overflow-y: auto;
+      overflow-block: auto;
     }
   }
 
@@ -360,10 +386,21 @@ const navItems = [
 
   .footer_text {
     font-size: var(--text-sm);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-sm);
+  }
+
+  .footer_copywright {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-normal);
     line-height: var(--leading-sm);
   }
 
   .footer_link {
+    color: var(--color-primary-text);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-sm);
     text-decoration-line: underline;
   }
 </style>

@@ -110,8 +110,9 @@ const { title } = Astro.props;
   }
 
   .privacy_policy_lead {
-    max-width: var(--spacing-640);
+    max-inline-size: var(--spacing-640);
     font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
     line-height: var(--leading-loose);
   }
 
@@ -120,6 +121,8 @@ const { title } = Astro.props;
     flex-wrap: wrap;
     column-gap: var(--spacing-20);
     row-gap: var(--spacing-12);
+    padding: 0;
+    list-style: none;
   }
 
   .privacy_policy_sections {

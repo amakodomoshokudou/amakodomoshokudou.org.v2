@@ -4,6 +4,8 @@
 
 @layer base {
   :root {
+    color-scheme: light dark;
+
     /* 生の色トークン */
     --accent: #ffcc66;
     --danger: #cc0f0f;
@@ -99,8 +101,8 @@
     color: var(--color-primary-text);
     font-family: var(--font-sans);
     font-size: var(--text-md);
-    overflow-wrap: break-word;
-    word-break: break-all;
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-md);
 
     /* dialog が開いている間は背景のスクロールを止める */
     &:has(dialog[open]) {
@@ -115,25 +117,12 @@
   }
 
   :target {
-    scroll-margin-top: var(--spacing-84);
+    scroll-margin-block-start: var(--spacing-84);
     scroll-padding: 0;
 
     @media (width >= 64rem) {
-      scroll-margin-top: var(--spacing-20);
+      scroll-margin-block-start: var(--spacing-20);
     }
-  }
-
-  small {
-    font-size: inherit;
-  }
-
-  dialog {
-    color: inherit;
-    margin: 0;
-  }
-
-  button {
-    text-align: start;
   }
 }
 
@@ -141,28 +130,37 @@
   /* 記事本文などの長文用 */
   .prose {
     font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
     line-height: var(--leading-md);
 
     & > p:not([class]) {
-      max-width: var(--spacing-640);
+      max-inline-size: var(--spacing-640);
+      font-size: var(--text-md);
+      font-weight: var(--font-weight-normal);
       line-height: var(--leading-loose);
     }
 
     & > ul:not([class]) {
-      list-style-type: disc;
+      list-style: disc;
       display: grid;
       row-gap: var(--spacing-12);
-      max-width: var(--spacing-640);
-      line-height: var(--leading-loose);
-      padding-left: var(--spacing-20);
+      max-inline-size: var(--spacing-640);
+      padding: 0;
+      padding-inline-start: var(--spacing-20);
+
+      & > li {
+        font-size: var(--text-md);
+        font-weight: var(--font-weight-normal);
+        line-height: var(--leading-loose);
+      }
     }
   }
 
   /* 補助技術専用のテキスト（clip の代わりに clip-path を使用） */
   .sr-only {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    inline-size: 1px;
+    block-size: 1px;
     padding: 0;
     margin: -1px;
     overflow: hidden;
