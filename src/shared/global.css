@@ -103,8 +103,6 @@
     font-size: var(--text-md);
     font-weight: var(--font-weight-normal);
     line-height: var(--leading-md);
-    overflow-wrap: break-word;
-    word-break: break-all;
 
     /* dialog が開いている間は背景のスクロールを止める */
     &:has(dialog[open]) {
