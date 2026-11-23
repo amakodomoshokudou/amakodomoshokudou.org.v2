@@ -28,17 +28,17 @@
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 
-  text-spacing-trim: trim-start;
+  /* text-spacing-trim: trim-start; */
 
-  text-autospace: normal;
+  /* text-autospace: normal; */
 
-  line-break: strict;
+  /* line-break: strict; */
 
-  overflow-wrap: anywhere;
+  /* overflow-wrap: anywhere; */
 
   tab-size: 4;
 
-  scrollbar-gutter: stable;
+  /* scrollbar-gutter: stable; */
 
   -webkit-tap-highlight-color: transparent;
 

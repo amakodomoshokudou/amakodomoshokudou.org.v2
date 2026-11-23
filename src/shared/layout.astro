@@ -125,7 +125,7 @@ const navItems = [
           <a href="/privacy-policy/" class="footer_link">プライバシーポリシー</a>
         </p>
         <p class="footer_text">
-          <small>© 2024 尼崎こども食堂ネットワーク</small>
+          <small class="footer_copywright">© 2024 尼崎こども食堂ネットワーク</small>
         </p>
       </div>
     </footer>
@@ -276,12 +276,14 @@ const navItems = [
   }
 
   .contact_heading {
+    color: var(--color-primary-text);
     font-size: var(--text-md);
     font-weight: var(--font-weight-bold);
     line-height: var(--leading-md);
   }
 
   .contact_mail {
+    color: var(--color-primary-text);
     font-size: var(--text-md);
     font-weight: var(--font-weight-normal);
     line-height: var(--leading-md);
@@ -383,6 +385,12 @@ const navItems = [
   }
 
   .footer_text {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--leading-sm);
+  }
+
+  .footer_copywright {
     font-size: var(--text-sm);
     font-weight: var(--font-weight-normal);
     line-height: var(--leading-sm);

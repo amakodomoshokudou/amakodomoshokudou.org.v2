@@ -1,6 +1,6 @@
 @layer reset, base, util;
 
-@import "./_reset.css" layer(reset);
+@import "./reset.css" layer(reset);
 
 @layer base {
   :root {
@@ -125,21 +125,6 @@
     @media (width >= 64rem) {
       scroll-margin-block-start: var(--spacing-20);
     }
-  }
-
-  small {
-    font-size: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-  }
-
-  dialog {
-    color: inherit;
-    margin: 0;
-  }
-
-  button {
-    text-align: start;
   }
 }
 
