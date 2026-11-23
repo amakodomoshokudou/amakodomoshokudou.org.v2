@@ -29,7 +29,7 @@
     "@astrojs/check": "^0.9.12",
     "@biomejs/biome": "2.6.7",
     "@playwright/test": "1.65.1",
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.6.6",
     "markuplint": "^5.6.1",
     "typescript": "^6.0.3"
   }
