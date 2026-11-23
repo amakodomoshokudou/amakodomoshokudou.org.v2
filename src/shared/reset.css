@@ -38,7 +38,7 @@
 
   tab-size: 4;
 
-  /* scrollbar-gutter: stable; */
+  scrollbar-gutter: stable;
 
   -webkit-tap-highlight-color: transparent;
 
