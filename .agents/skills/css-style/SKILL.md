@@ -14,6 +14,12 @@ description: このプロジェクトの CSS（.astro の scoped <style> と glo
 - トークンは Tailwind 時代からの変数名を維持する（`--spacing-84` = 5.25rem の「数値 / 4 = rem」スケール、`--text-sm`、`--leading-sm` など）
 - `prose` と `sr-only` は `global.css` の `@layer util` 内の共通クラスとして定義する。それ以外のスタイルはコンポーネントごとの scoped `<style>` に書き、重複を許容する（新規コンポーネントの切り出しはしない）
 
+## プロパティ
+
+- left / right / top / bottom を使う物理プロパティではなく、`*-inline-start` / `*-inline-end` / `*-block-start` / `*-block-end` の論理プロパティを使う
+- ビューポート単位は `svh` ではなく `svb` を使う
+- `overflow-block` は Safari 26 未満向けに `overflow-y` のフォールバックを併記する
+
 ## クラス名
 
 - `block_element` 形式のクラス名を使う
