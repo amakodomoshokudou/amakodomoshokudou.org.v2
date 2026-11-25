@@ -4,13 +4,13 @@
 
 `MODE` を指定しない場合は mock として動作する。実データ用の環境変数がなくても開発とビルドができるようにするため、既定を mock にしている。
 
-microCMS の実データを使う場合は `dev:production` / `build:production` を明示して実行する。
+microCMS の実データを使う場合は、`.env` に `MICROCMS_SERVICE_DOMAIN` と `MICROCMS_API_KEY` を設定し、`dev:production` / `build:production` を明示して実行する。
 
 モードは `MODE=production` のような環境変数で指定する。`astro sync` が `--mode` を受け付けず、指定しても無視されるため、Astro の `--mode` は使わない。`astro sync` を直接実行する必要がある場合も `MODE` を付与する。通常は内部で同期を行う `astro check`（`pnpm run typecheck`）を使う。
 
 ## VRT
 
-Docker は VRT 専用とし、`compose.yaml` の `dockerfile_inline` でイメージを定義する。
+Docker は VRT 専用とし、`compose.yaml` の `dockerfile_inline` でイメージを定義する。Docker Compose 2.17.0 以降で `pnpm run vrt` を実行する。
 
 出力は `playwright-outputs/` 配下にまとめる。リポジトリ全体はマウントせず、出力先と `vrt/` だけをマウントし、実行に必要なファイルはイメージに COPY する。
 
